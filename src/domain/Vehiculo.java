@@ -2,16 +2,16 @@ package domain;
 
 import java.util.Objects;
 
-public class Coche {
+public class Vehiculo {
 	private String marca;
 	private String modelo;
 	private String matricula;
 	
-	public Coche() {
+	public Vehiculo() {
 		super();
 	}
 
-	public Coche(String marca, String modelo, String matricula) {
+	public Vehiculo(String marca, String modelo, String matricula) {
 		super();
 		this.marca = marca;
 		this.modelo = modelo;
@@ -31,7 +31,7 @@ public class Coche {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Coche other = (Coche) obj;
+		Vehiculo other = (Vehiculo) obj;
 		return Objects.equals(marca, other.marca) && Objects.equals(matricula, other.matricula)
 				&& Objects.equals(modelo, other.modelo);
 	}
