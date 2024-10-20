@@ -2,7 +2,7 @@ package domain;
 
 import java.util.Objects;
 
-public class Plaza  extends Parking{
+public class Plaza {
 	private int piso;
 	private String seccion;
 	private int numPlaza;
@@ -11,18 +11,14 @@ public class Plaza  extends Parking{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Plaza(String parking, Float precioHora, int plazasLibres) {
-		super(parking, precioHora, plazasLibres);
-		// TODO Auto-generated constructor stub
-	}
 	
-	
-	public Plaza(String parking, Float precioHora, int plazasLibres, int piso, String seccion, int numPlaza) {
-		super(parking, precioHora, plazasLibres);
+	public Plaza(int piso, String seccion, int numPlaza) {
+		super();
 		this.piso = piso;
 		this.seccion = seccion;
 		this.numPlaza = numPlaza;
 	}
+
 	public int getPiso() {
 		return piso;
 	}
@@ -59,11 +55,10 @@ public class Plaza  extends Parking{
 		Plaza other = (Plaza) obj;
 		return numPlaza == other.numPlaza && piso == other.piso && Objects.equals(seccion, other.seccion);
 	}
+
 	@Override
 	public String toString() {
-		return "Plaza [getParking()=" + getParking() + ", getPrecioHora()=" + getPrecioHora() + ", getPlazasLibres()="
-				+ getPlazasLibres() + ", toString()=" + super.toString() + ", getClass()=" + getClass() + ", piso="
-				+ piso + ", seccion=" + seccion + ", numPlaza=" + numPlaza + "]";
+		return "Plaza [piso=" + piso + ", seccion=" + seccion + ", numPlaza=" + numPlaza + "]";
 	}
 	
 	
