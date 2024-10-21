@@ -79,8 +79,6 @@ public class VentanaInicio extends JFrame{
 			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 					int row, int column) {
 				Component c = null;
-				/*Queremos que la columna 0 salga justificada a la izquierda y que la columna 1 salga justificada en el centro*/
-				/*En el caso de la columna 2 queremos motrar una barra de progreso*/
 				if(column == 0) {
 					 String[] ciudades = {"Ciudad1", "Ciudad2", "Ciudad3"};
 				        JComboBox<String> CBCiudades = new JComboBox<>(ciudades);
