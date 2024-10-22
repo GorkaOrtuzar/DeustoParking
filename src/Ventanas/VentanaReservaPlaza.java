@@ -14,7 +14,7 @@ import javax.swing.JTextArea;
 public class VentanaReservaPlaza extends JFrame{
 	
 	//Declaramos valores
-	private JPanel pCentro, pNorte, pSur;
+	private JPanel pCentro, pCentroN, pCentroS, pSur, pNorte;
 	private JButton btnAtras, btnReservar, btnSiguiente;
 	private JTextArea txtReserva;
 	
@@ -34,36 +34,42 @@ public class VentanaReservaPlaza extends JFrame{
 		
 		//Instanciar Paneles, TextArea y Botones
 		pNorte = new JPanel();
-		pNorte.setLayout(new GridLayout(1, 2)); //1 fila, 2 columnas ????
 		pCentro = new JPanel();
+		pCentro.setLayout(new GridLayout(2, 1)); //2 filas, 1 columna
 		pSur = new JPanel();
-		pSur.setLayout(new GridLayout(1, 2));
+		//pSur.setLayout(new GridLayout(1, 2));
+		
+		pCentroN = new JPanel();
+		pCentroS = new JPanel();
 		
 		txtReserva = new JTextArea();
 		
-		btnAtras = new JButton();
-		btnReservar = new JButton();
-		btnSiguiente = new JButton();
+		btnAtras = new JButton("Atrás");
+		btnReservar = new JButton("Reservar");
+		btnSiguiente = new JButton("Siguiente");
 		
 		
 		
 		
 		//Añadimos paneles al panel central
-		pNorte.add(txtReserva);
-		pNorte.add(btnReservar);
-		pSur.add(btnAtras);
-		pSur.add(btnSiguiente);
 		
 		//Creamos Tabla
 		modeloTabla = new ModeloTablaReserva(null);
 		tabla = new JTable(modeloTabla);
 		scrollTabla = new JScrollPane(tabla);
 		
-		
 		//Renderer Tabla
 		modeloTabla = (ModeloTablaReserva) tabla.getModel();
 		tabla.setModel(modeloTabla);
-		pCentro.add(scrollTabla);
+		pCentroN.add(scrollTabla);
+		
+		pCentro.add(pCentroN);
+
+		pCentro.add(pCentroS);
+		pCentroS.add(txtReserva);
+		pCentroS.add(btnReservar);
+		pSur.add(btnAtras);
+		pSur.add(btnSiguiente);
 		
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pCentro, BorderLayout.CENTER);

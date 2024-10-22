@@ -105,7 +105,7 @@ public class VentanaInicio extends JFrame{
 		pTabla.add(scrollTabla);
 		
 		//imagen
-		ImageIcon imagen = new ImageIcon("imagenes/logoProvisional.jpeg");
+		ImageIcon imagen = new ImageIcon("imagenes/logoDeustoParking.png");
 		JLabel lblImagen = new JLabel(imagen);
 		pImagen.add(lblImagen);
 		
