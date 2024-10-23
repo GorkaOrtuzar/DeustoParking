@@ -1,4 +1,4 @@
-package Ventanas;
+package gui;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,10 +37,10 @@ public class ModeloTablaInicio extends DefaultTableModel  {
 	public Object getValueAt(int row, int column) {
 		/*Reserva r = reserva.get(row);
 		 * swich(column){
-		 * case 0: return r.getCiudad();
-		 * case 1: return r.getFechaEntrada();
-		 * case 2: return r.getFechaSalida();
-		 * default return null;
+		 case 0: return r.getCiudad();
+		 case 1: return r.getFechaEntrada();
+		 case 2: return r.getFechaSalida();
+		 default return null;
 		 */
 		return super.getValueAt(row, column);
 	}
