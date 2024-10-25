@@ -106,9 +106,9 @@ public class VentanaInicio extends JFrame{
 		
 		btnBuscar.addActionListener((e)->{
 			String Ciudad = (String) ComboCiudades.getSelectedItem();
-			LocalDate fechaEntrada = (LocalDate) SFechaEntrada.getValue();
+			/*LocalDate fechaEntrada = (LocalDate) SFechaEntrada.getValue();
 			LocalDate fechaSalida = (LocalDate) SFechaSalida.getValue();
-			Reserva r = new Reserva(Ciudad, fechaEntrada, fechaSalida);
+			Reserva r = new Reserva(Ciudad, fechaEntrada, fechaSalida);*/
 			new VentanaIngresarDatos(vActual);
 			vActual.dispose();
 		});
