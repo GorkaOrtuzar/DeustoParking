@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Reserva {
+	
+	private String Ciudad;
 	private String dni;
 	private int matricula;
 	private String nomParking;
@@ -19,14 +21,11 @@ public class Reserva {
 
 
 
-	public Reserva(String dni, int matricula, String nomParking, LocalDate hLlegada, LocalDate hSalida, int numPlaza) {
+	public Reserva(String Ciudad,LocalDate hLlegada, LocalDate hSalida) {
 		super();
-		this.dni = dni;
-		this.matricula = matricula;
-		this.nomParking = nomParking;
+		this.Ciudad = Ciudad;
 		this.hLlegada = hLlegada;
 		this.hSalida = hSalida;
-		this.numPlaza = numPlaza;
 	}
 
 
@@ -103,9 +102,21 @@ public class Reserva {
 
 
 
+	public String getCiudad() {
+		return Ciudad;
+	}
+
+
+
+	public void setCiudad(String ciudad) {
+		Ciudad = ciudad;
+	}
+
+
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(dni, hLlegada, hSalida, matricula, nomParking, numPlaza);
+		return Objects.hash(Ciudad, dni, hLlegada, hSalida, matricula, nomParking, numPlaza);
 	}
 
 
@@ -119,18 +130,22 @@ public class Reserva {
 		if (getClass() != obj.getClass())
 			return false;
 		Reserva other = (Reserva) obj;
-		return Objects.equals(dni, other.dni) && Objects.equals(hLlegada, other.hLlegada)
-				&& Objects.equals(hSalida, other.hSalida) && matricula == other.matricula
-				&& Objects.equals(nomParking, other.nomParking) && numPlaza == other.numPlaza;
+		return Objects.equals(Ciudad, other.Ciudad) && Objects.equals(dni, other.dni)
+				&& Objects.equals(hLlegada, other.hLlegada) && Objects.equals(hSalida, other.hSalida)
+				&& matricula == other.matricula && Objects.equals(nomParking, other.nomParking)
+				&& numPlaza == other.numPlaza;
 	}
 
 
 
 	@Override
 	public String toString() {
-		return "Reserva [dni=" + dni + ", matricula=" + matricula + ", nomParking=" + nomParking + ", hLlegada="
-				+ hLlegada + ", hSalida=" + hSalida + ", numPlaza=" + numPlaza + "]";
+		return "Reserva [Ciudad=" + Ciudad + ", dni=" + dni + ", matricula=" + matricula + ", nomParking=" + nomParking
+				+ ", hLlegada=" + hLlegada + ", hSalida=" + hSalida + ", numPlaza=" + numPlaza + "]";
 	}
+
+
+
 	
 	
 	
