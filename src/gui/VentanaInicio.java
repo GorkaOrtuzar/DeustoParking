@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.time.LocalDate;
@@ -50,12 +51,16 @@ public class VentanaInicio extends JFrame{
 		pImagen = new JPanel();
 		pTabla =  new JPanel();
 		
+		
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pCentro, BorderLayout.CENTER);
 		
 		lblDesutoCar = new JLabel("DeustoCar");
 		lblDesutoCar.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
 		
+		
+		
+		pTabla.setBackground(Color.CYAN);
 		
 		//Añadir los paneles al panel central
 		pNorte.add(lblDesutoCar);
@@ -79,6 +84,8 @@ public class VentanaInicio extends JFrame{
 		pJSpinnerEntrada.setLayout(new GridLayout(2, 1));
 		JLabel FechaEntrada= new  JLabel("Fecha de entrada: ");
 		JSpinner SFechaEntrada = new JSpinner(new SpinnerDateModel());
+		Dimension spinner1 = new Dimension(10, 25);
+		SFechaEntrada.setPreferredSize(spinner1);
         SFechaEntrada.setEditor(new JSpinner.DateEditor(SFechaEntrada, "dd/MM/yyyy"));
 	    pJSpinnerEntrada.add(FechaEntrada);
 	    pJSpinnerEntrada.add(SFechaEntrada);
@@ -90,6 +97,8 @@ public class VentanaInicio extends JFrame{
 		pJSpinnerSalida.setLayout(new GridLayout(2, 1));
 		JLabel FechaSalida= new  JLabel("Fecha de salida: ");
 		JSpinner SFechaSalida = new JSpinner(new SpinnerDateModel());
+		Dimension spinner2 = new Dimension(10, 25);
+		SFechaSalida.setPreferredSize(spinner2);
         SFechaSalida.setEditor(new JSpinner.DateEditor(SFechaSalida, "dd/MM/yyyy"));
 	    pJSpinnerSalida.add(FechaSalida);
 	    pJSpinnerSalida.add(SFechaSalida);
@@ -99,6 +108,8 @@ public class VentanaInicio extends JFrame{
 	    JPanel pJButtonBuscar = new JPanel();
 		pJButtonBuscar.setBounds(20,20,50,20);
 		JButton btnBuscar = new JButton("BUSCAR");
+		Dimension dimension = new Dimension(100, 30);
+		btnBuscar.setPreferredSize(dimension);
         btnBuscar.setBounds(0,0,pJButtonBuscar.getWidth(), pJButtonBuscar.getHeight());  
 
 	    pJButtonBuscar.add(btnBuscar);
