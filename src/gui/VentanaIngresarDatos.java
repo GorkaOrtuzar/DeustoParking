@@ -2,7 +2,9 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
@@ -16,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import domain.Contenedora;
+import domain.Reserva;
 import domain.Usuario;
 
 public class VentanaIngresarDatos extends JFrame {
@@ -29,18 +32,16 @@ public class VentanaIngresarDatos extends JFrame {
 
 	//info pInfoParking
 	private JLabel lblLLegada,lblSalida,lblNombreDelParking,lblinforDelParking;
-	private JTextField txtLlegada,txtSalida,txtNombreDelParking,txtinforDelParking;
 	private JButton btnSiguiente;
 	
 	private JFrame vActual;
 	
-	public VentanaIngresarDatos(JFrame va){
+	public VentanaIngresarDatos(JFrame va, Reserva r){
 		
 		super();
 		vActual = this;
 		
-		setBounds(300, 200, 600, 400);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
 		
 		pCentro = new JPanel();
 		pCentro.setLayout(new GridLayout(1, 2));
@@ -87,7 +88,7 @@ public class VentanaIngresarDatos extends JFrame {
 					JOptionPane.showMessageDialog(null, "Usuario guardado");
 				}
 			}*/
-			Contenedora.aniadirUsuario(u);
+		//	Contenedora.aniadirUsuario(u);
 			vActual.dispose(); 
 			//new(vActual); //Abrimos la ventana tabla
 		});
@@ -107,6 +108,8 @@ public class VentanaIngresarDatos extends JFrame {
 		lblContrasenia = new JLabel("Contrasenia: ");
 		txtContrasenia = new JTextField();
 		
+		
+		
 		pDatosPersonales.add(lblNombre);
 		pDatosPersonales.add(txtNombre);
 		pDatosPersonales.add(lblApellido);
@@ -120,17 +123,15 @@ public class VentanaIngresarDatos extends JFrame {
 		pDatosPersonales.add(lblContrasenia);
 		pDatosPersonales.add(txtContrasenia);
 		
-		
+		//Separador de lineas
+		String saltoDeLinea = System.lineSeparator();
+
 	
 		//zona del panel de info de la reserva
-		lblLLegada = new JLabel("Fecha de ingreso");
-		txtLlegada = new JTextField();
-		lblSalida = new JLabel("Fecha de salida");
-		txtSalida = new JTextField();
-		lblNombreDelParking = new JLabel("Nombre del parking");
-		txtNombreDelParking = new JTextField();
-		lblinforDelParking = new JLabel("Plaza");
-		txtinforDelParking = new JTextField();
+		lblLLegada = new JLabel("Fecha de ingreso: "+r.gethLlegada());
+		lblSalida = new JLabel("Fecha de salida: "+ r.gethSalida());
+		lblNombreDelParking = new JLabel("Nombre del parking: "+ r.getNomParking());
+		lblinforDelParking = new JLabel("Plaza: "+ r.getNumPlaza());
 		
 		pInfoParking.add(lblLLegada);
 		pInfoParking.add(lblSalida);
@@ -141,12 +142,33 @@ public class VentanaIngresarDatos extends JFrame {
 		pCentro.add(pDatosPersonales);
 		pCentro.add(pInfoParking);
 		
+		//Dimesiones de los txt
+		Dimension dimension = new Dimension(20, 10);
+		txtNombre.setPreferredSize(dimension);
+		txtApellido.setPreferredSize(dimension);
+		txtContrasenia.setPreferredSize(dimension);
+		txtDni.setPreferredSize(dimension);
+		txtMatricula.setPreferredSize(dimension);
+		txtTlf.setPreferredSize(dimension);
+
+
+
 		
-		
-		
-		
+		//Tamaño de la ventana
+		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
+        int altoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
+        setSize(anchoP, altoP);
+        setExtendedState(MAXIMIZED_BOTH);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(50, 50, 1600, 800);
+		setTitle("Introduce los datos");
 		setVisible(true);
 	}
+	
+	
+	
+	
 	
 	
 	
