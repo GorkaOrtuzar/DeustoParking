@@ -9,8 +9,8 @@ public class Reserva {
 	private String dni;
 	private int matricula;
 	private String nomParking;
-	private LocalDate hLlegada;
-	private LocalDate hSalida;
+	private String hLlegada;
+	private String hSalida;
 	private int numPlaza;
 	
 	
@@ -21,7 +21,7 @@ public class Reserva {
 
 
 
-	public Reserva(String Ciudad,LocalDate hLlegada, LocalDate hSalida) {
+	public Reserva(String Ciudad,String hLlegada, String hSalida) {
 		super();
 		this.Ciudad = Ciudad;
 		this.hLlegada = hLlegada;
@@ -66,25 +66,25 @@ public class Reserva {
 
 
 
-	public LocalDate gethLlegada() {
+	public String gethLlegada() {
 		return hLlegada;
 	}
 
 
 
-	public void sethLlegada(LocalDate hLlegada) {
+	public void sethLlegada(String hLlegada) {
 		this.hLlegada = hLlegada;
 	}
 
 
 
-	public LocalDate gethSalida() {
+	public String gethSalida() {
 		return hSalida;
 	}
 
 
 
-	public void sethSalida(LocalDate hSalida) {
+	public void sethSalida(String hSalida) {
 		this.hSalida = hSalida;
 	}
 

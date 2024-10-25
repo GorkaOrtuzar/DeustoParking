@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.time.LocalDate;
 
@@ -40,9 +41,8 @@ public class VentanaInicio extends JFrame{
 		super();
 		vActual = this;
 		
-		//Tamaño de la ventana
-		setBounds(300, 200, 600, 400);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+
 		
 		//Instanciar los paneles
 		pCentro = new JPanel();
@@ -117,10 +117,10 @@ public class VentanaInicio extends JFrame{
 		
 		btnBuscar.addActionListener((e)->{
 			String Ciudad = (String) ComboCiudades.getSelectedItem();
-			/*LocalDate fechaEntrada = (LocalDate) SFechaEntrada.getValue();
-			LocalDate fechaSalida = (LocalDate) SFechaSalida.getValue();
-			Reserva r = new Reserva(Ciudad, fechaEntrada, fechaSalida);*/
-			new VentanaIngresarDatos(vActual);
+			String fechaEntrada = SFechaEntrada.getValue().toString();
+			String fechaSalida = SFechaSalida.getValue().toString();
+			Reserva r = new Reserva(Ciudad, fechaEntrada, fechaSalida);
+			new VentanaIngresarDatos(vActual, r);
 			vActual.dispose();
 		});
 		
@@ -131,7 +131,20 @@ public class VentanaInicio extends JFrame{
 		lblImagen.setBounds(0, 0, 100, 100);
 		pImagen.add(lblImagen);
 		
-	setVisible(true);	
+		
+		
+		
+		
+		//Tamaño de la ventana
+		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
+        int altoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
+        setSize(anchoP, altoP);
+        setExtendedState(MAXIMIZED_BOTH);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(50, 50, 1600, 800);
+		setTitle("Reservar plaza de parking");
+		setVisible(true);
 	
 	}
 	
