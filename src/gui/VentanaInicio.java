@@ -108,9 +108,7 @@ public class VentanaInicio extends JFrame{
 			String Ciudad = (String) ComboCiudades.getSelectedItem();
 			LocalDate fechaEntrada = (LocalDate) SFechaEntrada.getValue();
 			LocalDate fechaSalida = (LocalDate) SFechaSalida.getValue();
-			
 			Reserva r = new Reserva(Ciudad, fechaEntrada, fechaSalida);
-			
 			new VentanaIngresarDatos(vActual);
 			vActual.dispose();
 		});
