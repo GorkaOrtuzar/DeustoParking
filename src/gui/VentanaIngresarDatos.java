@@ -2,15 +2,21 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import domain.Contenedora;
+import domain.Usuario;
 
 public class VentanaIngresarDatos extends JFrame {
 	
@@ -39,6 +45,7 @@ public class VentanaIngresarDatos extends JFrame {
 		pCentro = new JPanel();
 		pCentro.setLayout(new GridLayout(1, 2));
 		pNorte = new JPanel();
+		pNorte.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 10));
 		pSur = new JPanel();
 		pDatosPersonales = new JPanel();
 		pDatosPersonales.setLayout(new BoxLayout(pDatosPersonales,BoxLayout.Y_AXIS));
@@ -52,19 +59,36 @@ public class VentanaIngresarDatos extends JFrame {
 		//PANEL NORTE
 		lblIntroDatos = new JLabel("1. Introduce tus datos");
 		lblIntroDatos.setForeground(Color.BLUE);
-		lblConfirma = new JLabel("2. Confirma",SwingConstants.CENTER);
-		lblPago = new JLabel("3. Pago",SwingConstants.RIGHT);
+		lblConfirma = new JLabel("2. Confirma");
+		lblPago = new JLabel("3. Pago");
 		
-		pNorte.add(lblIntroDatos, BorderLayout.WEST);
-		pNorte.add(lblConfirma, BorderLayout.CENTER);
-		pNorte.add(lblPago, BorderLayout.EAST);
+		pNorte.add(lblIntroDatos);
+		pNorte.add(lblConfirma);
+		pNorte.add(lblPago);
 		
 		//PANEL SUR
 		btnSiguiente = new JButton("Siguente");
 		pSur.add(btnSiguiente);
 		
 		btnSiguiente.addActionListener((e)->{
-			vActual.dispose(); //Cierro la ventana actual
+			String Nombre = txtNombre.getText();
+			String Apellido = txtApellido.getText();
+			String tlf = txtTlf.getText();
+			String dni = txtDni.getText();
+			String contrasenia = txtContrasenia.getText();
+			Usuario u = new Usuario(Nombre, Apellido, tlf, dni, contrasenia);
+			/*for (Usuario us : Contenedora.getlUsuarios()) {
+				if(us.getDni().equals(u.getDni())) {
+					JOptionPane.showMessageDialog(null, "Usuario regitrado con anterioridad, "
+												+ "se te guardara la reserva en un a "
+													+ "lista de reservas previamenten adjudicada");
+				}else {
+					Contenedora.aniadirUsuario(u);
+					JOptionPane.showMessageDialog(null, "Usuario guardado");
+				}
+			}*/
+			Contenedora.aniadirUsuario(u);
+			vActual.dispose(); 
 			//new(vActual); //Abrimos la ventana tabla
 		});
 		
