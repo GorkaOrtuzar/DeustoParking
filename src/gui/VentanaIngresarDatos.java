@@ -31,7 +31,7 @@ public class VentanaIngresarDatos extends JFrame {
 	private JTextField txtNombre,txtApellido,txtTlf, txtDni,txtMatricula,txtContrasenia;
 
 	//info pInfoParking
-	private JLabel lblLLegada,lblSalida,lblNombreDelParking,lblinforDelParking;
+	private JLabel lblLLegada,lblSalida,lblNombreDelParking,lblPlaza;
 	private JButton btnSiguiente;
 	
 	private JFrame vActual;
@@ -52,6 +52,7 @@ public class VentanaIngresarDatos extends JFrame {
 		pDatosPersonales.setLayout(new BoxLayout(pDatosPersonales,BoxLayout.Y_AXIS));
 		pInfoParking =  new JPanel();
 		pInfoParking.setLayout(new BoxLayout(pInfoParking,BoxLayout.Y_AXIS));
+		pInfoParking.setLayout(new GridLayout(5,0));
 
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pCentro, BorderLayout.CENTER);
@@ -131,25 +132,25 @@ public class VentanaIngresarDatos extends JFrame {
 		lblLLegada = new JLabel("Fecha de ingreso: "+r.gethLlegada());
 		lblSalida = new JLabel("Fecha de salida: "+ r.gethSalida());
 		lblNombreDelParking = new JLabel("Nombre del parking: "+ r.getNomParking());
-		lblinforDelParking = new JLabel("Plaza: "+ r.getNumPlaza());
+		lblPlaza = new JLabel("Plaza: "+ r.getNumPlaza());
 		
 		pInfoParking.add(lblLLegada);
 		pInfoParking.add(lblSalida);
 		pInfoParking.add(lblNombreDelParking);
-		pInfoParking.add(lblinforDelParking);
+		pInfoParking.add(lblPlaza);
 		
 		
 		pCentro.add(pDatosPersonales);
 		pCentro.add(pInfoParking);
 		
 		//Dimesiones de los txt
-		Dimension dimension = new Dimension(20, 10);
-		txtNombre.setPreferredSize(dimension);
-		txtApellido.setPreferredSize(dimension);
-		txtContrasenia.setPreferredSize(dimension);
-		txtDni.setPreferredSize(dimension);
-		txtMatricula.setPreferredSize(dimension);
-		txtTlf.setPreferredSize(dimension);
+		
+		txtNombre.setPreferredSize(new Dimension(400,30));
+		txtApellido.setPreferredSize(new Dimension(400,30));
+		txtContrasenia.setPreferredSize(new Dimension(400,30));
+		txtDni.setPreferredSize(new Dimension(400,30));
+		txtMatricula.setPreferredSize(new Dimension(400,30));
+		txtTlf.setPreferredSize(new Dimension(400,30));
 
 
 
