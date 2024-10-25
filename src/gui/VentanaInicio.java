@@ -30,14 +30,11 @@ public class VentanaInicio extends JFrame{
 	private JPanel pCentro, pNorte,pTabla,pImagen;
 	private JLabel lblDesutoCar;
 	
-	//tabla
-	private ModeloTablaInicio modeloTabla; 
-	private JTable tabla; 
-	private JScrollPane scrollTabla;
+	
 	
 	private JFrame vActual;
 	
-	//Tabla
+
 	
 	public VentanaInicio() {
 		super();
@@ -66,47 +63,58 @@ public class VentanaInicio extends JFrame{
 		pCentro.add(pTabla);
 		pCentro.add(pImagen);
 		
+		//ComboBox
+		JPanel pComboBox = new JPanel();
+		pComboBox.setBounds(20,20,50,20);
+		pComboBox.setLayout(new GridLayout(2, 1));
+		JLabel Ciudades= new  JLabel("Ciudades: ");
+		String[] ciudades = {"Ciudad1", "Ciudad2", "Ciudad3"};
+	    JComboBox<String> ComboCiudades = new JComboBox<>(ciudades);
+	    pComboBox.add(Ciudades);
+	    pComboBox.add(ComboCiudades);
+	    pTabla.add(pComboBox);
+	    
+	    //JSpinner Salida
+	    JPanel pJSpinnerEntrada = new JPanel();
+		pJSpinnerEntrada.setBounds(20,20,50,20);
+		pJSpinnerEntrada.setLayout(new GridLayout(2, 1));
+		JLabel FechaEntrada= new  JLabel("Fecha de entrada: ");
+		JSpinner SFechaEntrada = new JSpinner(new SpinnerDateModel());
+        SFechaEntrada.setEditor(new JSpinner.DateEditor(SFechaEntrada, "dd/MM/yyyy"));
+	    pJSpinnerEntrada.add(FechaEntrada);
+	    pJSpinnerEntrada.add(SFechaEntrada);
+	    pTabla.add(pJSpinnerEntrada);
 		
-		// Creacion de la tabla
-		modeloTabla = new ModeloTablaInicio(null);
-		tabla = new JTable(modeloTabla);
-		scrollTabla = new JScrollPane(tabla);
+	    //JSpinner Salida
+	    JPanel pJSpinnerSalida = new JPanel();
+		pJSpinnerSalida.setBounds(20,20,50,20);
+		pJSpinnerSalida.setLayout(new GridLayout(2, 1));
+		JLabel FechaSalida= new  JLabel("Fecha de salida: ");
+		JSpinner SFechaSalida = new JSpinner(new SpinnerDateModel());
+        SFechaSalida.setEditor(new JSpinner.DateEditor(SFechaSalida, "dd/MM/yyyy"));
+	    pJSpinnerSalida.add(FechaSalida);
+	    pJSpinnerSalida.add(SFechaSalida);
+	    pTabla.add(pJSpinnerSalida);
 		
-		//Renderer de la tabla
+	    //JButton
+	    JPanel pJButtonBuscar = new JPanel();
+		pJButtonBuscar.setBounds(20,20,50,20);
+		JButton btnBuscar = new JButton("BUSCAR");
+        btnBuscar.setBounds(0,0,pJButtonBuscar.getWidth(), pJButtonBuscar.getHeight());  
+
+	    pJButtonBuscar.add(btnBuscar);
+	    pTabla.add(pJButtonBuscar);
 		
-		tabla.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-			@Override
-			public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
-					int row, int column) {
-				Component c = null;
-				if(column == 0) {
-					 String[] ciudades = {"Ciudad1", "Ciudad2", "Ciudad3"};
-				        JComboBox<String> CBCiudades = new JComboBox<>(ciudades);
-				        table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(CBCiudades));
-					c = CBCiudades;
-				}else if(column == 1) {
-					 	JSpinner SFechaEntrada = new JSpinner(new SpinnerDateModel());
-				        SFechaEntrada.setEditor(new JSpinner.DateEditor(SFechaEntrada, "dd/MM/yyyy"));
-				        c = SFechaEntrada;
-				}else if(column == 2) {
-					JSpinner SFechaSalida = new JSpinner(new SpinnerDateModel());
-			        SFechaSalida.setEditor(new JSpinner.DateEditor(SFechaSalida, "dd/MM/yyyy"));
-			        c = SFechaSalida;
-				}else if(column == 2) {
-					JButton btnBuscar = new JButton("BUSCAR");
-					c = btnBuscar;
-				}
-				return c;
-			}
+		btnBuscar.addActionListener((e)->{
+			//new VentanaIngresarDatos(vActual);
+			vActual.dispose();
 		});
 		
-		modeloTabla = (ModeloTablaInicio) tabla.getModel();
-		tabla.setModel(modeloTabla);
-		pTabla.add(scrollTabla);
 		
 		//imagen
 		ImageIcon imagen = new ImageIcon("imagenes/logoDeustoParking.png");
 		JLabel lblImagen = new JLabel(imagen);
+		lblImagen.setBounds(0, 0, 100, 100);
 		pImagen.add(lblImagen);
 		
 	setVisible(true);	

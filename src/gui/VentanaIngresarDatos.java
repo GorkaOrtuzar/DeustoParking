@@ -15,9 +15,15 @@ import javax.swing.SwingConstants;
 public class VentanaIngresarDatos extends JFrame {
 	
 	private JPanel pNorte,pCentro,pSur,pDatosPersonales,pInfoParking;
+	//info pNorte
 	private JLabel lblIntroDatos,lblConfirma,lblPago;
+	//info pDatosPersonales
 	private JLabel lblNombre,lblApellido,lblTlf,lblDni,lblMatricula,lblContrasenia;
 	private JTextField txtNombre,txtApellido,txtTlf, txtDni,txtMatricula,txtContrasenia;
+
+	//info pInfoParking
+	private JLabel lblLLegada,lblSalida,lblNombreDelParking,lblinforDelParking;
+	private JTextField txtLlegada,txtSalida,txtNombreDelParking,txtinforDelParking;
 	private JButton btnSiguiente;
 	
 	private JFrame vActual;
@@ -37,7 +43,8 @@ public class VentanaIngresarDatos extends JFrame {
 		pDatosPersonales = new JPanel();
 		pDatosPersonales.setLayout(new BoxLayout(pDatosPersonales,BoxLayout.Y_AXIS));
 		pInfoParking =  new JPanel();
-		
+		pInfoParking.setLayout(new BoxLayout(pInfoParking,BoxLayout.Y_AXIS));
+
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pCentro, BorderLayout.CENTER);
 		getContentPane().add(pSur,BorderLayout.SOUTH);
@@ -62,6 +69,7 @@ public class VentanaIngresarDatos extends JFrame {
 		});
 		
 		//PANEL CENTRO
+		//Zona del panel de ingresar datos
 		lblNombre = new JLabel("Nombre: ");
 		txtNombre = new JTextField();
 		lblApellido = new JLabel("Apellido: ");
@@ -87,6 +95,24 @@ public class VentanaIngresarDatos extends JFrame {
 		pDatosPersonales.add(txtDni);
 		pDatosPersonales.add(lblContrasenia);
 		pDatosPersonales.add(txtContrasenia);
+		
+		
+	
+		//zona del panel de info de la reserva
+		lblLLegada = new JLabel("Fecha de ingreso");
+		txtLlegada = new JTextField();
+		lblSalida = new JLabel("Fecha de salida");
+		txtSalida = new JTextField();
+		lblNombreDelParking = new JLabel("Nombre del parking");
+		txtNombreDelParking = new JTextField();
+		lblinforDelParking = new JLabel("Plaza");
+		txtinforDelParking = new JTextField();
+		
+		pInfoParking.add(lblLLegada);
+		pInfoParking.add(lblSalida);
+		pInfoParking.add(lblNombreDelParking);
+		pInfoParking.add(lblinforDelParking);
+		
 		
 		pCentro.add(pDatosPersonales);
 		pCentro.add(pInfoParking);
