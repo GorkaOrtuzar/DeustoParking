@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.time.LocalDate;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
@@ -24,17 +25,15 @@ import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Reserva;
+
 public class VentanaInicio extends JFrame{
 	
 	// Declarar los valores
 	private JPanel pCentro, pNorte,pTabla,pImagen;
 	private JLabel lblDesutoCar;
 	
-	
-	
 	private JFrame vActual;
-	
-
 	
 	public VentanaInicio() {
 		super();
@@ -106,6 +105,12 @@ public class VentanaInicio extends JFrame{
 	    pTabla.add(pJButtonBuscar);
 		
 		btnBuscar.addActionListener((e)->{
+			String Ciudad = (String) ComboCiudades.getSelectedItem();
+			LocalDate fechaEntrada = (LocalDate) SFechaEntrada.getValue();
+			LocalDate fechaSalida = (LocalDate) SFechaSalida.getValue();
+			
+			Reserva r = new Reserva(Ciudad, fechaEntrada, fechaSalida);
+			
 			new VentanaIngresarDatos(vActual);
 			vActual.dispose();
 		});
