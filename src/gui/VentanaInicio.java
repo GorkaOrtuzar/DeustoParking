@@ -106,7 +106,7 @@ public class VentanaInicio extends JFrame{
 	    pTabla.add(pJButtonBuscar);
 		
 		btnBuscar.addActionListener((e)->{
-			//new VentanaIngresarDatos(vActual);
+			new VentanaIngresarDatos(vActual);
 			vActual.dispose();
 		});
 		

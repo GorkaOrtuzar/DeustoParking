@@ -28,7 +28,7 @@ public class VentanaIngresarDatos extends JFrame {
 	
 	private JFrame vActual;
 	
-	public VentanaIngresarDatos(){
+	public VentanaIngresarDatos(JFrame va){
 		
 		super();
 		vActual = this;
@@ -125,8 +125,5 @@ public class VentanaIngresarDatos extends JFrame {
 	}
 	
 	
-	public static void main(String[] args) {
-		VentanaIngresarDatos vid =  new VentanaIngresarDatos();
-	}
 	
 }
