@@ -35,13 +35,23 @@ public class Contenedora {
 		lReservas.add(r);
 	}
 	
+	//Añadir una reserva a un usuario
 	public static void aniadirReservaUsuario(Usuario u, Reserva r) {
 		if(!mapaReservasPorUsuario.containsKey(u)) {
 			mapaReservasPorUsuario.put(u, new ArrayList<Reserva>());
 		}
 		mapaReservasPorUsuario.get(u).add(r);
 	}
-	
+	//Devuelve la lista de reservas que tiene hechas un usuario 
+	public static ArrayList<Reserva> buscarListaDeReservasPorUsuario(String DNI, HashMap<Usuario, ArrayList<Reserva>>mapaReservasPorUsuario) {
+		ArrayList<Reserva> lReservaUS = new ArrayList<Reserva>();
+		for (Usuario u : mapaReservasPorUsuario.keySet()) {
+			if(u.getDni().equals(DNI)) {
+				lReservaUS.add((Reserva) mapaReservasPorUsuario.values());
+			}
+		}
+		return lReservaUS;
+	}
 	
 	
 }
