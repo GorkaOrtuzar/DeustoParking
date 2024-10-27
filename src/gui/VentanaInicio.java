@@ -65,7 +65,7 @@ public class VentanaInicio extends JFrame{
 		
 		
 		
-		pTabla.setBackground(Color.CYAN);
+		//pTabla.setBackground(Color.CYAN);
 		
 		//Añadir los paneles al panel central
 		pNorte.add(lblDesutoCar);
@@ -77,7 +77,7 @@ public class VentanaInicio extends JFrame{
 		//Boton mis reservas
 		JPanel pMisRes = new JPanel();
 		JButton btnMisReservas = new JButton("Mis reservas");
-		Dimension dimensionBtnMisRes = new Dimension(200, 30);
+		Dimension dimensionBtnMisRes = new Dimension(200, 25);
 		btnMisReservas.setPreferredSize(dimensionBtnMisRes);
 		pMisRes.add(btnMisReservas);
 		pMisReservas.add(pMisRes, BorderLayout.EAST);
