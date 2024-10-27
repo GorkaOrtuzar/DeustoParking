@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import domain.Reserva;
 import domain.Usuario;
@@ -36,7 +37,8 @@ public class VentanaPago extends JFrame{
 		pSur = new JPanel();
 		pDatosPago = new JPanel();
 		pDatosPago.setLayout(new GridLayout(6, 0));
-		pDatosPago.setBackground(Color.pink);
+		pDatosPago.setBorder(new EmptyBorder(150, 150, 150, 150 ));
+
 
 		
 		getContentPane().add(pNorte, BorderLayout.NORTH);
@@ -69,6 +71,8 @@ public class VentanaPago extends JFrame{
 		pDatosPago.add(lblCVV);
 		pDatosPago.add(txtCVV);
 
+
+
 		pCentro.add(pDatosPago);
 		
 		//Boton
@@ -76,8 +80,24 @@ public class VentanaPago extends JFrame{
 		pSur.add(btnSiguiente);
 				
 		btnSiguiente.addActionListener((e)->{
+			String NTarjeta = txtNTarjeta.getText();
+			String FechaExpiracion = txtFechaExpiracion.getText();
+			String CVV = txtCVV.getText();
+			
+			 if(NTarjeta.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Inserte el numero de tarjeta","ERROR",JOptionPane.ERROR_MESSAGE);
+				}
+			 //Mira si la contraseña esta vacia
+			 else if (FechaExpiracion.isEmpty()) {
+					 JOptionPane.showMessageDialog(null, "Inserte la fecha de expiracion","ERROR",JOptionPane.ERROR_MESSAGE);
+				 }
+			 else if (CVV.isEmpty()) {
+				 JOptionPane.showMessageDialog(null, "Inserte el CVV","ERROR",JOptionPane.ERROR_MESSAGE);
+			 }
+			 else {
 			JOptionPane.showMessageDialog(null, "Confirmar pago");
 			vActual.dispose();
+			 }
 		});
 				
 				

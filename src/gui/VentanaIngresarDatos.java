@@ -153,18 +153,7 @@ public class VentanaIngresarDatos extends JFrame {
 		pCentro.add(pDatosPersonales, BorderLayout.CENTER);
 		pCentro.add(pInfoParking, BorderLayout.CENTER);
 		
-		//Dimesiones de los txt
-		
-		txtNombre.setPreferredSize(new Dimension(400,30));
-		txtApellido.setPreferredSize(new Dimension(400,30));
-		txtContrasenia.setPreferredSize(new Dimension(400,30));
-		txtDni.setPreferredSize(new Dimension(400,30));
-		txtMatricula.setPreferredSize(new Dimension(400,30));
-		txtTlf.setPreferredSize(new Dimension(400,30));
 
-
-
-		
 		//Tamaño de la ventana
 		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
         int altoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
