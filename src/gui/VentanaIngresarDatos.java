@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 import domain.Contenedora;
 import domain.Reserva;
@@ -50,9 +51,13 @@ public class VentanaIngresarDatos extends JFrame {
 		pSur = new JPanel();
 		pDatosPersonales = new JPanel();
 		pDatosPersonales.setLayout(new BoxLayout(pDatosPersonales,BoxLayout.Y_AXIS));
+		pDatosPersonales.setBorder(new EmptyBorder(150, 150, 150, 150 ));
+
 		pInfoParking =  new JPanel();
 		pInfoParking.setLayout(new BoxLayout(pInfoParking,BoxLayout.Y_AXIS));
 		pInfoParking.setLayout(new GridLayout(5,0));
+		pInfoParking.setBorder(new EmptyBorder(150, 150, 150, 150 ));
+
 
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pCentro, BorderLayout.CENTER);
