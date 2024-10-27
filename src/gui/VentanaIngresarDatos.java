@@ -43,7 +43,7 @@ public class VentanaIngresarDatos extends JFrame {
 		
 		
 		
-		pCentro = new JPanel();
+		pCentro = new JPanel(new BorderLayout());
 		pCentro.setLayout(new GridLayout(1, 2));
 		pNorte = new JPanel();
 		pNorte.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 10));
@@ -123,9 +123,16 @@ public class VentanaIngresarDatos extends JFrame {
 		pDatosPersonales.add(txtDni);
 		pDatosPersonales.add(lblContrasenia);
 		pDatosPersonales.add(txtContrasenia);
-		
-		
 	
+		
+		//dimensiones de los txt
+		txtNombre.setMaximumSize(new Dimension (500, 20));
+		txtApellido.setMaximumSize(new Dimension (500, 20));
+		txtDni.setMaximumSize(new Dimension (500, 20));
+		txtMatricula.setMaximumSize(new Dimension (500, 20));
+		txtTlf.setMaximumSize(new Dimension (500, 20));
+		txtContrasenia.setMaximumSize(new Dimension (500, 20));
+
 		//zona del panel de info de la reserva
 		lblLLegada = new JLabel("Fecha de ingreso: "+r.gethLlegada());
 		lblSalida = new JLabel("Fecha de salida: "+ r.gethSalida());
@@ -138,8 +145,8 @@ public class VentanaIngresarDatos extends JFrame {
 		pInfoParking.add(lblPlaza);
 		
 		
-		pCentro.add(pDatosPersonales);
-		pCentro.add(pInfoParking);
+		pCentro.add(pDatosPersonales, BorderLayout.CENTER);
+		pCentro.add(pInfoParking, BorderLayout.CENTER);
 		
 		//Dimesiones de los txt
 		
