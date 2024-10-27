@@ -9,12 +9,14 @@ import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.time.LocalDate;
 
+import javax.swing.BoxLayout;
 import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
@@ -32,7 +34,7 @@ import domain.Reserva;
 public class VentanaInicio extends JFrame{
 	
 	// Declarar los valores
-	private JPanel pCentro, pNorte,pTabla,pImagen;
+	private JPanel pCentro, pNorte,pTabla,pImagen, pMisReservas,pBloque1;
 	private JLabel lblDesutoCar;
 	
 	private JFrame vActual;
@@ -46,10 +48,13 @@ public class VentanaInicio extends JFrame{
 		
 		//Instanciar los paneles
 		pCentro = new JPanel();
-		pCentro.setLayout(new GridLayout(2, 1));
+		pCentro.setLayout(new BoxLayout(pCentro,BoxLayout.Y_AXIS));
 		pNorte = new JPanel();
+		pBloque1 = new JPanel();
+		pBloque1.setLayout(new GridLayout(2,1));
 		pImagen = new JPanel();
 		pTabla =  new JPanel();
+		pMisReservas = new JPanel(new BorderLayout());
 		
 		
 		getContentPane().add(pNorte, BorderLayout.NORTH);
@@ -64,8 +69,24 @@ public class VentanaInicio extends JFrame{
 		
 		//Añadir los paneles al panel central
 		pNorte.add(lblDesutoCar);
-		pCentro.add(pTabla);
-		pCentro.add(pImagen);
+		pCentro.add(pMisReservas);
+		pBloque1.add(pTabla);
+		pBloque1.add(pImagen);
+		pCentro.add(pBloque1);
+		
+		//Boton mis reservas
+		JPanel pMisRes = new JPanel();
+		JButton btnMisReservas = new JButton("Mis reservas");
+		Dimension dimensionBtnMisRes = new Dimension(200, 30);
+		btnMisReservas.setPreferredSize(dimensionBtnMisRes);
+		pMisRes.add(btnMisReservas);
+		pMisReservas.add(pMisRes, BorderLayout.EAST);
+		
+		btnMisReservas.addActionListener((e)->{
+			JOptionPane.showMessageDialog(null, "Has tenido que reservar con notros anteriormente para acceder a esta seccion");
+			new VentanaInicioSesion(vActual);
+		});
+		
 		
 		//ComboBox
 		JPanel pComboBox = new JPanel();
@@ -110,7 +131,6 @@ public class VentanaInicio extends JFrame{
 		JButton btnBuscar = new JButton("BUSCAR");
 		Dimension dimension = new Dimension(100, 30);
 		btnBuscar.setPreferredSize(dimension);
-        btnBuscar.setBounds(0,0,pJButtonBuscar.getWidth(), pJButtonBuscar.getHeight());  
 
 	    pJButtonBuscar.add(btnBuscar);
 	    pTabla.add(pJButtonBuscar);
