@@ -32,7 +32,7 @@ public class VentanaMisReservas extends JFrame {
 		pSur.add(btnCerrar);
 		btnCerrar.addActionListener((e)->{
 			new VentanaInicio(vActual);
-			//vActual.dispose();
+			vActual.dispose();
 			
 		});
 		//Tamaño de la ventana

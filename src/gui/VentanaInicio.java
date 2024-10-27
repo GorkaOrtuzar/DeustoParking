@@ -168,10 +168,7 @@ public class VentanaInicio extends JFrame{
 	
 	}
 	
-	public static void main(String[] args) {
-		VentanaInicio va = new VentanaInicio(null);
-	}
-
+	
 	
 
 }
