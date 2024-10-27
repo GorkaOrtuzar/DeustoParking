@@ -39,7 +39,7 @@ public class VentanaInicio extends JFrame{
 	
 	private JFrame vActual;
 	
-	public VentanaInicio() {
+	public VentanaInicio( JFrame va) {
 		super();
 		vActual = this;
 		
@@ -83,7 +83,7 @@ public class VentanaInicio extends JFrame{
 		pMisReservas.add(pMisRes, BorderLayout.EAST);
 		
 		btnMisReservas.addActionListener((e)->{
-			JOptionPane.showMessageDialog(null, "Has tenido que reservar con notros anteriormente para acceder a esta seccion");
+			JOptionPane.showMessageDialog(null, "Has tenido que reservar con notros anteriormente \n para acceder a esta seccion");
 			new VentanaInicioSesion(vActual);
 		});
 		
@@ -169,7 +169,7 @@ public class VentanaInicio extends JFrame{
 	}
 	
 	public static void main(String[] args) {
-		VentanaInicio v = new VentanaInicio();
+		VentanaInicio va = new VentanaInicio(null);
 	}
 
 	

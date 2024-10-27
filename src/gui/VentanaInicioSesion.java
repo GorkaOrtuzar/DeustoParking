@@ -51,6 +51,7 @@ public class VentanaInicioSesion extends JFrame {
 		txtDNI.setMaximumSize(new Dimension (500, 20));
 		txtContrasenia.setMaximumSize(new Dimension(500, 20));
 		
+		
 		pCentro.add(lblDni);
 		pCentro.add(txtDNI);
 		pCentro.add(lblContrasenia);
@@ -71,6 +72,7 @@ public class VentanaInicioSesion extends JFrame {
 		 else {
 			 vActual.dispose();
 			 vAnterior.dispose();
+			 new VentanaMisReservas(vActual);
 
 		 }
 		});
