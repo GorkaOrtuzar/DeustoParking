@@ -124,9 +124,7 @@ public class VentanaIngresarDatos extends JFrame {
 		pDatosPersonales.add(lblContrasenia);
 		pDatosPersonales.add(txtContrasenia);
 		
-		//Separador de lineas
-		String saltoDeLinea = System.lineSeparator();
-
+		
 	
 		//zona del panel de info de la reserva
 		lblLLegada = new JLabel("Fecha de ingreso: "+r.gethLlegada());
