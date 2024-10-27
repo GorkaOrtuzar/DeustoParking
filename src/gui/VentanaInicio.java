@@ -60,8 +60,9 @@ public class VentanaInicio extends JFrame{
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pCentro, BorderLayout.CENTER);
 		
-		lblDesutoCar = new JLabel("DeustoCar");
-		lblDesutoCar.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+		//titulo
+		lblDesutoCar = new JLabel("DeustoParking");
+		lblDesutoCar.setFont(new Font(Font.DIALOG, Font.ITALIC, 30));
 		
 		
 		
