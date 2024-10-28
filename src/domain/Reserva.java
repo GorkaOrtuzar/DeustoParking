@@ -12,6 +12,8 @@ public class Reserva {
 	private String hLlegada;
 	private String hSalida;
 	private int numPlaza;
+	private int precioTotal;
+	
 	
 	
 	
@@ -112,11 +114,24 @@ public class Reserva {
 		Ciudad = ciudad;
 	}
 
+	
+
+
+	public int getPrecioTotal() {
+		return precioTotal;
+	}
+
+
+
+	public void setPrecioTotal(int precioTotal) {
+		this.precioTotal = precioTotal;
+	}
+
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Ciudad, dni, hLlegada, hSalida, matricula, nomParking, numPlaza);
+		return Objects.hash(Ciudad, dni, hLlegada, hSalida, matricula, nomParking, numPlaza, precioTotal);
 	}
 
 
@@ -133,7 +148,7 @@ public class Reserva {
 		return Objects.equals(Ciudad, other.Ciudad) && Objects.equals(dni, other.dni)
 				&& Objects.equals(hLlegada, other.hLlegada) && Objects.equals(hSalida, other.hSalida)
 				&& matricula == other.matricula && Objects.equals(nomParking, other.nomParking)
-				&& numPlaza == other.numPlaza;
+				&& numPlaza == other.numPlaza && precioTotal == other.precioTotal;
 	}
 
 
@@ -141,9 +156,13 @@ public class Reserva {
 	@Override
 	public String toString() {
 		return "Reserva [Ciudad=" + Ciudad + ", dni=" + dni + ", matricula=" + matricula + ", nomParking=" + nomParking
-				+ ", hLlegada=" + hLlegada + ", hSalida=" + hSalida + ", numPlaza=" + numPlaza + "]";
+				+ ", hLlegada=" + hLlegada + ", hSalida=" + hSalida + ", numPlaza=" + numPlaza + ", precioTotal="
+				+ precioTotal + "]";
 	}
 
+
+	
+	
 
 
 	
