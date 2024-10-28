@@ -4,6 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.HeadlessException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -52,6 +55,7 @@ public class VentanaMisReservas extends JFrame {
 		String [] titulos = {"FECHA DE ENTRADA","FECHA DE SALIDA","NOMBRE DEL PARKING", "PRECIO"};
 		modeloTabla.setColumnIdentifiers(titulos);
 		tabla.getTableHeader().setReorderingAllowed(false);
+		cargarTabla();
 		
 		
 		pCentro.add(scrollTabla);
@@ -67,6 +71,32 @@ public class VentanaMisReservas extends JFrame {
 			vActual.dispose();
 			
 		});
+	}
+		
+		private void cargarTabla() {
+			//Vamos a cargar a tabla con la información del fichero asignaturas.txt
+			File f = new File("ficheros/reservasEjemplo.txt");
+			
+			if(f.exists()) {
+				try {
+					Scanner sc = new Scanner(f);
+					while(sc.hasNextLine()) { 
+						String linea = sc.nextLine(); 
+						String [] datos = linea.split(",");
+						Object [] fila = {datos[4], datos[5], datos[3],datos[7]};
+						modeloTabla.addRow(fila);
+					}
+					sc.close();
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+		
+		
+		
+		
+		
+		
 		//Tamaño de la ventana
 		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
         int altoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
