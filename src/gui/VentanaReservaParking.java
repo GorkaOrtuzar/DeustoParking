@@ -11,7 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 
-public class VentanaReservaPlaza extends JFrame{
+public class VentanaReservaParking extends JFrame{
 	
 	//Declaramos valores
 	private JPanel pCentro, pCentroN, pCentroS, pSur, pNorte;
@@ -25,7 +25,7 @@ public class VentanaReservaPlaza extends JFrame{
 	
 	
 	
-	public VentanaReservaPlaza() {
+	public VentanaReservaParking() {
 		super();
 		
 		//Tamaño Ventana
@@ -81,7 +81,7 @@ public class VentanaReservaPlaza extends JFrame{
 	
 	
 	public static void main(String[] args) {
-		VentanaReservaPlaza v = new VentanaReservaPlaza();
+		VentanaReservaParking v = new VentanaReservaParking();
 	}
 
 }
