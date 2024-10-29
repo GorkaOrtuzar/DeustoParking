@@ -1,0 +1,4 @@
+parkingCentral; 30; 28
+pakingDescubierto; 85; 12 
+parkingCubierto; 67; 20
+pakingVIP; 12; 60 
