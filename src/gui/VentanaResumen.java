@@ -135,7 +135,7 @@ public class VentanaResumen extends JFrame{
 			vActual.dispose(); 
 			new VentanaPago(vActual, r);
 		});
-		
+
 		pSur.add(btnAtras);
 		pSur.add(btnConfirReserva);
 		
