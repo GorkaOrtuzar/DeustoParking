@@ -47,7 +47,7 @@ public class VentanaIngresarDatos extends JFrame {
 		pCentro = new JPanel(new BorderLayout());
 		pCentro.setLayout(new GridLayout(1, 2));
 		pNorte = new JPanel();
-		pNorte.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 10));
+		pNorte.setLayout(new FlowLayout(FlowLayout.CENTER, 300, 10));
 		pSur = new JPanel();
 		pDatosPersonales = new JPanel();
 		pDatosPersonales.setLayout(new BoxLayout(pDatosPersonales,BoxLayout.Y_AXIS));
@@ -64,10 +64,10 @@ public class VentanaIngresarDatos extends JFrame {
 		getContentPane().add(pSur,BorderLayout.SOUTH);
 		
 		//PANEL NORTE
-		lblIntroDatos = new JLabel("1. Introduce tus datos");
+		lblIntroDatos = new JLabel("1. Introduce Datos");
 		lblIntroDatos.setForeground(Color.BLUE);
-		lblConfirma = new JLabel("2. Confirma");
-		lblPago = new JLabel("3. Pago");
+		lblConfirma = new JLabel("2. Confirma Reserva");
+		lblPago = new JLabel("3. Pago Final");
 		
 		pNorte.add(lblIntroDatos);
 		pNorte.add(lblConfirma);

@@ -24,6 +24,7 @@ public class VentanaPago extends JFrame{
 	private JLabel lblNTarjeta, lblFechExpiracion,lblCVV;
 	private JTextField txtNTarjeta,txtFechaExpiracion,txtCVV;
 	private JButton btnSiguiente;
+	
 	private JFrame vActual, vAnterior;
 	
 	public VentanaPago(JFrame va, Reserva r) {
@@ -34,7 +35,7 @@ public class VentanaPago extends JFrame{
 		
 		pCentro = new JPanel();
 		pNorte = new JPanel();
-		pNorte.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 10));
+		pNorte.setLayout(new FlowLayout(FlowLayout.CENTER, 300, 10));
 		pSur = new JPanel();
 		pDatosPago = new JPanel();
 		pDatosPago.setLayout(new GridLayout(6, 0));
@@ -48,9 +49,9 @@ public class VentanaPago extends JFrame{
 		
 		
 		//Panel Norte
-		lblIntroDatos = new JLabel("1. Introduce tus datos");
-		lblConfirma = new JLabel("2. Confirma");
-		lblPago = new JLabel("3. Pago");
+		lblIntroDatos = new JLabel("1. Introduce Datos");
+		lblConfirma = new JLabel("2. Confirma Reserva");
+		lblPago = new JLabel("3. Pago Final");
 		lblPago.setForeground(Color.BLUE);
 		
 		pNorte.add(lblIntroDatos);
