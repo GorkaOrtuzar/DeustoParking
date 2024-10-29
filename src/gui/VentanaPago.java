@@ -24,12 +24,13 @@ public class VentanaPago extends JFrame{
 	private JLabel lblNTarjeta, lblFechExpiracion,lblCVV;
 	private JTextField txtNTarjeta,txtFechaExpiracion,txtCVV;
 	private JButton btnSiguiente;
-	private JFrame vActual;
+	private JFrame vActual, vAnterior;
 	
 	public VentanaPago(JFrame va, Reserva r) {
 		
 		super();
 		vActual = this;
+		vAnterior=va;
 		
 		pCentro = new JPanel();
 		pNorte = new JPanel();

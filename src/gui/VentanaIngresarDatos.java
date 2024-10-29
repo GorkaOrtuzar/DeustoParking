@@ -96,7 +96,7 @@ public class VentanaIngresarDatos extends JFrame {
 			}*/
 		//	Contenedora.aniadirUsuario(u);
 			vActual.dispose(); 
-			new VentanaPago(vActual, r);
+			new VentanaResumen(vActual, r);
 		});
 		
 		//PANEL CENTRO
