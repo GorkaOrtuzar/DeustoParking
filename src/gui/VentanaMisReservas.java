@@ -71,6 +71,18 @@ public class VentanaMisReservas extends JFrame {
 			vActual.dispose();
 			
 		});
+		
+
+		//Tamaño de la ventana
+		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
+        int altoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
+        setSize(anchoP, altoP);
+        setExtendedState(MAXIMIZED_BOTH);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(50, 50, 1600, 800);
+		setTitle("Mis reservas");
+		setVisible(true);
 	}
 		
 		private void cargarTabla() {
@@ -91,28 +103,6 @@ public class VentanaMisReservas extends JFrame {
 					e.printStackTrace();
 				}
 			}
-		
-		
-		
-		
-		
-		
-		//Tamaño de la ventana
-		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
-        int altoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
-        setSize(anchoP, altoP);
-        setExtendedState(MAXIMIZED_BOTH);
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(50, 50, 1600, 800);
-		setTitle("Mis reservas");
-		setVisible(true);
-		
 	}
-	
-	
-	
-	
-	
 }
 			
