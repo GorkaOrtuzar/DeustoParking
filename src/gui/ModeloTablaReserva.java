@@ -5,22 +5,23 @@ import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
+import domain.Parking;
 import domain.Reserva;
 
 public class ModeloTablaReserva extends DefaultTableModel {
-	private List<Reserva> lReservas;
+	private List<Parking> lParkings;
 	private List<String> lTitulos = Arrays.asList("Nombre Parking" ,"Plazas Disponibles" ,"Precio");
 
-	public ModeloTablaReserva(List<Reserva> lReservas) {
-		this.lReservas = lReservas;
+	public ModeloTablaReserva(List<Parking> lParkings) {
+		this.lParkings = lParkings;
 		
 	}
 
 	@Override
 	public int getRowCount() {
-		if(lReservas == null)
+		if(lParkings == null)
 			return 0;
-		return lReservas.size();
+		return lParkings.size();
 	}
 
 	@Override
@@ -35,12 +36,12 @@ public class ModeloTablaReserva extends DefaultTableModel {
 
 	@Override
 	public Object getValueAt(int row, int column) {
-		Reserva r = lReservas.get(row);
+		Parking p = lParkings.get(row);
 		
 		switch (column) {
-//			case 0: return r
-//			case 1:
-//			case 2:
+			case 0: return p.getParking();
+			case 1: return p.getPlazasLibres();
+			case 2: return p.getPrecioHora();
 			default: return null;
 		}
 	}
