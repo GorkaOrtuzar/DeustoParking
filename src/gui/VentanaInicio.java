@@ -141,7 +141,7 @@ public class VentanaInicio extends JFrame{
 			String fechaEntrada = SFechaEntrada.getValue().toString();
 			String fechaSalida = SFechaSalida.getValue().toString();
 			Reserva r = new Reserva(Ciudad, fechaEntrada, fechaSalida);
-			new VentanaIngresarDatos(vActual, r);
+			new VentanaReservaParking(vActual, r);
 			vActual.dispose();
 		});
 		
@@ -151,9 +151,6 @@ public class VentanaInicio extends JFrame{
 		JLabel lblImagen = new JLabel(imagen);
 		lblImagen.setBounds(0, 0, 100, 100);
 		pImagen.add(lblImagen);
-		
-		
-		
 		
 		
 		//Tamaño de la ventana
