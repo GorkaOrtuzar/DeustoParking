@@ -74,7 +74,7 @@ public class VentanaIngresarDatos extends JFrame {
 		pNorte.add(lblPago);
 		
 		//PANEL SUR
-		btnSiguiente = new JButton("Siguente");
+		btnSiguiente = new JButton("Siguiente");
 		pSur.add(btnSiguiente);
 		
 		btnSiguiente.addActionListener((e)->{
@@ -109,9 +109,9 @@ public class VentanaIngresarDatos extends JFrame {
 		txtTlf = new JTextField();
 		lblDni = new JLabel("DNI: ");
 		txtDni = new JTextField();
-		lblMatricula = new JLabel("Matricula: ");
+		lblMatricula = new JLabel("Matrícula: ");
 		txtMatricula = new JTextField();
-		lblContrasenia = new JLabel("Contrasenia: ");
+		lblContrasenia = new JLabel("Contraseña: ");
 		txtContrasenia = new JTextField();
 		
 		
@@ -139,9 +139,9 @@ public class VentanaIngresarDatos extends JFrame {
 		txtContrasenia.setMaximumSize(new Dimension (500, 20));
 
 		//zona del panel de info de la reserva
-		lblLLegada = new JLabel("Fecha de ingreso: "+r.gethLlegada());
-		lblSalida = new JLabel("Fecha de salida: "+ r.gethSalida());
-		lblNombreDelParking = new JLabel("Nombre del parking: "+ r.getNomParking());
+		lblLLegada = new JLabel("Fecha de Ingreso: "+r.gethLlegada());
+		lblSalida = new JLabel("Fecha de Salida: "+ r.gethSalida());
+		lblNombreDelParking = new JLabel("Nombre del Parking: "+ r.getNomParking());
 		lblPlaza = new JLabel("Plaza: "+ r.getNumPlaza());
 		
 		pInfoParking.add(lblLLegada);
@@ -162,7 +162,7 @@ public class VentanaIngresarDatos extends JFrame {
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(50, 50, 1600, 800);
-		setTitle("Introduce los datos");
+		setTitle("Introduce los Datos");
 		setVisible(true);
 	}
 	
