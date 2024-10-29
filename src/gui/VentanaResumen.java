@@ -148,7 +148,7 @@ public class VentanaResumen extends JFrame{
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(50, 50, 1600, 800);
-		setTitle("Reservar Plaza de Parking");
+		setTitle("Resumen");
 		setVisible(true);	
 	}
 
