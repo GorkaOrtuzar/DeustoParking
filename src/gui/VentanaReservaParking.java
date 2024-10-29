@@ -9,6 +9,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.JButton;
@@ -19,6 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 
+import domain.Parking;
 import domain.Reserva;
 
 public class VentanaReservaParking extends JFrame{
@@ -77,6 +80,8 @@ public class VentanaReservaParking extends JFrame{
 		modeloTabla = new ModeloTablaReserva(null);
 		tabla = new JTable(modeloTabla);
 		scrollTabla = new JScrollPane(tabla);
+		cargarTablaDatos();
+		getContentPane().add(scrollTabla, BorderLayout.CENTER);
 		
 		//Renderer Tabla
 		modeloTabla = (ModeloTablaReserva) tabla.getModel();
@@ -159,22 +164,16 @@ public class VentanaReservaParking extends JFrame{
 	
 
 	private void cargarTablaDatos() {
-		File f = new File("ficheros/datosParking.txt");
-		
-		if(f.exists()) {
-			try {
-				Scanner sc = new Scanner(f);
-				while(sc.hasNextLine()) { 
-					String linea = sc.nextLine(); 
-					String [] datos = linea.split(";");
-					Object [] fila = {datos[0], datos[1], datos[2]};
-					modeloTabla.addRow(fila);
-				}
-				sc.close();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-		}
+		List<Parking> lp = new ArrayList<>();
+		lp.add(new Parking("Parking1", 12.3f, 26));
+		lp.add(new Parking("Parking2", 19f, 20));
+		lp.add(new Parking("Parking3", 10f, 59));
+		lp.add(new Parking("ParkingVIP", 30f, 17));
+		lp.add(new Parking("ParkingCentral", 25.5f, 105));
+		lp.add(new Parking("ParkingTechado", 17.90f, 237));
+		modeloTabla = (ModeloTablaReserva) tabla.getModel();
+		modeloTabla.setlParkings(lp);
+		tabla.setModel(modeloTabla);
 		
 		
 	}
