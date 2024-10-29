@@ -129,9 +129,9 @@ public class VentanaReservaParking extends JFrame{
 			public void mouseClicked(MouseEvent e) {
 				int fila = tabla.getSelectedRow();
 				if(fila!=-1) {
-					String nomParking = (String) tabla.getValueAt(fila, 0);
-					int numPlazasLibres = (int) tabla.getValueAt(fila, 1);
-					float precio = (float) tabla.getValueAt(fila, 2);
+					String nomParking = tabla.getValueAt(fila, 0).toString();
+					int numPlazasLibres = Integer.parseInt(tabla.getValueAt(fila, 1).toString());
+					float precio = Float.parseFloat(tabla.getValueAt(fila, 2).toString()) ;
 				}
 				
 			}
