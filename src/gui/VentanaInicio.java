@@ -45,6 +45,7 @@ public class VentanaInicio extends JFrame{
 		
 		
 
+		
 		//Instanciar los paneles
 		pCentro = new JPanel();
 		pCentro.setLayout(new BoxLayout(pCentro,BoxLayout.Y_AXIS));
