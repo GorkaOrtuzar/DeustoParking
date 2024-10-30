@@ -11,6 +11,7 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,6 +26,7 @@ import javax.swing.JTextArea;
 
 import domain.Parking;
 import domain.Reserva;
+import domain.Utilidades;
 
 public class VentanaReservaParking extends JFrame{
 	
@@ -87,10 +89,11 @@ public class VentanaReservaParking extends JFrame{
 					float precio = Float.parseFloat(tabla.getValueAt(fila, 2).toString());
 					
 					String ciudad = r.getCiudad();
-					String fechaEntrada = r.gethLlegada();
+//					String fechaEntrada = r.gethLlegada();
+					String fechaEntradaString = Utilidades.dateToString(r.gethLlegada());
 					String fechaSalida = r.gethSalida();
 					
-					Reserva reservaFinal = new Reserva(ciudad, fechaEntrada, fechaSalida, nomParking, numPlazasLibre, precio);
+					Reserva reservaFinal = new Reserva(ciudad, fechaEntradaString, fechaSalida, nomParking, numPlazasLibre, precio);
 					listaReservas.add(reservaFinal);
 					
 					for (Reserva reserva : listaReservas) {
@@ -146,19 +149,6 @@ public class VentanaReservaParking extends JFrame{
 				
 			}
 		});
-		
-		//btnRservar guarda los datos seleccionados de la tabla, y los guarda en r (Reserva)  -- TERMINAR --
-//		btnReservar.addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				vActual.dispose(); 
-//				new VentanaIngresarDatos(vActual, r);
-//				
-//			}
-//		});
-		
-
 		
 		//Tamaño de la ventana
 		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();

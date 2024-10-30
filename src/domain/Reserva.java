@@ -1,6 +1,7 @@
 package domain;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 public class Reserva {
@@ -9,7 +10,7 @@ public class Reserva {
 	private String dni;
 	private int matricula;
 	private String nomParking;
-	private String hLlegada;
+	private Date hLlegada;
 	private String hSalida;
 	private int numPlaza;
 	private float precioTotal;
@@ -23,16 +24,25 @@ public class Reserva {
 
 
 
-	public Reserva(String ciudad,String hLlegada, String hSalida) {
+	public Reserva(String ciudad,Date hLlegada, String hSalida) {
 		super();
 		this.ciudad = ciudad;
 		this.hLlegada = hLlegada;
 		this.hSalida = hSalida;
 	}
 	
-	public Reserva(String ciudad, String hLlegada, String hSalida, String nomParking, int numPlaza, float precioTotal) {
+	public Reserva(String ciudad, Date hLlegada, String hSalida, String nomParking, int numPlaza, float precioTotal) {
 		this.ciudad = ciudad;
 		this.hLlegada = hLlegada;
+		this.hSalida = hSalida;
+		this.nomParking = nomParking;
+		this.numPlaza = numPlaza;
+		this.precioTotal = precioTotal;
+	}
+	
+	public Reserva(String ciudad, String hLlegada, String hSalida, String nomParking, int numPlaza, float precioTotal) {
+		this.ciudad = ciudad;
+		this.hLlegada = Utilidades.stringToDate(hLlegada);
 		this.hSalida = hSalida;
 		this.nomParking = nomParking;
 		this.numPlaza = numPlaza;
@@ -77,13 +87,13 @@ public class Reserva {
 
 
 
-	public String gethLlegada() {
+	public Date gethLlegada() {
 		return hLlegada;
 	}
 
 
 
-	public void sethLlegada(String hLlegada) {
+	public void sethLlegada(Date hLlegada) {
 		this.hLlegada = hLlegada;
 	}
 
@@ -165,7 +175,7 @@ public class Reserva {
 	@Override
 	public String toString() {
 		return "Reserva [Ciudad=" + ciudad + ", dni=" + dni + ", matricula=" + matricula + ", nomParking=" + nomParking
-				+ ", hLlegada=" + hLlegada + ", hSalida=" + hSalida + ", numPlaza=" + numPlaza + ", precioTotal="
+				+ ", hLlegada=" + Utilidades.dateToString(hLlegada) + ", hSalida=" + hSalida + ", numPlaza=" + numPlaza + ", precioTotal="
 				+ precioTotal + "]";
 	}
 

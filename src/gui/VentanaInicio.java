@@ -28,6 +28,8 @@ import javax.swing.SpinnerModel;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import java.util.Date;
+
 
 import domain.Reserva;
 
@@ -137,10 +139,10 @@ public class VentanaInicio extends JFrame{
 	    pTabla.add(pJButtonBuscar);
 		
 		btnBuscar.addActionListener((e)->{
-			String Ciudad = (String) ComboCiudades.getSelectedItem();
-			String fechaEntrada = SFechaEntrada.getValue().toString();
+			String ciudad = (String) ComboCiudades.getSelectedItem();
+			Date fechaEntrada = (Date) SFechaEntrada.getValue();
 			String fechaSalida = SFechaSalida.getValue().toString();
-			Reserva r = new Reserva(Ciudad, fechaEntrada, fechaSalida);
+			Reserva r = new Reserva(ciudad, fechaEntrada, fechaSalida);
 			new VentanaReservaParking(vActual, r);
 			vActual.dispose();
 		});

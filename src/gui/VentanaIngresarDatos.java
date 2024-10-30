@@ -21,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 import domain.Contenedora;
 import domain.Reserva;
 import domain.Usuario;
+import domain.Utilidades;
 
 public class VentanaIngresarDatos extends JFrame {
 	
@@ -139,7 +140,7 @@ public class VentanaIngresarDatos extends JFrame {
 		txtContrasenia.setMaximumSize(new Dimension (500, 20));
 
 		//zona del panel de info de la reserva
-		lblLLegada = new JLabel("Fecha de Ingreso: "+r.gethLlegada());
+		lblLLegada = new JLabel("Fecha de Ingreso: "+Utilidades.dateToString(r.gethLlegada()));
 		lblSalida = new JLabel("Fecha de Salida: "+ r.gethSalida());
 		lblNombreDelParking = new JLabel("Nombre del Parking: "+ r.getNomParking());
 		lblPlaza = new JLabel("Plaza: "+ r.getNumPlaza());
