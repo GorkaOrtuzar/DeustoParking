@@ -13,9 +13,9 @@ public class Parking {
 
 	public Parking(String parking, Float precioHora, int plazasLibres) {
 		super();
-		parking = parking;
-		precioHora = precioHora;
-		plazasLibres = plazasLibres;
+		this.parking = parking;
+		this.precioHora = precioHora;
+		this.plazasLibres = plazasLibres;
 	}
 
 	public String getParking() {
@@ -23,7 +23,7 @@ public class Parking {
 	}
 
 	public void setParking(String parking) {
-		parking = parking;
+		this.parking = parking;
 	}
 
 	public Float getPrecioHora() {
@@ -31,7 +31,7 @@ public class Parking {
 	}
 
 	public void setPrecioHora(Float precioHora) {
-		precioHora = precioHora;
+		this.precioHora = precioHora;
 	}
 
 	public int getPlazasLibres() {
@@ -39,7 +39,7 @@ public class Parking {
 	}
 
 	public void setPlazasLibres(int plazasLibres) {
-		plazasLibres = plazasLibres;
+		this.plazasLibres = plazasLibres;
 	}
 
 	@Override
