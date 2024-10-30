@@ -5,6 +5,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
@@ -16,6 +17,7 @@ import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -39,6 +41,7 @@ public class VentanaReservaParking extends JFrame{
 	private JFrame vActual;
 	private JFrame vAnterior;
 	
+	private static List<Reserva> listaReservas = new ArrayList<>();
 	
 	
 	public VentanaReservaParking(JFrame va, Reserva r) {
@@ -73,6 +76,37 @@ public class VentanaReservaParking extends JFrame{
 		
 		btnReservar = new JButton("Reservar");
 		
+		btnReservar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int fila = tabla.getSelectedRow();
+				if(fila!=-1) {
+					String nomParking = tabla.getValueAt(fila, 0).toString();
+					int numPlazasLibre = Integer.parseInt(tabla.getValueAt(fila, 1).toString());
+					float precio = Float.parseFloat(tabla.getValueAt(fila, 2).toString());
+					
+					String ciudad = r.getCiudad();
+					String fechaEntrada = r.gethLlegada();
+					String fechaSalida = r.gethSalida();
+					
+					Reserva reservaFinal = new Reserva(ciudad, fechaEntrada, fechaSalida, nomParking, numPlazasLibre, precio);
+					listaReservas.add(reservaFinal);
+					
+					for (Reserva reserva : listaReservas) {
+						System.out.println(reserva);
+					}
+					
+					vActual.dispose();
+					new VentanaIngresarDatos(vActual, reservaFinal);
+				}else {
+					JOptionPane.showMessageDialog(vActual, "Por favor, seleccione un parking","MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
+				}
+				
+				
+			}
+		});
+		
 		
 		//Añadimos paneles al panel central
 		
@@ -99,31 +133,7 @@ public class VentanaReservaParking extends JFrame{
 		getContentPane().add(pCentro, BorderLayout.CENTER);
 		getContentPane().add(pSur, BorderLayout.SOUTH);
 		
-		tabla.addMouseListener(new MouseListener() {
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+		tabla.addMouseListener(new MouseAdapter() {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -138,15 +148,15 @@ public class VentanaReservaParking extends JFrame{
 		});
 		
 		//btnRservar guarda los datos seleccionados de la tabla, y los guarda en r (Reserva)  -- TERMINAR --
-		btnReservar.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				vActual.dispose(); 
-				new VentanaIngresarDatos(vActual, r);
-				
-			}
-		});
+//		btnReservar.addActionListener(new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				vActual.dispose(); 
+//				new VentanaIngresarDatos(vActual, r);
+//				
+//			}
+//		});
 		
 
 		

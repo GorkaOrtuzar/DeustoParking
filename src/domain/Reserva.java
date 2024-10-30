@@ -29,6 +29,15 @@ public class Reserva {
 		this.hLlegada = hLlegada;
 		this.hSalida = hSalida;
 	}
+	
+	public Reserva(String ciudad, String hLlegada, String hSalida, String nomParking, int numPlaza, float precioTotal) {
+		this.ciudad = ciudad;
+		this.hLlegada = hLlegada;
+		this.hSalida = hSalida;
+		this.nomParking = nomParking;
+		this.numPlaza = numPlaza;
+		this.precioTotal = precioTotal;
+	}
 
 
 
