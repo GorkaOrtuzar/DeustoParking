@@ -5,14 +5,14 @@ import java.util.Objects;
 
 public class Reserva {
 	
-	private String Ciudad;
+	private String ciudad;
 	private String dni;
 	private int matricula;
 	private String nomParking;
 	private String hLlegada;
 	private String hSalida;
 	private int numPlaza;
-	private int precioTotal;
+	private float precioTotal;
 	
 	
 	
@@ -23,9 +23,9 @@ public class Reserva {
 
 
 
-	public Reserva(String Ciudad,String hLlegada, String hSalida) {
+	public Reserva(String ciudad,String hLlegada, String hSalida) {
 		super();
-		this.Ciudad = Ciudad;
+		this.ciudad = ciudad;
 		this.hLlegada = hLlegada;
 		this.hSalida = hSalida;
 	}
@@ -105,25 +105,25 @@ public class Reserva {
 
 
 	public String getCiudad() {
-		return Ciudad;
+		return ciudad;
 	}
 
 
 
 	public void setCiudad(String ciudad) {
-		Ciudad = ciudad;
+		this.ciudad = ciudad;
 	}
 
 	
 
 
-	public int getPrecioTotal() {
+	public float getPrecioTotal() {
 		return precioTotal;
 	}
 
 
 
-	public void setPrecioTotal(int precioTotal) {
+	public void setPrecioTotal(float precioTotal) {
 		this.precioTotal = precioTotal;
 	}
 
@@ -131,7 +131,7 @@ public class Reserva {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Ciudad, dni, hLlegada, hSalida, matricula, nomParking, numPlaza, precioTotal);
+		return Objects.hash(ciudad, dni, hLlegada, hSalida, matricula, nomParking, numPlaza, precioTotal);
 	}
 
 
@@ -145,7 +145,7 @@ public class Reserva {
 		if (getClass() != obj.getClass())
 			return false;
 		Reserva other = (Reserva) obj;
-		return Objects.equals(Ciudad, other.Ciudad) && Objects.equals(dni, other.dni)
+		return Objects.equals(ciudad, other.ciudad) && Objects.equals(dni, other.dni)
 				&& Objects.equals(hLlegada, other.hLlegada) && Objects.equals(hSalida, other.hSalida)
 				&& matricula == other.matricula && Objects.equals(nomParking, other.nomParking)
 				&& numPlaza == other.numPlaza && precioTotal == other.precioTotal;
@@ -155,7 +155,7 @@ public class Reserva {
 
 	@Override
 	public String toString() {
-		return "Reserva [Ciudad=" + Ciudad + ", dni=" + dni + ", matricula=" + matricula + ", nomParking=" + nomParking
+		return "Reserva [Ciudad=" + ciudad + ", dni=" + dni + ", matricula=" + matricula + ", nomParking=" + nomParking
 				+ ", hLlegada=" + hLlegada + ", hSalida=" + hSalida + ", numPlaza=" + numPlaza + ", precioTotal="
 				+ precioTotal + "]";
 	}
