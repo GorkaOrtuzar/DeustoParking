@@ -91,7 +91,7 @@ public class VentanaReservaParking extends JFrame{
 					String ciudad = r.getCiudad();
 //					String fechaEntrada = r.gethLlegada();
 					String fechaEntradaString = Utilidades.dateToString(r.gethLlegada());
-					String fechaSalida = r.gethSalida();
+					String fechaSalida = Utilidades.dateToString(r.gethSalida());
 					
 					Reserva reservaFinal = new Reserva(ciudad, fechaEntradaString, fechaSalida, nomParking, numPlazasLibre, precio);
 					listaReservas.add(reservaFinal);

@@ -11,7 +11,7 @@ public class Reserva {
 	private int matricula;
 	private String nomParking;
 	private Date hLlegada;
-	private String hSalida;
+	private Date hSalida;
 	private int numPlaza;
 	private float precioTotal;
 	
@@ -24,14 +24,14 @@ public class Reserva {
 
 
 
-	public Reserva(String ciudad,Date hLlegada, String hSalida) {
+	public Reserva(String ciudad,Date hLlegada, Date hSalida) {
 		super();
 		this.ciudad = ciudad;
 		this.hLlegada = hLlegada;
 		this.hSalida = hSalida;
 	}
 	
-	public Reserva(String ciudad, Date hLlegada, String hSalida, String nomParking, int numPlaza, float precioTotal) {
+	public Reserva(String ciudad, Date hLlegada, Date hSalida, String nomParking, int numPlaza, float precioTotal) {
 		this.ciudad = ciudad;
 		this.hLlegada = hLlegada;
 		this.hSalida = hSalida;
@@ -43,7 +43,7 @@ public class Reserva {
 	public Reserva(String ciudad, String hLlegada, String hSalida, String nomParking, int numPlaza, float precioTotal) {
 		this.ciudad = ciudad;
 		this.hLlegada = Utilidades.stringToDate(hLlegada);
-		this.hSalida = hSalida;
+		this.hSalida = Utilidades.stringToDate(hSalida);
 		this.nomParking = nomParking;
 		this.numPlaza = numPlaza;
 		this.precioTotal = precioTotal;
@@ -99,13 +99,13 @@ public class Reserva {
 
 
 
-	public String gethSalida() {
+	public Date gethSalida() {
 		return hSalida;
 	}
 
 
 
-	public void sethSalida(String hSalida) {
+	public void sethSalida(Date hSalida) {
 		this.hSalida = hSalida;
 	}
 
@@ -175,7 +175,7 @@ public class Reserva {
 	@Override
 	public String toString() {
 		return "Reserva [Ciudad=" + ciudad + ", dni=" + dni + ", matricula=" + matricula + ", nomParking=" + nomParking
-				+ ", hLlegada=" + Utilidades.dateToString(hLlegada) + ", hSalida=" + hSalida + ", numPlaza=" + numPlaza + ", precioTotal="
+				+ ", hLlegada=" + Utilidades.dateToString(hLlegada) + ", hSalida=" + Utilidades.dateToString(hSalida) + ", numPlaza=" + numPlaza + ", precioTotal="
 				+ precioTotal + "]";
 	}
 

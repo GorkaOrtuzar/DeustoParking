@@ -141,7 +141,7 @@ public class VentanaInicio extends JFrame{
 		btnBuscar.addActionListener((e)->{
 			String ciudad = (String) ComboCiudades.getSelectedItem();
 			Date fechaEntrada = (Date) SFechaEntrada.getValue();
-			String fechaSalida = SFechaSalida.getValue().toString();
+			Date fechaSalida = (Date) SFechaSalida.getValue();
 			Reserva r = new Reserva(ciudad, fechaEntrada, fechaSalida);
 			new VentanaReservaParking(vActual, r);
 			vActual.dispose();
@@ -167,8 +167,5 @@ public class VentanaInicio extends JFrame{
 		setVisible(true);
 	
 	}
-	
-	
-	
 
 }
