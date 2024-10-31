@@ -28,9 +28,10 @@ public class VentanaMisReservas extends JFrame {
 	private JTable tabla; 
 	private JScrollPane scrollTabla;
 	
-	private JFrame vActual;
+	private JFrame vActual, vAnterior;
 	public VentanaMisReservas(JFrame va) {
-		
+		vActual = this;
+		vAnterior = va;
 		pNorte = new JPanel();
 		pSur = new JPanel();
 		pCentro = new JPanel();
@@ -67,9 +68,8 @@ public class VentanaMisReservas extends JFrame {
 		btnCerrar = new JButton("Cerrar");
 		pSur.add(btnCerrar);
 		btnCerrar.addActionListener((e)->{
-			new VentanaInicio(vActual);
 			vActual.dispose();
-			
+			new VentanaInicio(null);
 		});
 		
 
