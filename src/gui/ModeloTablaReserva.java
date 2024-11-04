@@ -45,6 +45,11 @@ public class ModeloTablaReserva extends DefaultTableModel {
 	public String getColumnName(int column) {
 		return lTitulos.get(column);
 	}
+	
+	@Override
+	public boolean isCellEditable(int row, int column) {
+		return false;
+	}
 
 	@Override
 	public Object getValueAt(int row, int column) {

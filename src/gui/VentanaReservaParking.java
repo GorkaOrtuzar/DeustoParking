@@ -117,6 +117,7 @@ public class VentanaReservaParking extends JFrame{
 		modeloTabla = new ModeloTablaReserva(null);
 		tabla = new JTable(modeloTabla);
 		scrollTabla = new JScrollPane(tabla);
+		tabla.setDefaultRenderer(Object.class, new RendererTablaReserva());
 		cargarTablaDatos();
 		getContentPane().add(scrollTabla, BorderLayout.CENTER);
 		
