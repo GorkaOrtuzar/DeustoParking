@@ -141,7 +141,7 @@ public class VentanaIngresarDatos extends JFrame {
 
 		//zona del panel de info de la reserva
 		lblLLegada = new JLabel("Fecha de Ingreso: "+Utilidades.dateToString(r.gethLlegada()));
-		lblSalida = new JLabel("Fecha de Salida: "+ r.gethSalida());
+		lblSalida = new JLabel("Fecha de Salida: "+ Utilidades.dateToString(r.gethSalida()));
 		lblNombreDelParking = new JLabel("Nombre del Parking: "+ r.getNomParking());
 		lblPlaza = new JLabel("Plaza: "+ r.getNumPlaza());
 		
