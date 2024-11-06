@@ -101,7 +101,7 @@ public class VentanaReservaParking extends JFrame{
 					}
 					
 					vActual.dispose();
-					new VentanaIngresarDatos(vActual, reservaFinal);
+					new VentanaReservarPlaza(vActual, reservaFinal);
 				}else {
 					JOptionPane.showMessageDialog(vActual, "Por favor, seleccione un parking","MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 				}

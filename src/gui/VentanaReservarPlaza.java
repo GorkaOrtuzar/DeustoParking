@@ -3,9 +3,12 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,17 +18,20 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import domain.Plaza;
+import domain.Reserva;
 
 public class VentanaReservarPlaza extends JFrame{
-	private JPanel pCentro, pNorte, pTabla, pIzq;
+	private JPanel pCentro, pNorte, pSur, pTabla, pIzq;
 	private JLabel lblReservarPlaza;
+	private JButton btnSiguiente;
+	private JFrame vActual;
 	
 	private ModeloTablaReservarPlaza modeloTabla;
 	private JTable tabla;
 	private JScrollPane scrollTabla;
 	
 	
-	public VentanaReservarPlaza() {
+	public VentanaReservarPlaza(JFrame va, Reserva r) {
 		super();
 		
 		setBounds(300,200,600,400);
@@ -34,6 +40,7 @@ public class VentanaReservarPlaza extends JFrame{
 		//Paneles
 		pCentro = new JPanel(new GridLayout(2,1));
 		pNorte = new JPanel();
+		pSur = new JPanel();
 		pIzq = new JPanel();
 		pTabla = new JPanel();
 		
@@ -41,6 +48,7 @@ public class VentanaReservarPlaza extends JFrame{
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pCentro, BorderLayout.CENTER);
 		getContentPane().add(pIzq, BorderLayout.WEST);
+		getContentPane().add(pSur, BorderLayout.SOUTH);
 		
 		//Label 
 		lblReservarPlaza = new JLabel("Reservar Plaza");
@@ -55,6 +63,18 @@ public class VentanaReservarPlaza extends JFrame{
 		pComboBox.add(Parkings);
 		pComboBox.add(comboParking);
 		pIzq.add(pComboBox);
+		
+		//Creación botón
+		btnSiguiente = new JButton("SIGUIENTE");
+		pSur.add(btnSiguiente);
+		
+		btnSiguiente.addActionListener((e)->{
+			vActual.dispose();
+			new VentanaIngresarDatos(vActual, r);
+			
+			
+		});
+		
 		
 		//Creación de la lista
 		List<Plaza> lPlazas = Arrays.asList(
@@ -77,8 +97,5 @@ public class VentanaReservarPlaza extends JFrame{
 		
 		}
 	
-	public static void main(String[] args) {
-			VentanaReservarPlaza v = new VentanaReservarPlaza();
-		}
 
 }
