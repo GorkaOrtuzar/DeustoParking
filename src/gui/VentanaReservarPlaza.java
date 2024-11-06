@@ -1,13 +1,11 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -15,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.border.EmptyBorder;
 
 import domain.Plaza;
 import domain.Reserva;
@@ -25,6 +23,7 @@ public class VentanaReservarPlaza extends JFrame{
 	private JLabel lblReservarPlaza;
 	private JButton btnSiguiente;
 	private JFrame vActual;
+	private JFrame vAnterior;
 	
 	private ModeloTablaReservarPlaza modeloTabla;
 	private JTable tabla;
@@ -33,6 +32,9 @@ public class VentanaReservarPlaza extends JFrame{
 	
 	public VentanaReservarPlaza(JFrame va, Reserva r) {
 		super();
+		
+		vActual = this;
+		vAnterior = va;
 		
 		setBounds(300,200,600,400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -58,7 +60,7 @@ public class VentanaReservarPlaza extends JFrame{
 		//ComboBox
 		JPanel pComboBox = new JPanel();
 		JLabel Parkings = new JLabel("Parkings: ");
-		String[] parkings = {"-2", "-1", "0"};
+		String[] parkings = {"1", "2", "3", "VIP", "Central", "Techado"};
 		JComboBox<String> comboParking = new JComboBox<String>(parkings);
 		pComboBox.add(Parkings);
 		pComboBox.add(comboParking);
@@ -85,13 +87,19 @@ public class VentanaReservarPlaza extends JFrame{
 		);
 		
 		
-		
+		//Creación tabla
 		modeloTabla = new ModeloTablaReservarPlaza(lPlazas);
 		tabla = new JTable(modeloTabla);
 		scrollTabla = new JScrollPane(tabla);
 		tabla.setDefaultRenderer(Object.class, new RendererTablaReservarPlaza());
 		pCentro.add(scrollTabla);
 		
+		//Quitar bordes a las celdas
+		tabla.setIntercellSpacing(new java.awt.Dimension(0, 0));  
+		tabla.setBorder(null);
+	     
+	     scrollTabla.setBorder(null);
+
 		setVisible(true);
 		
 		

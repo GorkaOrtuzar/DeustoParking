@@ -2,7 +2,9 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
@@ -23,17 +25,24 @@ public class RendererTablaReservarPlaza implements TableCellRenderer{
 		Plaza p = modelo.getlPlazas().get(row);
 		
 		if (column %2 !=0) {
-			label.setBackground(Color.gray);
+			label.setBackground(table.getTableHeader().getBackground());
+			
 		}else {
 			if(p.isOcupada()) {
+				/*ImageIcon img = new ImageIcon("src/imagenes/cross.png");
+				label.setIcon(img);*/
 				label.setBackground(Color.RED);
 			}else {
+				/*ImageIcon img = new ImageIcon("src/imagenes/check.png");
+				label.setIcon(img);*/
 				label.setBackground(Color.GREEN);
+				
+				
 			}
+			
 		}
 		
 		return label;
-	}
-	
+	}	
 
 }

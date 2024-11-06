@@ -38,6 +38,11 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 	}
 	
 	@Override
+	public String getColumnName(int column) {
+		return lTitulos.get(column);
+	}
+	
+	@Override
 	public boolean isCellEditable(int row, int column) {
 		return false;
 	}
@@ -50,10 +55,5 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 			default: return null;
 		}
 	}
-	
-	
-	
-	
-	
 
 }
