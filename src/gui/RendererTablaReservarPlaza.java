@@ -22,7 +22,7 @@ public class RendererTablaReservarPlaza implements TableCellRenderer{
 		label.setHorizontalAlignment(JLabel.CENTER);
 		
 		ModeloTablaReservarPlaza modelo =  (ModeloTablaReservarPlaza) table.getModel();
-		Plaza p = modelo.getlPlazas().get(row);
+		Plaza p = modelo.getlPlazas().get(row*4+column/2);
 		
 		if (column %2 !=0) {
 			label.setBackground(table.getTableHeader().getBackground());
@@ -43,5 +43,5 @@ public class RendererTablaReservarPlaza implements TableCellRenderer{
 
 }
 
-//Solucionar -> No funciona lo de los colores
+
 

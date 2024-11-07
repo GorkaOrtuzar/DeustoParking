@@ -60,8 +60,8 @@ public class VentanaReservarPlaza extends JFrame{
 		
 		//ComboBox
 		JPanel pComboBox = new JPanel();
-		JLabel Parkings = new JLabel("Parkings: ");
-		String[] parkings = {"1", "2", "3", "VIP", "Central", "Techado"};
+		JLabel Parkings = new JLabel("Plantas: ");
+		String[] parkings = {"0", "-1", "-2", "-3"};
 		JComboBox<String> comboParking = new JComboBox<String>(parkings);
 		pComboBox.add(Parkings);
 		pComboBox.add(comboParking);
@@ -81,9 +81,9 @@ public class VentanaReservarPlaza extends JFrame{
 		
 		//Creación de la lista
 		List<Plaza> lPlazas = Arrays.asList(
-				new Plaza(1, "A", 1, true),   
-	            new Plaza(1, "A", 2, false),
-	            new Plaza(1, "B", 3, true),   
+				new Plaza(1, "A", 1, false),   
+	            new Plaza(1, "A", 2, true),
+	            new Plaza(1, "B", 3, false),   
 	            new Plaza(1, "B", 4, false) 
 		);
 		

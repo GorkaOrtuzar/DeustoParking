@@ -29,7 +29,7 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 		if ( lPlazas == null) {
 			return 0;
 		}
-		return lPlazas.size();
+		return lPlazas.size()/4;
 	}
 	
 	@Override
@@ -49,11 +49,14 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 	
 	@Override
 	public Object getValueAt(int row, int column) {
-		Plaza p = lPlazas.get(row);
+		if(column % 2 != 0) {
+			return "";
+		}else {
 		
-		switch (column) {
-			default: return null;
+			Plaza p = lPlazas.get(row*4+column/2);
+			return p;
 		}
+		
 	}
 
 }
