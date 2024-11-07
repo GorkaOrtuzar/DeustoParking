@@ -29,12 +29,8 @@ public class RendererTablaReservarPlaza implements TableCellRenderer{
 			
 		}else {
 			if(p.isOcupada()) {
-				/*ImageIcon img = new ImageIcon("src/imagenes/cross.png");
-				label.setIcon(img);*/
 				label.setBackground(Color.RED);
 			}else {
-				/*ImageIcon img = new ImageIcon("src/imagenes/check.png");
-				label.setIcon(img);*/
 				label.setBackground(Color.GREEN);
 				
 				
@@ -46,3 +42,6 @@ public class RendererTablaReservarPlaza implements TableCellRenderer{
 	}	
 
 }
+
+//Solucionar -> No funciona lo de los colores
+

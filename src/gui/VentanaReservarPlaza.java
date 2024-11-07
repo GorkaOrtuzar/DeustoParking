@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.Arrays;
@@ -95,7 +96,7 @@ public class VentanaReservarPlaza extends JFrame{
 		pCentro.add(scrollTabla);
 		
 		//Quitar bordes a las celdas
-		tabla.setIntercellSpacing(new java.awt.Dimension(0, 0));  
+		tabla.setIntercellSpacing(new Dimension(0, 0));  
 		tabla.setBorder(null);
 	     
 	     scrollTabla.setBorder(null);
