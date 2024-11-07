@@ -98,8 +98,8 @@ public class VentanaReservarPlaza extends JFrame{
 		//Quitar bordes a las celdas
 		tabla.setIntercellSpacing(new Dimension(0, 0));  
 		tabla.setBorder(null);
+		tabla.setRowHeight(20);
 	     
-	     scrollTabla.setBorder(null);
 
 		setVisible(true);
 		
