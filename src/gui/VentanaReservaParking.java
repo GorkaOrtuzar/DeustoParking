@@ -126,6 +126,8 @@ public class VentanaReservaParking extends JFrame{
 		tabla.setModel(modeloTabla);
 		pCentroN.add(scrollTabla);
 		
+		tabla.setDefaultRenderer(Object.class, new RendererTablaReserva());
+		tabla.getTableHeader().setDefaultRenderer(new RendererCabeceraTabla());
 		pCentro.add(pCentroN);
 
 		pCentro.add(pCentroS);
