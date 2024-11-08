@@ -99,12 +99,9 @@ public class VentanaPago extends JFrame{
 			 else {
 			JOptionPane.showMessageDialog(null, "Confirmar pago");
 			vActual.dispose();
+			new VentanaGuardar(vActual);
 			 }
-		});
-				
-				
-				
-				
+		});	
 				
 		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
 		int altoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();

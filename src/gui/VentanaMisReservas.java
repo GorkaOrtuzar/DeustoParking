@@ -20,9 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class VentanaMisReservas extends JFrame {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private JPanel pCentro, pSur, pNorte;
 	private JButton btnCerrar;
@@ -31,8 +29,8 @@ public class VentanaMisReservas extends JFrame {
 	private DefaultTableModel modeloTabla; 
 	private JTable tabla; 
 	private JScrollPane scrollTabla;
-	
 	private JFrame vActual, vAnterior;
+	
 	public VentanaMisReservas(JFrame va) {
 		vActual = this;
 		vAnterior = va;
