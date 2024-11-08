@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.HeadlessException;
@@ -14,12 +15,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaMisReservas extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel pCentro, pSur, pNorte;
 	private JButton btnCerrar;
 	private JLabel lblReserva;
@@ -51,17 +55,18 @@ public class VentanaMisReservas extends JFrame {
 		modeloTabla = new DefaultTableModel();
 		tabla = new JTable(modeloTabla);
 		scrollTabla = new JScrollPane(tabla);
+		tabla.setDefaultRenderer(Object.class, new RendererTablaMisReservas());
 		scrollTabla.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollTabla.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		String [] titulos = {"FECHA DE ENTRADA","FECHA DE SALIDA","NOMBRE DEL PARKING", "PRECIO"};
 		modeloTabla.setColumnIdentifiers(titulos);
+		tabla.setPreferredScrollableViewportSize(new java.awt.Dimension(700, 300));
 		tabla.getTableHeader().setReorderingAllowed(false);
 		cargarTabla();
-		
-		
 		pCentro.add(scrollTabla);
-		
-		
+				
+			
+
 		
 		
 		//Boton cerrar
