@@ -130,11 +130,14 @@ public class VentanaInicio extends JFrame{
 		
 	    //JButton
 	    JPanel pJButtonBuscar = new JPanel();
+	    pJSpinnerSalida.setLayout(new GridLayout(2, 1));
 		pJButtonBuscar.setBounds(20,20,50,20);
+		JLabel lblVacia = new JLabel("");
 		JButton btnBuscar = new JButton("BUSCAR");
-		Dimension dimension = new Dimension(100, 30);
+		Dimension dimension = new Dimension(100, 50);
 		btnBuscar.setPreferredSize(dimension);
-
+		
+		pJButtonBuscar.add(lblVacia);
 	    pJButtonBuscar.add(btnBuscar);
 	    pTabla.add(pJButtonBuscar);
 		
