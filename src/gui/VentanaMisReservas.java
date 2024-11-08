@@ -54,6 +54,7 @@ public class VentanaMisReservas extends JFrame {
 		tabla = new JTable(modeloTabla);
 		scrollTabla = new JScrollPane(tabla);
 		tabla.setDefaultRenderer(Object.class, new RendererTablaMisReservas());
+		tabla.getTableHeader().setDefaultRenderer(new RendererCabeceraTabla());
 		scrollTabla.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollTabla.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		String [] titulos = {"FECHA DE ENTRADA","FECHA DE SALIDA","NOMBRE DEL PARKING", "PRECIO"};

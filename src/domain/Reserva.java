@@ -8,7 +8,7 @@ public class Reserva {
 	
 	private String ciudad;
 	private String dni;
-	private int matricula;
+	private String matricula;
 	private String nomParking;
 	private Date hLlegada;
 	private Date hSalida;
@@ -51,6 +51,21 @@ public class Reserva {
 
 
 
+	public Reserva(String ciudad, String dni, String matricula, String nomParking, String hLlegada, String hSalida,
+			int numPlaza, float precioTotal) {
+		super();
+		this.ciudad = ciudad;
+		this.dni = dni;
+		this.matricula = matricula;
+		this.nomParking = nomParking;
+		this.hLlegada = Utilidades.stringToDate(hLlegada);
+		this.hSalida = Utilidades.stringToDate(hSalida);
+		this.numPlaza = numPlaza;
+		this.precioTotal = precioTotal;
+	}
+
+
+
 	public String getDni() {
 		return dni;
 	}
@@ -63,13 +78,13 @@ public class Reserva {
 
 
 
-	public int getMatricula() {
+	public String getMatricula() {
 		return matricula;
 	}
 
 
 
-	public void setMatricula(int matricula) {
+	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
 
