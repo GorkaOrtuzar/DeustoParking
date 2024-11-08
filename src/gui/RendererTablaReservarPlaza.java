@@ -30,13 +30,11 @@ public class RendererTablaReservarPlaza implements TableCellRenderer{
 		}else {
 			if(p.isOcupada()) {
 				ImageIcon img = new ImageIcon("imagenes/cross.png");
-				ImageIcon im = new ImageIcon(img.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
-				label.setIcon(img);
-				//label.setBackground(Color.RED);
+				ImageIcon im = new ImageIcon(img.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
+				label.setIcon(im);
 			}else {
-				//label.setBackground(Color.GREEN);
 				ImageIcon img = new ImageIcon("imagenes/check.png");
-				ImageIcon im = new ImageIcon(img.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+				ImageIcon im = new ImageIcon(img.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
 				label.setIcon(im);
 				
 			}
