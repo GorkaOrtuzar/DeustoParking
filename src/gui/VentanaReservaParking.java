@@ -3,21 +3,13 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -30,9 +22,14 @@ import domain.Utilidades;
 
 public class VentanaReservaParking extends JFrame{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	//Declaramos valores
 	private JPanel pCentro, pCentroN, pCentroS, pSur, pNorte;
-	private JButton btnAtras, btnReservar, btnSiguiente;
+	private JButton btnAtras, btnReservar;
 	private JTextArea txtReserva;
 	
 	//Declaramos tabla
