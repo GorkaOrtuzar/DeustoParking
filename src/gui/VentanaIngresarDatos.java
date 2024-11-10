@@ -4,10 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 
 import domain.Contenedora;
 import domain.Reserva;
@@ -53,12 +56,13 @@ public class VentanaIngresarDatos extends JFrame {
 		pDatosPersonales = new JPanel();
 		pDatosPersonales.setLayout(new BoxLayout(pDatosPersonales,BoxLayout.Y_AXIS));
 		pDatosPersonales.setBorder(new EmptyBorder(150, 150, 150, 150 ));
-
+		
+		
 		pInfoParking =  new JPanel();
 		pInfoParking.setLayout(new BoxLayout(pInfoParking,BoxLayout.Y_AXIS));
 		pInfoParking.setLayout(new GridLayout(5,0));
 		pInfoParking.setBorder(new EmptyBorder(150, 150, 150, 150 ));
-
+       
 
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pCentro, BorderLayout.CENTER);
@@ -85,17 +89,6 @@ public class VentanaIngresarDatos extends JFrame {
 			String dni = txtDni.getText();
 			String contrasenia = txtContrasenia.getText();
 			Usuario u = new Usuario(Nombre, Apellido, tlf, dni, contrasenia);
-			/*for (Usuario us : Contenedora.getlUsuarios()) {
-				if(us.getDni().equals(u.getDni())) {
-					JOptionPane.showMessageDialog(null, "Usuario regitrado con anterioridad, "
-												+ "se te guardara la reserva en un a "
-													+ "lista de reservas previamenten adjudicada");
-				}else {
-					Contenedora.aniadirUsuario(u);
-					JOptionPane.showMessageDialog(null, "Usuario guardado");
-				}
-			}*/
-		//	Contenedora.aniadirUsuario(u);
 			vActual.dispose(); 
 			new VentanaResumen(vActual, r);
 		});

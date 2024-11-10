@@ -3,9 +3,11 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 
 import domain.Reserva;
 import domain.Usuario;
@@ -40,8 +43,10 @@ public class VentanaPago extends JFrame{
 		pDatosPago = new JPanel();
 		pDatosPago.setLayout(new GridLayout(6, 0));
 		pDatosPago.setBorder(new EmptyBorder(150, 150, 150, 150 ));
-
-
+		pDatosPago.setBorder(BorderFactory.createTitledBorder(
+                BorderFactory.createLineBorder(Color.GRAY),"Datos de pago",
+                TitledBorder.LEFT,TitledBorder.CENTER,new Font("Arial", Font.BOLD, 14),Color.BLACK
+        ));
 		
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pCentro, BorderLayout.CENTER);
@@ -109,7 +114,7 @@ public class VentanaPago extends JFrame{
 		setExtendedState(MAXIMIZED_BOTH);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(50, 50, 1600, 800);
+		setBounds(50, 50, 1000, 800);
 		setTitle("Pago");
 		setVisible(true);			
 		
