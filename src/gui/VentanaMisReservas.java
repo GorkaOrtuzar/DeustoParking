@@ -36,6 +36,8 @@ public class VentanaMisReservas extends JFrame {
 	public VentanaMisReservas(JFrame va) {
 		vActual = this;
 		vAnterior = va;
+		
+		//Instanciar los paneles
 		pNorte = new JPanel();
 		pSur = new JPanel();
 		pCentro = new JPanel();
@@ -117,6 +119,7 @@ public class VentanaMisReservas extends JFrame {
 		setVisible(true);
 	}
 		
+	// Metodo que carga el fichero en la tabla
 		private void cargarTabla() {
 			//Vamos a cargar a tabla con la información del fichero asignaturas.txt
 			File f = new File("ficheros/reservasEjemplo.txt");

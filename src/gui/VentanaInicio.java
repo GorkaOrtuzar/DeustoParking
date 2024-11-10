@@ -25,6 +25,7 @@ import javax.swing.JSpinner.DateEditor;
 import javax.swing.JTable;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerModel;
+import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -67,9 +68,6 @@ public class VentanaInicio extends JFrame{
 		lblDesutoCar.setFont(new Font(Font.DIALOG, Font.ITALIC, 30));
 		
 		
-		
-		//pTabla.setBackground(Color.CYAN);
-		
 		//Añadir los paneles al panel central
 		pNorte.add(lblDesutoCar);
 		pCentro.add(pMisReservas);
@@ -86,8 +84,9 @@ public class VentanaInicio extends JFrame{
 		btnMisReservas.setBackground(Color.ORANGE);
 		pMisReservas.add(pMisRes, BorderLayout.EAST);
 		
+		//Action listener del boton misReservas
 		btnMisReservas.addActionListener((e)->{
-			JOptionPane.showMessageDialog(null, "Has tenido que reservar con notros anteriormente \n para acceder a esta seccion");
+			JOptionPane.showMessageDialog(null, "Has tenido que reservar con notros anteriormente \n para acceder a esta seccion","MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 			new VentanaInicioSesion(vActual);
 		});
 		
@@ -138,11 +137,11 @@ public class VentanaInicio extends JFrame{
 		Dimension dimension = new Dimension(100, 50);
 		btnBuscar.setBackground(Color.ORANGE);
 		btnBuscar.setPreferredSize(dimension);
-		
 		pJButtonBuscar.add(lblVacia);
 	    pJButtonBuscar.add(btnBuscar);
 	    pTabla.add(pJButtonBuscar);
-		
+	    
+		//Action listener del boton buscar
 		btnBuscar.addActionListener((e)->{
 			String ciudad = (String) ComboCiudades.getSelectedItem();
 			Date fechaEntrada = (Date) SFechaEntrada.getValue();

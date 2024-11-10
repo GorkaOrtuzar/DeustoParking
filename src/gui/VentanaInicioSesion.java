@@ -31,7 +31,7 @@ public class VentanaInicioSesion extends JFrame {
 		 super();
 		vActual = this;
 		vAnterior = va;
-		setBounds(300, 200, 300, 300);
+		
 
 		
 		pCentro = new JPanel();
@@ -76,6 +76,7 @@ public class VentanaInicioSesion extends JFrame {
 
 		 }
 		});
+		setBounds(300, 200, 300, 300);
 		setTitle("Inicio Sesion");
 		setVisible(true);	
 	}
