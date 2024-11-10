@@ -78,36 +78,32 @@ public class VentanaReservaParking extends JFrame{
 		
 		btnReservar = new JButton("Reservar");
 		
-		btnReservar.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int fila = tabla.getSelectedRow();
-				if(fila!=-1) {
-					String nomParking = tabla.getValueAt(fila, 0).toString();
-					int numPlazasLibre = Integer.parseInt(tabla.getValueAt(fila, 1).toString());
-					float precio = Float.parseFloat(tabla.getValueAt(fila, 2).toString());
-					
-					String ciudad = r.getCiudad();
-//					String fechaEntrada = r.gethLlegada();
-					String fechaEntradaString = Utilidades.dateToString(r.gethLlegada());
-					String fechaSalida = Utilidades.dateToString(r.gethSalida());
-					
-					Reserva reservaFinal = new Reserva(ciudad, fechaEntradaString, fechaSalida, nomParking, numPlazasLibre, precio);
-					listaReservas.add(reservaFinal);
-					
-					for (Reserva reserva : listaReservas) {
-						System.out.println(reserva);
-					}
-					
-					vActual.dispose();
-					new VentanaReservarPlaza(vActual, reservaFinal);
-				}else {
-					JOptionPane.showMessageDialog(vActual, "Por favor, seleccione un parking","MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
+		btnReservar.addActionListener((e)-> {
+			int fila = tabla.getSelectedRow();
+			if(fila!=-1) {
+				String nomParking = tabla.getValueAt(fila, 0).toString();
+				int numPlazasLibre = Integer.parseInt(tabla.getValueAt(fila, 1).toString());
+				float precio = Float.parseFloat(tabla.getValueAt(fila, 2).toString());
+				
+				String ciudad = r.getCiudad();
+//				String fechaEntrada = r.gethLlegada();
+				String fechaEntradaString = Utilidades.dateToString(r.gethLlegada());
+				String fechaSalida = Utilidades.dateToString(r.gethSalida());
+				
+				Reserva reservaFinal = new Reserva(ciudad, fechaEntradaString, fechaSalida, nomParking, numPlazasLibre, precio);
+				listaReservas.add(reservaFinal);
+				
+				for (Reserva reserva : listaReservas) {
+					System.out.println(reserva);
 				}
 				
-				
+				vActual.dispose();
+				new VentanaReservarPlaza(vActual, reservaFinal);
+			}else {
+				JOptionPane.showMessageDialog(vActual, "Por favor, seleccione un parking","MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 			}
+			
+			
 		});
 		
 		
