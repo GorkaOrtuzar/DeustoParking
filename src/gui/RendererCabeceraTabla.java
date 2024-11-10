@@ -14,7 +14,9 @@ public class RendererCabeceraTabla extends DefaultTableCellRenderer{
 			int row, int column) {
 		JLabel l = new JLabel(value.toString());
 		l.setOpaque(true);
-		l.setBackground(Color.PINK);
+		l.setBackground(new Color(186, 197, 202));
+		l.setPreferredSize(new java.awt.Dimension(0, 50));;
+		l.setHorizontalAlignment(JLabel.CENTER);
 		return l;
 	}
 	

@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
-public class RendererTablaReserva implements TableCellRenderer {
+public class RendererTablaReservaParking implements TableCellRenderer {
 	
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,

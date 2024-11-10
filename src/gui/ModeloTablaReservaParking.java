@@ -8,11 +8,11 @@ import javax.swing.table.DefaultTableModel;
 import domain.Parking;
 import domain.Reserva;
 
-public class ModeloTablaReserva extends DefaultTableModel {
+public class ModeloTablaReservaParking extends DefaultTableModel {
 	private List<Parking> lParkings;
 	private List<String> lTitulos = Arrays.asList("Nombre Parking" ,"Plazas Disponibles" ,"Precio");
 
-	public ModeloTablaReserva(List<Parking> lParkings) {
+	public ModeloTablaReservaParking(List<Parking> lParkings) {
 		this.lParkings = lParkings;
 		
 	}

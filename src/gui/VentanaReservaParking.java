@@ -36,7 +36,7 @@ public class VentanaReservaParking extends JFrame{
 	private JTextArea txtReserva;
 	
 	//Declaramos tabla
-	private ModeloTablaReserva modeloTabla; 
+	private ModeloTablaReservaParking modeloTabla; 
 	private JTable tabla; 
 	private JScrollPane scrollTabla;
 	
@@ -110,19 +110,19 @@ public class VentanaReservaParking extends JFrame{
 		//Añadimos paneles al panel central
 		
 		//Creamos Tabla
-		modeloTabla = new ModeloTablaReserva(null);
+		modeloTabla = new ModeloTablaReservaParking(null);
 		tabla = new JTable(modeloTabla);
 		scrollTabla = new JScrollPane(tabla);
-		tabla.setDefaultRenderer(Object.class, new RendererTablaReserva());
+		tabla.setDefaultRenderer(Object.class, new RendererTablaReservaParking());
 		cargarTablaDatos();
 		getContentPane().add(scrollTabla, BorderLayout.CENTER);
 		
 		//Renderer Tabla
-		modeloTabla = (ModeloTablaReserva) tabla.getModel();
+		modeloTabla = (ModeloTablaReservaParking) tabla.getModel();
 		tabla.setModel(modeloTabla);
 		pCentroN.add(scrollTabla);
 		
-		tabla.setDefaultRenderer(Object.class, new RendererTablaReserva());
+		tabla.setDefaultRenderer(Object.class, new RendererTablaReservaParking());
 		tabla.getTableHeader().setDefaultRenderer(new RendererCabeceraTabla());
 		pCentro.add(pCentroN);
 
@@ -170,7 +170,7 @@ public class VentanaReservaParking extends JFrame{
 		lp.add(new Parking("ParkingVIP", 30f, 17));
 		lp.add(new Parking("ParkingCentral", 25.5f, 105));
 		lp.add(new Parking("ParkingTechado", 17.90f, 237));
-		modeloTabla = (ModeloTablaReserva) tabla.getModel();
+		modeloTabla = (ModeloTablaReservaParking) tabla.getModel();
 		modeloTabla.setlParkings(lp);
 		tabla.setModel(modeloTabla);
 		
