@@ -83,6 +83,7 @@ public class VentanaInicio extends JFrame{
 		Dimension dimensionBtnMisRes = new Dimension(200, 25);
 		btnMisReservas.setPreferredSize(dimensionBtnMisRes);
 		pMisRes.add(btnMisReservas);
+		btnMisReservas.setBackground(Color.ORANGE);
 		pMisReservas.add(pMisRes, BorderLayout.EAST);
 		
 		btnMisReservas.addActionListener((e)->{
@@ -135,6 +136,7 @@ public class VentanaInicio extends JFrame{
 		JLabel lblVacia = new JLabel("");
 		JButton btnBuscar = new JButton("BUSCAR");
 		Dimension dimension = new Dimension(100, 50);
+		btnBuscar.setBackground(Color.ORANGE);
 		btnBuscar.setPreferredSize(dimension);
 		
 		pJButtonBuscar.add(lblVacia);
