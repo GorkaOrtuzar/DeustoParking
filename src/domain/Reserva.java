@@ -48,6 +48,17 @@ public class Reserva {
 		this.numPlaza = numPlaza;
 		this.precioTotal = precioTotal;
 	}
+	
+	
+
+
+
+	public Reserva(String nomParking, int numPlaza, float precioTotal) {
+		super();
+		this.nomParking = nomParking;
+		this.numPlaza = numPlaza;
+		this.precioTotal = precioTotal;
+	}
 
 
 

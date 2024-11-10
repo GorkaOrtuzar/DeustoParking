@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
@@ -10,6 +11,7 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -64,6 +66,9 @@ public class VentanaReservaParking extends JFrame{
 		pCentroS = new JPanel();
 		
 		txtReserva = new JTextArea();
+		txtReserva.setColumns(40);
+		txtReserva.setEditable(false);
+
 		
 		btnAtras = new JButton("Atrás");
 		
@@ -83,11 +88,10 @@ public class VentanaReservaParking extends JFrame{
 				float precio = Float.parseFloat(tabla.getValueAt(fila, 2).toString());
 				
 				String ciudad = r.getCiudad();
-//				String fechaEntrada = r.gethLlegada();
-				String fechaEntradaString = Utilidades.dateToString(r.gethLlegada());
+				String fechaEntrada = Utilidades.dateToString(r.gethLlegada());
 				String fechaSalida = Utilidades.dateToString(r.gethSalida());
 				
-				Reserva reservaFinal = new Reserva(ciudad, fechaEntradaString, fechaSalida, nomParking, numPlazasLibre, precio);
+				Reserva reservaFinal = new Reserva(ciudad, fechaEntrada, fechaSalida, nomParking, numPlazasLibre, precio);
 				listaReservas.add(reservaFinal);
 				
 				for (Reserva reserva : listaReservas) {
@@ -141,10 +145,16 @@ public class VentanaReservaParking extends JFrame{
 					String nomParking = tabla.getValueAt(fila, 0).toString();
 					int numPlazasLibres = Integer.parseInt(tabla.getValueAt(fila, 1).toString());
 					float precio = Float.parseFloat(tabla.getValueAt(fila, 2).toString()) ;
+					
+					txtReserva.setText("Nombre Parking: " + nomParking + "  " + "Plazas Libres: " + numPlazasLibres + "  " + "Precio: " + precio);
+					
 				}
 				
 			}
 		});
+		
+		
+		
 		
 		//Tamaño de la ventana
 		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
