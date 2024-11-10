@@ -4,11 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
-import java.awt.HeadlessException;
+import java.awt.Image;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -53,10 +55,7 @@ public class VentanaMisReservas extends JFrame {
 		modeloTabla = new DefaultTableModel();
 		tabla = new JTable(modeloTabla);
 		scrollTabla = new JScrollPane(tabla);
-		tabla.setDefaultRenderer(Object.class, new RendererTablaMisReservas());
-		tabla.getTableHeader().setDefaultRenderer(new RendererCabeceraTabla());
-		scrollTabla.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollTabla.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollTabla.setBorder(BorderFactory.createEmptyBorder()); 	
 		String [] titulos = {"FECHA DE ENTRADA","FECHA DE SALIDA","NOMBRE DEL PARKING", "PRECIO"};
 		modeloTabla.setColumnIdentifiers(titulos);
 		tabla.setPreferredScrollableViewportSize(new java.awt.Dimension(700, 300));
@@ -64,8 +63,37 @@ public class VentanaMisReservas extends JFrame {
 		cargarTabla();
 		pCentro.add(scrollTabla);
 				
+		//renderer de las celdas	
+		tabla.setDefaultRenderer(Object.class, (table,value,isSelected,hasFocus,row,column)->{
+			JLabel l = new JLabel();
+			l.setHorizontalAlignment(JLabel.CENTER);
+			l.setOpaque(true);
+			if(row % 2 == 0) {
+				l.setText(value.toString());
+				l.setBackground( Color.LIGHT_GRAY); 
+				
+			}
+			else {
+				l.setText(value.toString());
+				l.setBackground(table.getBackground());
+			}
 			
-
+			
+			return l;
+		});
+		
+		
+		//renderer de la cabecera
+		tabla.getTableHeader().setDefaultRenderer((table,value,isSelectd,hasFocus,row,column)->{
+			JLabel l = new JLabel();
+			l.setText(value.toString());
+			l.setOpaque(true);
+			l.setHorizontalAlignment(JLabel.CENTER);
+			l.setBackground(Color.ORANGE);
+			
+			
+			return l;
+		});
 		
 		
 		//Boton cerrar
