@@ -6,13 +6,10 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.font.TextAttribute;
 import java.util.Map;
 
 import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,9 +17,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import domain.Reserva;
-import domain.Usuario;
 
 public class VentanaResumen extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private JPanel pNorte, pSur, pCentro, pCentroN, pCentroS, pCalendarios, pTitulo;
 	private JLabel lblIntroDatos,lblConfirma,lblPago, lblTitulo, lblFechaEntrada, lblFechaSalida,
 	lblInfo, lblVacia, lblNomParking, lblNomPlaza, lblPrecioTotal, lblNomParkingRe, lblNomPlazaRe, lblPrecioTotalRe;
