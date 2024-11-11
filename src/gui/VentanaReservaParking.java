@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
@@ -8,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -15,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.border.TitledBorder;
 
 import domain.Parking;
 import domain.Reserva;
@@ -112,6 +116,7 @@ public class VentanaReservaParking extends JFrame{
 		modeloTabla = new ModeloTablaReservaParking(null);
 		tabla = new JTable(modeloTabla);
 		scrollTabla = new JScrollPane(tabla);
+		scrollTabla.setBorder(BorderFactory.createEmptyBorder());
 		tabla.setDefaultRenderer(Object.class, new RendererTablaReservaParking());
 		cargarTablaDatos();
 		getContentPane().add(scrollTabla, BorderLayout.CENTER);
@@ -133,6 +138,13 @@ public class VentanaReservaParking extends JFrame{
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pCentro, BorderLayout.CENTER);
 		getContentPane().add(pSur, BorderLayout.SOUTH);
+		
+		//Leyenda de Colores del Parking
+		//Para hacer reborde, siguente método:
+//		pDatosPago.setBorder(BorderFactory.createTitledBorder(
+//                BorderFactory.createLineBorder(Color.GRAY),"Leyenda de Colores",
+//                TitledBorder.LEFT,TitledBorder.CENTER,new Font("Arial", Font.BOLD, 14),Color.BLACK
+//        ));
 		
 		tabla.addMouseListener(new MouseAdapter() {
 			
