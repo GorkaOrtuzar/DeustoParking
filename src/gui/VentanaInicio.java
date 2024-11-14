@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.time.LocalDate;
 
 import javax.swing.BoxLayout;
@@ -150,6 +152,7 @@ public class VentanaInicio extends JFrame{
 			new VentanaReservaParking(vActual, r);
 			vActual.dispose();
 		});
+		
 		
 		
 		//imagen
