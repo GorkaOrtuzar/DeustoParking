@@ -14,9 +14,13 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import domain.Contenedora;
 import domain.Reserva;
+import domain.Usuario;
 
 public class VentanaInicioSesion extends JFrame {
+	
+	private static final long serialVersionUID = 1L;
 	private JPanel pCentro, pNorte,pSur;
 	private JLabel lblDni,lblContrasenia;
 	private JTextField txtDNI;
@@ -25,6 +29,8 @@ public class VentanaInicioSesion extends JFrame {
 	
 	private JFrame vActual;
 	private JFrame vAnterior;
+	
+	private static Usuario usuario;
 
 	
 	 public VentanaInicioSesion(JFrame va) {
@@ -69,12 +75,26 @@ public class VentanaInicioSesion extends JFrame {
 		 else if (con.isEmpty()) {
 				 JOptionPane.showMessageDialog(null, "Inserte Contraseña","ERROR",JOptionPane.ERROR_MESSAGE);
 			 }
-		 else {
-			 vActual.dispose();
-			 vAnterior.dispose();
-			 new VentanaMisReservas(vActual);
-
+		 Usuario u = Contenedora.buscarUsuario(dni);
+		 if(u == null || !dni.equals(u.getDni())) {
+			 JOptionPane.showMessageDialog(null, "DNI no encintrado","ERROR",JOptionPane.ERROR_MESSAGE);
 		 }
+		 else if(dni.equals(u.getDni())){
+			 if(!con.equals(u.getContrasenia())) {
+				JOptionPane.showMessageDialog(null, "Contraseña incorrecta","ERROR",JOptionPane.WARNING_MESSAGE);
+
+			 }else {
+				 usuario = u;
+				 vActual.dispose();
+				 vAnterior.dispose();
+				 new VentanaMisReservas(vActual,  u);
+				 txtDNI.setText("");
+				 txtContrasenia.setText("");
+
+			 }
+			 
+		 }
+		 
 		});
 		setBounds(300, 200, 300, 300);
 		setTitle("Inicio Sesion");

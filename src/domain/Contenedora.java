@@ -54,5 +54,24 @@ public class Contenedora {
 		}
 		return lReservaUS;
 	}
+	
+	public static Usuario buscarUsuario(String dni) {
+		boolean enc = false;
+		int pos = 0;
+		Usuario u = null;
+		while(!enc && pos < lUsuarios.size()) {
+			u = lUsuarios.get(pos);
+			if(u.getDni().equals(dni)) {
+				enc = true;
+			}else {
+				pos++;
+			}
+		}
+		if(enc) {
+			return u;
+		}else {
+			return null;
+		}
+	}
 		
 }

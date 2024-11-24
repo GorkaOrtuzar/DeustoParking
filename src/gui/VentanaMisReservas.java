@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,20 +21,23 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import domain.Usuario;
+
 public class VentanaMisReservas extends JFrame {
 
 
 	private static final long serialVersionUID = 1L;
-	private JPanel pCentro, pSur, pNorte;
+	private JPanel pCentro, pSur, pNorte, pDatos;
 	private JButton btnCerrar;
 	private JLabel lblReserva;
+	private JLabel lblNombre, lblApellido,lbltlf,lbldni,lblContrasenia;
 	
 	private DefaultTableModel modeloTabla; 
 	private JTable tabla; 
 	private JScrollPane scrollTabla;
 	private JFrame vActual, vAnterior;
 	
-	public VentanaMisReservas(JFrame va) {
+	public VentanaMisReservas(JFrame va , Usuario u) {
 		vActual = this;
 		vAnterior = va;
 		
@@ -41,7 +45,9 @@ public class VentanaMisReservas extends JFrame {
 		pNorte = new JPanel();
 		pSur = new JPanel();
 		pCentro = new JPanel();
-		pCentro.setBorder(new EmptyBorder(100, 100, 100, 100 ));
+		pCentro.setBorder(new EmptyBorder(100, 100, 100, 100));
+		pCentro.setLayout(new GridLayout(1, 2));
+		pDatos = new JPanel();
 
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pSur, BorderLayout.SOUTH);
@@ -52,6 +58,20 @@ public class VentanaMisReservas extends JFrame {
 		lblReserva = new JLabel("MIS RESERVAS");
 		lblReserva.setFont(new Font(Font.DIALOG, Font.ITALIC, 18));
 		pNorte.add(lblReserva);
+		
+		//datos del usuario
+		lblNombre = new JLabel("NOMBRE: " + u.getNombre());
+		lblApellido = new JLabel("APELLIDO: " + u.getApellido());
+		lbldni = new JLabel("DNI: " + u.getDni());
+		lbltlf = new JLabel("TLF: " + u.getTlf());
+		lblContrasenia = new JLabel("CONTRASEÑA: " + u.getContrasenia());
+		pDatos.add(lblNombre);
+		pDatos.add(lblApellido);
+		pDatos.add(lbldni);
+		pDatos.add(lbltlf);
+		pDatos.add(lblContrasenia);
+		pCentro.add(pDatos);
+		
 		
 		//Tabla
 		modeloTabla = new DefaultTableModel();
