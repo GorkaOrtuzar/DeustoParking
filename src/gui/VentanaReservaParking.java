@@ -156,7 +156,7 @@ public class VentanaReservaParking extends JFrame{
 					int numPlazasLibres = Integer.parseInt(tabla.getValueAt(fila, 1).toString());
 					float precio = Float.parseFloat(tabla.getValueAt(fila, 2).toString()) ;
 					
-					txtReserva.setText("Nombre Parking: " + nomParking + "  " + "Plazas Libres: " + numPlazasLibres + "  " + "Precio: " + precio);
+					txtReserva.setText("Nombre Parking: " + nomParking + "  " + "Plazas Libres: " + numPlazasLibres + "  " + "Precio: " + precio +"€");
 					
 				}
 				

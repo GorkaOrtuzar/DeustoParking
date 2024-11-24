@@ -90,7 +90,7 @@ public class VentanaIngresarDatos extends JFrame {
 			String contrasenia = txtContrasenia.getText();
 			Usuario u = new Usuario(Nombre, Apellido, tlf, dni, contrasenia);
 			vActual.dispose(); 
-			new VentanaResumen(vActual, r);
+			new VentanaResumen(vActual, r, u);
 		});
 		
 		//PANEL CENTRO
