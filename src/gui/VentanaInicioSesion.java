@@ -30,7 +30,6 @@ public class VentanaInicioSesion extends JFrame {
 	private JFrame vActual;
 	private JFrame vAnterior;
 	
-	private static Usuario usuario;
 
 	
 	 public VentanaInicioSesion(JFrame va) {
@@ -66,41 +65,45 @@ public class VentanaInicioSesion extends JFrame {
 		btnVer = new JButton("Ver mis reservas");
 		pSur.add(btnVer);
 		btnVer.addActionListener((e)->{
+			
 		String dni = txtDNI.getText();
 		String con = txtContrasenia.getText();
-		 if(dni.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Inserte un Usuario","ERROR",JOptionPane.ERROR_MESSAGE);
-			}
-		 //Mira si la contraseña esta vacia
-		 else if (con.isEmpty()) {
-				 JOptionPane.showMessageDialog(null, "Inserte Contraseña","ERROR",JOptionPane.ERROR_MESSAGE);
-			 }
-		 Usuario u = Contenedora.buscarUsuario(dni);
-		 if(u == null || !dni.equals(u.getDni())) {
-			 JOptionPane.showMessageDialog(null, "DNI no encintrado","ERROR",JOptionPane.ERROR_MESSAGE);
-		 }
-		 else if(dni.equals(u.getDni())){
-			 if(!con.equals(u.getContrasenia())) {
-				JOptionPane.showMessageDialog(null, "Contraseña incorrecta","ERROR",JOptionPane.WARNING_MESSAGE);
-
-			 }else {
-				 usuario = u;
+/*		 if(dni.isEmpty()) {
+//				JOptionPane.showMessageDialog(null, "Inserte un Usuario","ERROR",JOptionPane.ERROR_MESSAGE);
+//			}
+//		 //Mira si la contraseña esta vacia
+//		 else if (con.isEmpty()) {
+//				 JOptionPane.showMessageDialog(null, "Inserte Contraseña","ERROR",JOptionPane.ERROR_MESSAGE);
+//			 }
+//		 Usuario u = Contenedora.buscarUsuario(dni);
+//		 if(u == null || !dni.equals(u.getDni())) {
+//			 JOptionPane.showMessageDialog(null, "DNI no encintrado","ERROR",JOptionPane.ERROR_MESSAGE);
+//		 }
+//		 else if(dni.equals(u.getDni())){
+//			 if(!con.equals(u.getContrasenia())) {
+//				JOptionPane.showMessageDialog(null, "Contraseña incorrecta","ERROR",JOptionPane.WARNING_MESSAGE);
+//
+//			 }else {*/
+				// usuario = u;
 				 vActual.dispose();
 				 vAnterior.dispose();
-				 new VentanaMisReservas(vActual,  u);
+				 new VentanaMisReservas(vActual);
 				 txtDNI.setText("");
 				 txtContrasenia.setText("");
+		
 
-			 }
-			 
-		 }
-		 
+//			 }
+//			 
+//	 }
+//		 
 		});
 		setBounds(300, 200, 300, 300);
 		setTitle("Inicio Sesion");
 		setVisible(true);	
 	}
+
+}
 		
 	 		
 		
-}
+

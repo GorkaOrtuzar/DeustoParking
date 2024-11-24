@@ -37,7 +37,7 @@ public class VentanaMisReservas extends JFrame {
 	private JScrollPane scrollTabla;
 	private JFrame vActual, vAnterior;
 	
-	public VentanaMisReservas(JFrame va , Usuario u) {
+	public VentanaMisReservas(JFrame va ) {
 		vActual = this;
 		vAnterior = va;
 		
@@ -60,18 +60,18 @@ public class VentanaMisReservas extends JFrame {
 		pNorte.add(lblReserva);
 		
 		//datos del usuario
-		lblNombre = new JLabel("NOMBRE: " + u.getNombre());
-		lblApellido = new JLabel("APELLIDO: " + u.getApellido());
-		lbldni = new JLabel("DNI: " + u.getDni());
-		lbltlf = new JLabel("TLF: " + u.getTlf());
-		lblContrasenia = new JLabel("CONTRASEÑA: " + u.getContrasenia());
-		pDatos.add(lblNombre);
-		pDatos.add(lblApellido);
-		pDatos.add(lbldni);
-		pDatos.add(lbltlf);
-		pDatos.add(lblContrasenia);
-		pCentro.add(pDatos);
-		
+//		lblNombre = new JLabel("NOMBRE: " + u.getNombre());
+//		lblApellido = new JLabel("APELLIDO: " + u.getApellido());
+//		lbldni = new JLabel("DNI: " + u.getDni());
+//		lbltlf = new JLabel("TLF: " + u.getTlf());
+//		lblContrasenia = new JLabel("CONTRASEÑA: " + u.getContrasenia());
+//		pDatos.add(lblNombre);
+//		pDatos.add(lblApellido);
+//		pDatos.add(lbldni);
+//		pDatos.add(lbltlf);
+//		pDatos.add(lblContrasenia);
+//		pCentro.add(pDatos);
+//		
 		
 		//Tabla
 		modeloTabla = new DefaultTableModel();

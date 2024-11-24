@@ -31,8 +31,12 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import java.util.Date;
 
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.UtilDateModel;
+
+import java.util.Date;
+import java.util.Properties;
 
 import domain.Reserva;
 
@@ -41,6 +45,10 @@ public class VentanaInicio extends JFrame{
 	// Declarar los valores
 	private JPanel pCentro, pNorte,pTabla,pImagen, pMisReservas,pBloque1;
 	private JLabel lblDesutoCar;
+	//private JDatePanelImpl dpaFechaEntradaPanel, dpaFechaSalidaPanel;
+	private UtilDateModel modeloEntrada, modeloSalida;
+
+
 	
 	private JFrame vActual;
 	
@@ -61,6 +69,16 @@ public class VentanaInicio extends JFrame{
 		pTabla =  new JPanel();
 		pMisReservas = new JPanel(new BorderLayout());
 		
+//		modeloEntrada = new UtilDateModel();
+//		modeloSalida = new UtilDateModel();
+//		
+//		configurarModeloFecha(modeloEntrada, r.gethLlegada());
+//		configurarModeloFecha(modeloSalida, r.gethSalida());
+//		
+//		Properties p = new Properties();
+//		p.put("text.today", "Hoy");
+//		p.put("text.month", "Mes");
+//		p.put("text.year", "Año");
 		
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pCentro, BorderLayout.CENTER);
@@ -104,7 +122,7 @@ public class VentanaInicio extends JFrame{
 	    pComboBox.add(ComboCiudades);
 	    pTabla.add(pComboBox);
 	    
-	    //JSpinner Salida
+	    //JSpinner Entrada
 	    JPanel pJSpinnerEntrada = new JPanel();
 		pJSpinnerEntrada.setBounds(20,20,50,20);
 		pJSpinnerEntrada.setLayout(new GridLayout(2, 1));
@@ -116,6 +134,14 @@ public class VentanaInicio extends JFrame{
 	    pJSpinnerEntrada.add(FechaEntrada);
 	    pJSpinnerEntrada.add(SFechaEntrada);
 	    pTabla.add(pJSpinnerEntrada);
+	    
+//	    dpaFechaEntradaPanel = new JDatePanelImpl(modeloEntrada, p);
+//		dpaFechaEntradaPanel.addActionListener(e -> {
+//			modeloEntrada.setValue(r.gethLlegada());
+//			modeloEntrada.setSelected(true);
+//	    	pJSpinnerSalida.add(dpaFechaSalidaPanel);
+//		});
+//		
 		
 	    //JSpinner Salida
 	    JPanel pJSpinnerSalida = new JPanel();
@@ -129,6 +155,14 @@ public class VentanaInicio extends JFrame{
 	    pJSpinnerSalida.add(FechaSalida);
 	    pJSpinnerSalida.add(SFechaSalida);
 	    pTabla.add(pJSpinnerSalida);
+	    
+//	    dpaFechaSalidaPanel = new JDatePanelImpl(modeloSalida, p);
+//		dpaFechaSalidaPanel.addActionListener(e -> {
+//			modeloSalida.setValue(r.gethSalida());
+//			modeloSalida.setSelected(true);
+//      pJSpinnerSalida.add(dpaFechaSalidaPanel);
+	    
+//		});
 		
 	    //JButton
 	    JPanel pJButtonBuscar = new JPanel();
