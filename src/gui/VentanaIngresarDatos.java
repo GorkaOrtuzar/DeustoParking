@@ -88,9 +88,31 @@ public class VentanaIngresarDatos extends JFrame {
 			String tlf = txtTlf.getText();
 			String dni = txtDni.getText();
 			String contrasenia = txtContrasenia.getText();
+			if(Nombre == null) {
+				JOptionPane.showMessageDialog(null, "Nombre no valido", "MENSAJE IMPORTANTE", JOptionPane.INFORMATION_MESSAGE);
+			}else if(Apellido == null){
+				JOptionPane.showMessageDialog(null, "Apellido no valido", "MENSAJE IMPORTANTE", JOptionPane.INFORMATION_MESSAGE);
+				
+			}else if(tlf == null){
+				JOptionPane.showMessageDialog(null, "Telefono no valido", "MENSAJE IMPORTANTE", JOptionPane.INFORMATION_MESSAGE);
+
+			}else if(tlf.length()!= 9) {
+				JOptionPane.showMessageDialog(null, "Telefono no valido", "MENSAJE IMPORTANTE", JOptionPane.INFORMATION_MESSAGE);
+
+			}else if(dni == null) {
+				JOptionPane.showMessageDialog(null, "DNI no valido", "MENSAJE IMPORTANTE", JOptionPane.INFORMATION_MESSAGE);
+
+			}else if(dni.length()!= 9) {
+				JOptionPane.showMessageDialog(null, "DNI no valido", "MENSAJE IMPORTANTE", JOptionPane.INFORMATION_MESSAGE);
+
+			}else if(contrasenia == null) {
+				JOptionPane.showMessageDialog(null, "Contraseña no valido", "MENSAJE IMPORTANTE", JOptionPane.INFORMATION_MESSAGE);
+
+			}else {
 			Usuario u = new Usuario(Nombre, Apellido, tlf, dni, contrasenia);
 			vActual.dispose(); 
 			new VentanaResumen(vActual, r, u);
+			}
 		});
 		
 		//PANEL CENTRO
