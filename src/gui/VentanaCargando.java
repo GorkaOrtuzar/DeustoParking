@@ -12,6 +12,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicProgressBarUI;
 
 public class VentanaCargando extends JFrame{
+	
+	private static final long serialVersionUID = 1L;
 	private JProgressBar bProgreso;
 	private JLabel lbl;
 	private JFrame vActual;

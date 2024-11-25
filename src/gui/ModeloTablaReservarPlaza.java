@@ -7,6 +7,8 @@ import javax.swing.table.DefaultTableModel;
 import domain.Plaza;
 
 public class ModeloTablaReservarPlaza extends DefaultTableModel{
+	
+	private static final long serialVersionUID = 1L;
 	private List<Plaza> lPlazas;
 	private List<String> lTitulos = Arrays.asList("A", " ", "B", " ", "C", " ", "D");
 	
