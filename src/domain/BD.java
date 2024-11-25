@@ -1,10 +1,11 @@
 package domain;
 
 import java.sql.Statement;
-
-
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BD {
@@ -61,6 +62,65 @@ public class BD {
 		} catch (SQLException e) {
 			throw e;
 		}
+	}
+	
+	public static Usuario buscarUsario(Connection con, String DNI) {
+		String sql = String.format("SELECT * FROM Usuario WHERE CorreoElectronico = '%s'", DNI);
+		Usuario usuario= null;
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql); 
+			if(rs.next()) {
+				String nombre = rs.getString("Nombre");
+				String apellido = rs.getString("Apellido");
+				String tlf = rs.getString("Telefono");
+				String dni = rs.getString("dni");
+				String contrasenia = rs.getString("Contrasenia");
+				usuario = new Usuario(nombre, apellido, tlf, dni, contrasenia);
+			}
+			rs.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return usuario;
+	}
+	
+	public static void insertarUsuario(Connection con, Usuario usuario){
+		if(buscarUsario(con,usuario.getDni())==null){
+			String sql = String.format("INSERT INTO Usuario VALUES('%s','%s','%s','%s','%s','%s','%s')", 
+					usuario.getNombre(), usuario.getApellido(), usuario.getTlf(), usuario.getDni(),usuario.getContrasenia());
+			try {
+				Statement st = con.createStatement();
+				st.executeUpdate(sql);
+				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static List<Usuario> obtenerListaUsario(Connection con){
+		String sql = "SELECT * FROM Usuario";
+		List<Usuario> l = new ArrayList<>();
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			while(rs.next()) {
+				String nombre = rs.getString("Nombre");
+				String apellido = rs.getString("Apellido");
+				String tlf = rs.getString("Telefono");
+				String dni = rs.getString("dni");
+				String contrasenia = rs.getString("Contrasenia");
+				Usuario usuario = new Usuario(nombre, apellido, tlf, dni, contrasenia);
+				l.add(usuario);
+			}
+			rs.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return l;
 	}
 	
 	public static void cerrarBD(Connection con) {
