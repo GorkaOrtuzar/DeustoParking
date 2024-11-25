@@ -219,6 +219,38 @@ public class BD {
 		}
 		return l;	
 	}
+	public static void insertarParking(Connection con, Parking parking) {
+		if(buscarParking(con,parking.getParking())==null) {
+			String sql = String.format("INSERT INTO Parking Values('%s','%s','%s')", parking.getParking(),parking.getPrecioHora(),parking.getPlazasLibres());
+			try {
+				Statement st = con.createStatement();
+				st.executeUpdate(sql);
+				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static Parking buscarParking(Connection con, String nparking) {
+		String sql = String.format("SELECT * FROM Reserva WHERE parking = '%s'", nparking);
+		Parking parking= null;
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql); 
+			if(rs.next()) {
+				String Parking = rs.getString("parking");
+				String precioHora = rs.getString("precioHora");
+				String plazasLibres = rs.getString("plazasLibres");
+				parking = new Parking(Parking, Float.parseFloat(precioHora), Integer.parseInt(plazasLibres));
+			}
+			rs.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return parking;	
+	}
 	public static void cerrarBD(Connection con) {
 		if(con != null) {
 			try {
