@@ -13,16 +13,16 @@ public class Principal {
 		String nombreBD;
 		nombreBD = "db/deustoParking.db";
 		VentanaCargando va = new VentanaCargando();
-//		Connection con = BD.initBD(nombreBD);
-//		try {
-//			BD.borrarTabla(con);
-//			BD.crearTablas(con);
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		BD.cerrarBD(con);
-//		
+		Connection con = BD.initBD(nombreBD);
+		try {
+			BD.borrarTabla(con);
+			BD.crearTablas(con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		BD.cerrarBD(con);
+		
 	}
 
 }

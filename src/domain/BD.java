@@ -1,6 +1,7 @@
 package domain;
 
-import java.beans.Statement;
+import java.sql.Statement;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -35,11 +36,11 @@ public class BD {
 	public static void crearTablas(Connection con) {
 		String sql = "CREATE TABLE IF NOT EXISTS Usuario(nombre String, apellido String,tlf String,dni String,contrasenia String)";
 		try {
-			java.sql.Statement stmt = con.createStatement();
+			Statement stmt = con.createStatement();
 			stmt.executeUpdate(sql);
-			sql = "CREATE TABLE IF NOT EXISTS Reserva";
+			sql = "CREATE TABLE IF NOT EXISTS Reserva(Ciudad String, dni String, nombreParking String, hllegada Date, hsalida Date, numeroPlaza int, precioTotal float)";
 			stmt.executeUpdate(sql);
-			sql = "CREATE TABLE IF NOT EXISTS Parking";
+			sql = "CREATE TABLE IF NOT EXISTS Parking(Parking String,precioHora float, plazasLibres int)";
 			stmt.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
