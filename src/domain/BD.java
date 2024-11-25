@@ -64,8 +64,10 @@ public class BD {
 		}
 	}
 	
+	//Metodos usuario
+	//buscar usuario
 	public static Usuario buscarUsario(Connection con, String DNI) {
-		String sql = String.format("SELECT * FROM Usuario WHERE CorreoElectronico = '%s'", DNI);
+		String sql = String.format("SELECT * FROM Usuario WHERE dni = '%s'", DNI);
 		Usuario usuario= null;
 		try {
 			Statement st = con.createStatement();
@@ -86,6 +88,7 @@ public class BD {
 		return usuario;
 	}
 	
+	// Insertar Usuario
 	public static void insertarUsuario(Connection con, Usuario usuario){
 		if(buscarUsario(con,usuario.getDni())==null){
 			String sql = String.format("INSERT INTO Usuario VALUES('%s','%s','%s','%s','%s','%s','%s')", 
@@ -99,7 +102,7 @@ public class BD {
 			}
 		}
 	}
-	
+	// Obtener lista de Usuarios
 	public static List<Usuario> obtenerListaUsario(Connection con){
 		String sql = "SELECT * FROM Usuario";
 		List<Usuario> l = new ArrayList<>();
@@ -123,6 +126,99 @@ public class BD {
 		return l;
 	}
 	
+	//Metodos reservar
+	// buscarReserva
+	public static Reserva buscarReserva(Connection con, String dni) {
+		String sql = String.format("SELECT * FROM Reserva WHERE dni = '%s'", dni);
+		Reserva reserva= null;
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql); 
+			if(rs.next()) {
+				String ciudad = rs.getString("Ciudad");
+				String DNI = rs.getString("dni");
+				String matricula = rs.getString("matricula");
+				String nombreParking = rs.getString("nombreParking");
+				String llegada = rs.getString("hllegada");
+				String salida = rs.getString("hsalida");
+				String numeroPlaza = rs.getString("numeroPlaza");
+				String precioTotal = rs.getString("precioTotal");
+				reserva = new Reserva( ciudad, DNI, matricula,nombreParking, llegada, salida, Integer.parseInt(numeroPlaza), Float.parseFloat(precioTotal));
+			}
+			rs.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return reserva;	
+	}
+	
+	//Insertar Reserva
+	public static void insertarReserva(Connection con, Reserva reserva){
+			String sql = String.format("INSERT INTO Reserva VALUES('%s','%s','%s','%s','%s','%s','%s','%s')", 
+					reserva.getCiudad(), reserva.getDni(),reserva.getMatricula(), reserva.getNomParking(), reserva.gethLlegada(),reserva.gethSalida(), reserva.getNumPlaza(),reserva.getPrecioTotal());
+			try {
+				Statement st = con.createStatement();
+				st.executeUpdate(sql);
+				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+		}
+	}
+	
+	//Obtener lista reservas
+	public static List<Reserva> obtenerListaReservas(Connection con){
+		String sql = "SELECT * FROM Reserva";
+		List<Reserva> l = new ArrayList<>();
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			while(rs.next()){
+				String ciudad = rs.getString("Ciudad");
+				String DNI = rs.getString("dni");
+				String matricula = rs.getString("matricula");
+				String nombreParking = rs.getString("nombreParking");
+				String llegada = rs.getString("hllegada");
+				String salida = rs.getString("hsalida");
+				String numeroPlaza = rs.getString("numeroPlaza");
+				String precioTotal = rs.getString("precioTotal");
+				Reserva reserva = new Reserva(ciudad, DNI, matricula,nombreParking, llegada, salida, Integer.parseInt(numeroPlaza), Float.parseFloat(precioTotal));
+				l.add(reserva);
+			}
+			rs.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return l;	
+	}
+	
+	// obtner lista reservas por dni
+	public static List<Reserva> obtenerListaReservasPorDNI(Connection con, String dni){
+		String sql = String.format("SELECT * FROM Reserva WHERE dni = '%s'", dni);
+		List<Reserva> l = new ArrayList<>();
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			while(rs.next()){
+				String ciudad = rs.getString("Ciudad");
+				String DNI = rs.getString("dni");
+				String matricula = rs.getString("matricula");
+				String nombreParking = rs.getString("nombreParking");
+				String llegada = rs.getString("hllegada");
+				String salida = rs.getString("hsalida");
+				String numeroPlaza = rs.getString("numeroPlaza");
+				String precioTotal = rs.getString("precioTotal");
+				Reserva reserva = new Reserva(ciudad, DNI, matricula,nombreParking, llegada, salida, Integer.parseInt(numeroPlaza), Float.parseFloat(precioTotal));
+				l.add(reserva);
+			}
+			rs.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return l;	
+	}
 	public static void cerrarBD(Connection con) {
 		if(con != null) {
 			try {
@@ -131,5 +227,7 @@ public class BD {
 			}
 		}
 	}
+	
+	
 	
 }
