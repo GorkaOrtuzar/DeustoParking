@@ -68,13 +68,18 @@ public class VentanaInicioSesion extends JFrame {
 			
 		String dni = txtDNI.getText();
 		String con = txtContrasenia.getText();
-/*		 if(dni.isEmpty()) {
-//				JOptionPane.showMessageDialog(null, "Inserte un Usuario","ERROR",JOptionPane.ERROR_MESSAGE);
-//			}
-//		 //Mira si la contraseña esta vacia
-//		 else if (con.isEmpty()) {
-//				 JOptionPane.showMessageDialog(null, "Inserte Contraseña","ERROR",JOptionPane.ERROR_MESSAGE);
-//			 }
+		 if(dni.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Inserte un Usuario","ERROR",JOptionPane.ERROR_MESSAGE);
+			}
+		 else if(dni.length()!= 9){
+				JOptionPane.showMessageDialog(null, "DNI no valido","ERROR",JOptionPane.ERROR_MESSAGE);
+
+		 }
+		 //Mira si la contraseña esta vacia
+		 else if (con.isEmpty()) {
+				 JOptionPane.showMessageDialog(null, "Inserte Contraseña","ERROR",JOptionPane.ERROR_MESSAGE);
+			 }
+		 /*
 //		 Usuario u = Contenedora.buscarUsuario(dni);
 //		 if(u == null || !dni.equals(u.getDni())) {
 //			 JOptionPane.showMessageDialog(null, "DNI no encintrado","ERROR",JOptionPane.ERROR_MESSAGE);
