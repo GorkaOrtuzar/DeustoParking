@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
+import java.sql.Connection;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -21,6 +22,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import domain.BD;
 import domain.Contenedora;
 import domain.Reserva;
 import domain.Usuario;
@@ -40,6 +42,7 @@ public class VentanaIngresarDatos extends JFrame {
 	private JButton btnSiguiente;
 	
 	private JFrame vActual;
+	private Connection con;
 	
 	public VentanaIngresarDatos(JFrame va, Reserva r){
 		
@@ -110,6 +113,7 @@ public class VentanaIngresarDatos extends JFrame {
 
 			}else {
 			Usuario u = new Usuario(Nombre, Apellido, tlf, dni, contrasenia);
+			BD.insertarUsuario(con, u);
 			vActual.dispose(); 
 			new VentanaResumen(vActual, r, u);
 			}

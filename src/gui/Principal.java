@@ -22,6 +22,7 @@ public class Principal {
 			//BD.insertarUsuario(con,u1);
 			//BD.insertarUsuario(con,u2);
 			BD.crearTablas(con);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

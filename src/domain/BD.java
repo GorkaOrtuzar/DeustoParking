@@ -11,15 +11,15 @@ import java.sql.SQLException;
 
 public class BD {
 	private static Connection con;
-	
 	public static Connection initBD(String nombreBD) {
-		con= null;
+		 con = null;
 		try {
+			System.out.println(con);
 			Class.forName("org.sqlite.JDBC");
-			con = DriverManager.getConnection("jdbc:sqlite:" + nombreBD);
+			con = DriverManager.getConnection("jdbc:sqlite:"+nombreBD);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return con;
@@ -55,7 +55,7 @@ public class BD {
 		String sqlParking = "DROP TABLE IF EXISTS Parking";
 		
 		try {
-			java.sql.Statement stmt = con.createStatement();
+			Statement stmt = con.createStatement();
 			stmt.executeUpdate(sqlUsuario);
 			stmt.executeUpdate(sqlReservas);
 			stmt.executeUpdate(sqlParking);

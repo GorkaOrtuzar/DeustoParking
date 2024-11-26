@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.sql.Connection;
 import java.util.logging.Level;
 
 import javax.swing.BoxLayout;
@@ -14,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import domain.BD;
 import domain.Contenedora;
 import domain.Reserva;
 import domain.Usuario;
@@ -29,6 +31,7 @@ public class VentanaInicioSesion extends JFrame {
 	
 	private JFrame vActual;
 	private JFrame vAnterior;
+	private Connection con;
 	
 
 	
@@ -36,7 +39,7 @@ public class VentanaInicioSesion extends JFrame {
 		 super();
 		vActual = this;
 		vAnterior = va;
-		
+	
 
 		
 		pCentro = new JPanel();
@@ -67,7 +70,7 @@ public class VentanaInicioSesion extends JFrame {
 		btnVer.addActionListener((e)->{
 			
 		String dni = txtDNI.getText();
-		String con = txtContrasenia.getText();
+		String contr = txtContrasenia.getText();
 		 if(dni.isEmpty()) {
 				JOptionPane.showMessageDialog(null, "Inserte un Usuario","ERROR",JOptionPane.ERROR_MESSAGE);
 			}
@@ -76,7 +79,7 @@ public class VentanaInicioSesion extends JFrame {
 
 		 }
 		 //Mira si la contraseña esta vacia
-		 else if (con.isEmpty()) {
+		 else if (contr.isEmpty()) {
 				 JOptionPane.showMessageDialog(null, "Inserte Contraseña","ERROR",JOptionPane.ERROR_MESSAGE);
 			 }
 		 /*
@@ -88,15 +91,16 @@ public class VentanaInicioSesion extends JFrame {
 //			 if(!con.equals(u.getContrasenia())) {
 //				JOptionPane.showMessageDialog(null, "Contraseña incorrecta","ERROR",JOptionPane.WARNING_MESSAGE);
 //
-//			 }else {*/
+//			*/ else {
 				// usuario = u;
+		 		BD.buscarUsario(con, dni);
 				 vActual.dispose();
 				 vAnterior.dispose();
 				 new VentanaMisReservas(vActual);
 				 txtDNI.setText("");
 				 txtContrasenia.setText("");
 		
-
+				}
 //			 }
 //			 
 //	 }
