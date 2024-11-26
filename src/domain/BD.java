@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -91,17 +92,20 @@ public class BD {
 	// Insertar Usuario
 	public static void insertarUsuario(Connection con, Usuario usuario){
 		if(buscarUsario(con,usuario.getDni())==null){
-			String sql = String.format("INSERT INTO Usuario VALUES('%s','%s','%s','%s','%s','%s','%s')", 
-					usuario.getNombre(), usuario.getApellido(), usuario.getTlf(), usuario.getDni(),usuario.getContrasenia());
-			try {
-				Statement st = con.createStatement();
-				st.executeUpdate(sql);
-				st.close();
+			String sql = "INSERT INTO Usuario (nombre, apellido, tlf, dni, contrasenia) VALUES (?, ?, ?, ?, ?)";
+			try (PreparedStatement ps = con.prepareStatement(sql)) {
+			    ps.setString(1, usuario.getNombre());
+			    ps.setString(2, usuario.getApellido());
+			    ps.setString(3, usuario.getTlf());
+			    ps.setString(4, usuario.getDni());
+			    ps.setString(5, usuario.getContrasenia());
+			    ps.executeUpdate();
+			    System.out.println("Usuario insertado correctamente");
 			} catch (SQLException e) {
-				e.printStackTrace();
+			    e.printStackTrace();
 			}
 		}
-	}
+		}
 	// Obtener lista de Usuarios
 	public static List<Usuario> obtenerListaUsario(Connection con){
 		String sql = "SELECT * FROM Usuario";
