@@ -16,6 +16,7 @@ public class Principal {
 		nombreBD = "deustoParking.db";
 		VentanaCargando va = new VentanaCargando();
 		con = BD.initBD(nombreBD);
+		
 		try {
 			BD.borrarTabla(con);
 			//Usuario u1 = new Usuario("Gorka","Ortuzar","123456789","12345678A","a1");

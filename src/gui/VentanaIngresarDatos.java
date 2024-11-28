@@ -120,6 +120,7 @@ public class VentanaIngresarDatos extends JFrame {
 			vActual.dispose(); 
 			new VentanaResumen(vActual, r, u);
 			}
+			
 		});
 		
 		//PANEL CENTRO
