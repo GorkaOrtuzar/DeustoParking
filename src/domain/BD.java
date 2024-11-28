@@ -10,13 +10,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BD {
-	private static Connection con;
+	
 	public static Connection initBD(String nombreBD) {
-		 con = null;
+		Connection con = null;
 		try {
-			System.out.println(con);
 			Class.forName("org.sqlite.JDBC");
 			con = DriverManager.getConnection("jdbc:sqlite:"+nombreBD);
+			System.out.println("Nombre: "+nombreBD);
+			System.out.println(con);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -25,7 +26,7 @@ public class BD {
 		return con;
 	}
 	
-	public static void closeBD() {
+	public static void closeBD(Connection con) {
 		if(con!= null) {
 			try {
 				con.close();

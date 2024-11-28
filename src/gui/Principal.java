@@ -10,11 +10,12 @@ import domain.Usuario;
 
 public class Principal {
 
+	static Connection con;
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		String nombreBD;
-		nombreBD = "db/deustoParking.db";
+		nombreBD = "deustoParking.db";
 		VentanaCargando va = new VentanaCargando();
-		Connection con = BD.initBD(nombreBD);
+		con = BD.initBD(nombreBD);
 		try {
 			BD.borrarTabla(con);
 			//Usuario u1 = new Usuario("Gorka","Ortuzar","123456789","12345678A","a1");
@@ -27,7 +28,6 @@ public class Principal {
 			e.printStackTrace();
 		}
 		
-		BD.cerrarBD(con);
 		
 	}
 

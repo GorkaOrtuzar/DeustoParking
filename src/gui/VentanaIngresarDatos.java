@@ -8,6 +8,8 @@ import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -113,7 +115,8 @@ public class VentanaIngresarDatos extends JFrame {
 
 			}else {
 			Usuario u = new Usuario(Nombre, Apellido, tlf, dni, contrasenia);
-			BD.insertarUsuario(con, u);
+			BD.insertarUsuario(Principal.con, u);
+			
 			vActual.dispose(); 
 			new VentanaResumen(vActual, r, u);
 			}
