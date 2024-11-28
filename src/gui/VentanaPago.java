@@ -2,17 +2,28 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
@@ -22,38 +33,28 @@ import domain.Usuario;
 
 public class VentanaPago extends JFrame{
 
-	private JPanel pNorte,pCentro,pSur,pDatosPago;
-	private JLabel lblIntroDatos,lblConfirma,lblPago;
-	private JLabel lblNTarjeta, lblFechExpiracion,lblCVV;
-	private JTextField txtNTarjeta,txtFechaExpiracion,txtCVV;
-	private JButton btnSiguiente;
-	
+	private static final long serialVersionUID = 1L;
+	private JPanel pNorte, pCentro, pSur, pTarjeta, pFecha, pCVV, pTipoPago, pAceptarTerminos, pContTarjeta, pCombos, pContComboMes;
+    private JLabel lblIntroDatos, lblConfirma, lblTitularTarjeta, lblPago, lblNumTarjeta, lblVisa, lblGooglePay, lblApplePay, lblMasterCard;
+    private JTextField txtTitularTarjeta, txtNumTarjeta, txtCVV;
+    private JComboBox<String> comboMes, comboAnio;
+    private JButton btnSiguiente, btnVolver;
+	private JRadioButton rbtnVisa, rbtnMaster, rbtnGoogle, rbtnApple;
+    private JCheckBox cbtnTerminos;
+    private ButtonGroup btnGrupo;
 	private JFrame vActual, vAnterior;
 	
-	public VentanaPago(JFrame va, Reserva r) {
+	public VentanaPago(JFrame va) {
 		
 		super();
 		vActual = this;
 		vAnterior=va;
 		
-		pCentro = new JPanel();
-		pNorte = new JPanel();
+
+        // PANEL NORTE
+        pNorte = new JPanel();
 		pNorte.setLayout(new FlowLayout(FlowLayout.CENTER, 300, 10));
-		pSur = new JPanel();
-		pDatosPago = new JPanel();
-		pDatosPago.setLayout(new GridLayout(6, 0));
-		pDatosPago.setBorder(new EmptyBorder(150, 150, 150, 150 ));
-		pDatosPago.setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createLineBorder(Color.GRAY),"Datos de pago",
-                TitledBorder.LEFT,TitledBorder.CENTER,new Font("Arial", Font.BOLD, 14),Color.BLACK
-        ));
 		
-		getContentPane().add(pNorte, BorderLayout.NORTH);
-		getContentPane().add(pCentro, BorderLayout.CENTER);
-		getContentPane().add(pSur,BorderLayout.SOUTH);
-		
-		
-		//Panel Norte
 		lblIntroDatos = new JLabel("1. Introduce Datos");
 		lblConfirma = new JLabel("2. Confirma Reserva");
 		lblPago = new JLabel("3. Pago Final");
@@ -62,63 +63,255 @@ public class VentanaPago extends JFrame{
 		pNorte.add(lblIntroDatos);
 		pNorte.add(lblConfirma);
 		pNorte.add(lblPago);
-		
-		
-		lblNTarjeta = new JLabel("Nº de tarjeta(Sin espacios)");
-		txtNTarjeta = new JTextField();
-		lblFechExpiracion = new JLabel("Fecha de Expiracion");
-		txtFechaExpiracion = new JTextField();
-		lblCVV = new JLabel( "CVV");
-		txtCVV = new JTextField();
-		
-		pDatosPago.add(lblNTarjeta);
-		pDatosPago.add(txtNTarjeta);
-		pDatosPago.add(lblFechExpiracion);
-		pDatosPago.add(txtFechaExpiracion);
-		pDatosPago.add(lblCVV);
-		pDatosPago.add(txtCVV);
+        
+        // PANEL CENTRO
+        pCentro = new JPanel();
+        pCentro.setLayout(new BoxLayout(pCentro, BoxLayout.Y_AXIS));
+        pCentro.add(Box.createVerticalStrut(40));
+        
 
+        // Panel Tarjeta
+        pContTarjeta = new JPanel();
+        pTarjeta = new JPanel();
+        pTarjeta.setLayout(new GridLayout(2, 2, 100, 15)); 
 
+        // Panel Tarjeta - Datos de la Tarjeta
+        pContTarjeta.setPreferredSize(new Dimension(300, 80));
+        pContTarjeta.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createEmptyBorder(10, 20, 10, 20),
+                BorderFactory.createTitledBorder(
+                        BorderFactory.createLineBorder(Color.GRAY), "1. Datos de la Tarjeta",
+                        TitledBorder.LEFT, TitledBorder.CENTER, new Font("Arial", Font.BOLD, 14), Color.BLACK
+                )
+        ));
 
-		pCentro.add(pDatosPago);
+        lblTitularTarjeta = new JLabel("Titular de la Tarjeta ");
+        txtTitularTarjeta = new JTextField("Ainara Maroto Fernández");
+        txtTitularTarjeta.setForeground(Color.GRAY);
+        txtTitularTarjeta.setPreferredSize(new Dimension(220, 30));
+
+        txtTitularTarjeta.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (txtTitularTarjeta.getText().equals("Ainara Maroto Fernández")) {
+                    txtTitularTarjeta.setText("");
+                    txtTitularTarjeta.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (txtTitularTarjeta.getText().isEmpty()) {
+                    txtTitularTarjeta.setText("Ainara Maroto Fernández");
+                    txtTitularTarjeta.setForeground(Color.GRAY);
+                }
+            }
+        });
+
+        lblNumTarjeta = new JLabel("Número de Tarjeta");
+        txtNumTarjeta = new JTextField("0000 0000 0000 0000");
+        txtNumTarjeta.setForeground(Color.GRAY);
+        txtNumTarjeta.setPreferredSize(new Dimension(220, 30));
+
+        txtNumTarjeta.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (txtNumTarjeta.getText().equals("0000 0000 0000 0000")) {
+                    txtNumTarjeta.setText("");
+                    txtNumTarjeta.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (txtNumTarjeta.getText().isEmpty()) {
+                    txtNumTarjeta.setText("0000 0000 0000 0000");
+                    txtNumTarjeta.setForeground(Color.GRAY);
+                }
+            }
+        });
+
+        pTarjeta.add(lblTitularTarjeta);
+        pTarjeta.add(lblNumTarjeta);
+        pTarjeta.add(txtTitularTarjeta);
+        pTarjeta.add(txtNumTarjeta);
+
+        pContTarjeta.add(pTarjeta);
+
+        // Panel Fecha de Expiración de Tarjeta
+        pFecha = new JPanel();
+        pFecha.setPreferredSize(new Dimension(300, 60));
+        pFecha.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createEmptyBorder(10, 20, 10, 20),
+                BorderFactory.createTitledBorder(
+                        BorderFactory.createLineBorder(Color.GRAY), "2. Fecha de Expiración",
+                        TitledBorder.LEFT, TitledBorder.CENTER, new Font("Arial", Font.BOLD, 14), Color.BLACK
+                )
+        ));
+
+        pCombos = new JPanel();
+        pContComboMes = new JPanel();
+        String[] meses = {"Mes", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
+        comboMes = new JComboBox<>(meses);
+        comboMes.setPreferredSize(new Dimension(150, 40));
+        String[] anios = {"Año", "2025", "2026", "2027", "2028", "2029"};
+        comboAnio = new JComboBox<>(anios);
+        comboAnio.setPreferredSize(new Dimension(150, 40));
+
+        comboMes.addActionListener((e) -> {
+            if (comboMes.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(null, "Por Favor, Seleccione un Mes", "ALERTA - Seleccione Mes", JOptionPane.WARNING_MESSAGE);
+                comboMes.setSelectedIndex(1);
+            }
+        });
+
+        comboAnio.addActionListener((e) -> {
+            if (comboAnio.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(null, "Por Favor, Seleccione un Año", "ALERTA - Seleccione Año", JOptionPane.WARNING_MESSAGE);
+                comboAnio.setSelectedIndex(1);
+            }
+        });
+
+        pContComboMes.add(comboMes);
+        pContComboMes.add(comboAnio);
+
+        pCombos.add(pContComboMes);
+        pFecha.add(pCombos);
+        pFecha.add(Box.createHorizontalStrut(100));
+
+        // Panel CVV
+        pCVV = new JPanel();
+        pCVV.setLayout(new FlowLayout());
+        txtCVV = new JTextField("CVV");
+        txtCVV.setForeground(Color.GRAY);
+        txtCVV.setPreferredSize(new Dimension(150, 40));
+        txtCVV.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (txtCVV.getText().equals("CVV")) {
+                    txtCVV.setText("");
+                    txtCVV.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (txtCVV.getText().isEmpty()) {
+                    txtCVV.setText("CVV");
+                    txtCVV.setForeground(Color.GRAY);
+                }
+            }
+        });
+        pCVV.add(txtCVV);
+        pFecha.add(pCVV);
+
+        // Panel Tipo de Pago
+        pTipoPago = new JPanel();
+        pTipoPago.setLayout(new GridLayout(2, 4));
+        pTipoPago.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createEmptyBorder(10, 20, 10, 20),
+                BorderFactory.createTitledBorder(
+                        BorderFactory.createLineBorder(Color.GRAY), "3. Seleccionar la forma de pago",
+                        TitledBorder.LEFT, TitledBorder.CENTER, new Font("Arial", Font.BOLD, 14), Color.BLACK
+                )
+        ));
+
+        btnGrupo = new ButtonGroup();
+
+        cargarImg("imagenes/visa.png", lblVisa, pTipoPago);
+        rbtnVisa = new JRadioButton("Tarjeta Visa");
+        btnGrupo.add(rbtnVisa);
+        pTipoPago.add(rbtnVisa);
+
+        cargarImg("imagenes/masterCard.png", lblMasterCard, pTipoPago);
+        rbtnMaster = new JRadioButton("Tarjeta MasterCard");
+        btnGrupo.add(rbtnMaster);
+        pTipoPago.add(rbtnMaster);
+
+        cargarImg("imagenes/googlePay.png", lblGooglePay, pTipoPago);
+        rbtnGoogle = new JRadioButton("GooglePay");
+        btnGrupo.add(rbtnGoogle);
+        pTipoPago.add(rbtnGoogle);
+
+        cargarImg("imagenes/applePay.png", lblApplePay, pTipoPago);
+        rbtnApple = new JRadioButton("ApplePay");
+        btnGrupo.add(rbtnApple);
+        pTipoPago.add(rbtnApple);
+
+        pAceptarTerminos = new JPanel(new FlowLayout(FlowLayout.LEFT, 40, 40));
 		
-		//Boton
-		btnSiguiente = new JButton("Finalizar Compra");
-		pSur.add(btnSiguiente);
-				
+		cbtnTerminos = new JCheckBox("He leído y acepto los Términos y Condiciones de Uso de DeustoParking.");
+		pAceptarTerminos.add(cbtnTerminos);
+
+        btnSiguiente = new JButton("Finalizar Compra");
 		btnSiguiente.addActionListener((e)->{
-			String NTarjeta = txtNTarjeta.getText();
-			String FechaExpiracion = txtFechaExpiracion.getText();
-			String CVV = txtCVV.getText();
-			
-			 if(NTarjeta.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Inserte el numero de tarjeta","ERROR",JOptionPane.ERROR_MESSAGE);
-				}
-			 //Mira si la contraseña esta vacia
-			 else if (FechaExpiracion.isEmpty()) {
-					 JOptionPane.showMessageDialog(null, "Inserte la fecha de expiracion","ERROR",JOptionPane.ERROR_MESSAGE);
-				 }
-			 else if (CVV.isEmpty()) {
-				 JOptionPane.showMessageDialog(null, "Inserte el CVV","ERROR",JOptionPane.ERROR_MESSAGE);
-			 }
-			 else {
-			JOptionPane.showMessageDialog(null, "Confirmar pago");
-			vActual.dispose();
-			new VentanaGuardar(vActual);
-			 }
-		});	
-				
-		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
-		int altoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
-		setSize(anchoP, altoP);
-		setExtendedState(MAXIMIZED_BOTH);
-		setResizable(false);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(50, 50, 1000, 800);
-		setTitle("Pago");
-		setVisible(true);			
 		
+		if(txtTitularTarjeta.getForeground().equals(Color.BLACK)) {
+			if(txtNumTarjeta.getText().matches("\\d{4} \\d{4} \\d{4} \\d{4}") && txtNumTarjeta.getForeground().equals(Color.BLACK)) {
+				if(!(comboMes.getSelectedIndex()==0)) {
+					if(!(comboAnio.getSelectedIndex()==0)) {
+						if(txtCVV.getForeground().equals(Color.BLACK) && txtCVV.getText().length()== 3) {
+							if ((rbtnVisa.isSelected()||rbtnMaster.isSelected()||rbtnGoogle.isSelected()||rbtnApple.isSelected())){
+								if(cbtnTerminos.isSelected()) {
+									new VentanaGuardar(vActual);
+								}else {
+									JOptionPane.showMessageDialog(null, "Acepte los Términos y Condiciones de Uso", "ERROR - Términos y Condiciones de Uso", JOptionPane.ERROR_MESSAGE);
+								}
+							}else {
+								JOptionPane.showMessageDialog(null, "Seleccione un Método de Pago", "ERROR - Forma de Pago", JOptionPane.ERROR_MESSAGE);		
+							}				
+						}else {
+							JOptionPane.showMessageDialog(null, "CVV Incorrecto", "ERROR - CVV", JOptionPane.ERROR_MESSAGE);
+						}
+					}else {
+						JOptionPane.showMessageDialog(null, "Año Incorrecto", "ERROR - AÑO", JOptionPane.ERROR_MESSAGE);
+					}
+				}else {
+					JOptionPane.showMessageDialog(null, "Mes Incorrecto", "ERROR - MES", JOptionPane.ERROR_MESSAGE);
+				}
+			}else {
+				JOptionPane.showMessageDialog(null, "Número de Tarjeta Incorrecto", "ERROR - Número de Tarjeta", JOptionPane.ERROR_MESSAGE);
+			}
+		}else {
+			JOptionPane.showMessageDialog(null, "Introduzca al Titular de la Tarjeta", "ERROR - Titular de la Tarjeta", JOptionPane.ERROR_MESSAGE);
+		}	
+	});
+		
+		btnVolver = new JButton("Volver");
+		btnVolver.addActionListener((e)->{
+			vActual.dispose();
+			vAnterior.setVisible(true);
+		});
+        pSur = new JPanel();
+        pSur.setLayout(new FlowLayout(FlowLayout.CENTER));
+        pSur.add(btnVolver);
+        pSur.add(Box.createHorizontalStrut(30));
+        pSur.add(btnSiguiente);
+
+        pCentro.add(pContTarjeta);
+        pCentro.add(pFecha);
+        pCentro.add(pTipoPago);
+        pCentro.add(pAceptarTerminos);
+
+        setLayout(new BorderLayout());
+        add(pNorte, BorderLayout.NORTH);
+        add(pCentro, BorderLayout.CENTER);
+        add(pSur, BorderLayout.SOUTH);
+
+        int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
+        int altoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
+        setSize(anchoP, altoP);
+        setExtendedState(MAXIMIZED_BOTH);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setBounds(50, 50, 1600, 800);
+        setTitle("Pago");
+        setVisible(true);
 	}
-	
+	public void cargarImg(String ruta, JLabel lbl, JPanel p) {
+        ImageIcon icon = new ImageIcon(ruta);
+        lbl = new JLabel(new ImageIcon(icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
+        p.add(lbl);
+    }
 	
 }
