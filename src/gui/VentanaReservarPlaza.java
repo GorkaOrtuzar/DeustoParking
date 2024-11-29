@@ -1,10 +1,9 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
+import java.awt.GraphicsEnvironment;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.JButton;
@@ -14,17 +13,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.border.EmptyBorder;
 
 import domain.Plaza;
 import domain.Reserva;
 
 public class VentanaReservarPlaza extends JFrame{
-	private JPanel pCentro, pNorte, pSur, pTabla, pIzq;
+	
+	private static final long serialVersionUID = 1L;
+	private JPanel pCentro, pNorte, pSur, pCont, pPrincipal, pIzq;
 	private JLabel lblReservarPlaza;
 	private JButton btnSiguiente;
 	private JFrame vActual;
-	private JFrame vAnterior;
 	
 	private ModeloTablaReservarPlaza modeloTabla;
 	private JTable tabla;
@@ -35,23 +34,22 @@ public class VentanaReservarPlaza extends JFrame{
 		super();
 		
 		vActual = this;
-		vAnterior = va;
 		
 		setBounds(300,200,600,400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		//Paneles
-		pCentro = new JPanel(new GridLayout(2,1));
+		pCont = new JPanel();
+		pCont.setLayout(new BorderLayout());
+		
+		pPrincipal = new JPanel();
+        pPrincipal.setLayout(new BorderLayout());
+		pCentro = new JPanel();
+        pCentro.setLayout(new BorderLayout());
+        
 		pNorte = new JPanel();
 		pSur = new JPanel();
 		pIzq = new JPanel();
-		pTabla = new JPanel();
-		
-		
-		getContentPane().add(pNorte, BorderLayout.NORTH);
-		getContentPane().add(pCentro, BorderLayout.CENTER);
-		getContentPane().add(pIzq, BorderLayout.WEST);
-		getContentPane().add(pSur, BorderLayout.SOUTH);
 		
 		//Label 
 		lblReservarPlaza = new JLabel("Reservar Plaza");
@@ -60,7 +58,7 @@ public class VentanaReservarPlaza extends JFrame{
 		
 		//ComboBox
 		JPanel pComboBox = new JPanel();
-		JLabel Parkings = new JLabel("Plantas: ");
+		JLabel Parkings = new JLabel("Planta: ");
 		String[] parkings = {"0", "-1", "-2", "-3"};
 		JComboBox<String> comboParking = new JComboBox<String>(parkings);
 		pComboBox.add(Parkings);
@@ -68,7 +66,7 @@ public class VentanaReservarPlaza extends JFrame{
 		pIzq.add(pComboBox);
 		
 		//Creación botón
-		btnSiguiente = new JButton("SIGUIENTE");
+		btnSiguiente = new JButton("Siguiente");
 		pSur.add(btnSiguiente);
 		
 		btnSiguiente.addActionListener((e)->{
@@ -82,9 +80,8 @@ public class VentanaReservarPlaza extends JFrame{
 		//Creación de la lista
 		List<Plaza> lPlazas = Arrays.asList(
 				new Plaza(1, "A", 1, false),   
-	            new Plaza(1, "A", 2, true),
-	            new Plaza(1, "B", 3, false),   
-	            new Plaza(1, "B", 4, false) 
+	            new Plaza(1, "B", 1, true),   
+	            new Plaza(1, "A", 3, true) 
 		);
 		
 		
@@ -98,13 +95,33 @@ public class VentanaReservarPlaza extends JFrame{
 		//Quitar bordes a las celdas
 		tabla.setIntercellSpacing(new Dimension(0, 0));  
 		tabla.setBorder(null);
-		tabla.setRowHeight(30);
+		tabla.setRowHeight(80);
 	     
-
-		setVisible(true);
+		//Quitar bordes a las celdas
+		tabla.setIntercellSpacing(new Dimension(0, 0));  
+		tabla.setBorder(null);
+		tabla.setRowHeight(80);
 		
+		pCont.add(pIzq, BorderLayout.WEST);
+		pCont.add(pNorte, BorderLayout.NORTH);
+		pCont.add(pCentro, BorderLayout.CENTER);
+		pCont.add(pSur, BorderLayout.SOUTH);
+		pPrincipal.add(pCont);
+		
+		getContentPane().add(pPrincipal, BorderLayout.CENTER);
+		
+		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
+        int altoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
+        setSize(anchoP, altoP);
+        setExtendedState(MAXIMIZED_BOTH);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setBounds(50, 50, 1600, 800);
+        setTitle("Pago");
+        setVisible(true);
 		
 		}
+	
 	
 
 }
