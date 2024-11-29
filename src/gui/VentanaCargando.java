@@ -35,7 +35,7 @@ public class VentanaCargando extends JFrame{
 		
 		bProgreso = new JProgressBar();
 		bProgreso.setStringPainted(true);
-		bProgreso.setForeground(Color.YELLOW);
+		bProgreso.setForeground(Color.ORANGE);
 		
 		bProgreso.setUI(new BasicProgressBarUI() {
 			 protected Color getSelectionBackground() {

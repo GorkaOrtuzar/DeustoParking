@@ -13,7 +13,7 @@ public class Principal {
 	static Connection con;
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		String nombreBD;
-		nombreBD = "deustoParking.db";
+		nombreBD = "db/deustoParking.db";
 		VentanaCargando va = new VentanaCargando();
 		con = BD.initBD(nombreBD);
 		

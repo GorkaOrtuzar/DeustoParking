@@ -25,11 +25,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
-import domain.Reserva;
-import domain.Usuario;
 
 public class VentanaPago extends JFrame{
 
@@ -253,7 +250,8 @@ public class VentanaPago extends JFrame{
 						if(txtCVV.getForeground().equals(Color.BLACK) && txtCVV.getText().length()== 3) {
 							if ((rbtnVisa.isSelected()||rbtnMaster.isSelected()||rbtnGoogle.isSelected()||rbtnApple.isSelected())){
 								if(cbtnTerminos.isSelected()) {
-									new VentanaGuardar(vActual);
+									vActual.dispose(); 
+									new VentanaProcesandoPago(vActual);
 								}else {
 									JOptionPane.showMessageDialog(null, "Acepte los Términos y Condiciones de Uso", "ERROR - Términos y Condiciones de Uso", JOptionPane.ERROR_MESSAGE);
 								}
@@ -282,11 +280,14 @@ public class VentanaPago extends JFrame{
 			vActual.dispose();
 			vAnterior.setVisible(true);
 		});
+		
+		
         pSur = new JPanel();
         pSur.setLayout(new FlowLayout(FlowLayout.CENTER));
         pSur.add(btnVolver);
         pSur.add(Box.createHorizontalStrut(30));
         pSur.add(btnSiguiente);
+        
 
         pCentro.add(pContTarjeta);
         pCentro.add(pFecha);
