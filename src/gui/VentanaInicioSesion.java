@@ -82,29 +82,19 @@ public class VentanaInicioSesion extends JFrame {
 		 else if (contr.isEmpty()) {
 				 JOptionPane.showMessageDialog(null, "Inserte Contraseña","ERROR",JOptionPane.ERROR_MESSAGE);
 			 }
-		 /*
-//		 Usuario u = Contenedora.buscarUsuario(dni);
-//		 if(u == null || !dni.equals(u.getDni())) {
-//			 JOptionPane.showMessageDialog(null, "DNI no encintrado","ERROR",JOptionPane.ERROR_MESSAGE);
-//		 }
-//		 else if(dni.equals(u.getDni())){
-//			 if(!con.equals(u.getContrasenia())) {
-//				JOptionPane.showMessageDialog(null, "Contraseña incorrecta","ERROR",JOptionPane.WARNING_MESSAGE);
-//
-//			*/ else {
-				// usuario = u;
-		 		BD.buscarUsario(con, dni);
+		
+		 else {
+				
+		 		 BD.buscarUsario(Principal.con, dni);
 				 vActual.dispose();
 				 vAnterior.dispose();
-				 new VentanaMisReservas(vActual);
+				 new VentanaMisReservas(vActual ,dni);
 				 txtDNI.setText("");
 				 txtContrasenia.setText("");
 		
 				}
-//			 }
-//			 
-//	 }
-//		 
+			 
+			 	 
 		});
 		setBounds(300, 200, 300, 300);
 		setTitle("Inicio Sesion");

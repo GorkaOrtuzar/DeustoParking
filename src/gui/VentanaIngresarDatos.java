@@ -44,7 +44,7 @@ public class VentanaIngresarDatos extends JFrame {
 	private JButton btnSiguiente;
 	
 	private JFrame vActual;
-	private Connection con;
+	
 	
 	public VentanaIngresarDatos(JFrame va, Reserva r){
 		

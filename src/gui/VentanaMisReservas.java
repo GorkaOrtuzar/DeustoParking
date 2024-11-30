@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,8 +20,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+import domain.BD;
 import domain.Usuario;
 
 public class VentanaMisReservas extends JFrame {
@@ -37,9 +40,10 @@ public class VentanaMisReservas extends JFrame {
 	private JScrollPane scrollTabla;
 	private JFrame vActual, vAnterior;
 	
-	public VentanaMisReservas(JFrame va ) {
+	public VentanaMisReservas(JFrame va, String dni ) {
 		vActual = this;
 		vAnterior = va;
+		
 		
 		//Instanciar los paneles
 		pNorte = new JPanel();
@@ -48,6 +52,17 @@ public class VentanaMisReservas extends JFrame {
 		pCentro.setBorder(new EmptyBorder(100, 100, 100, 100));
 		pCentro.setLayout(new GridLayout(1, 2));
 		pDatos = new JPanel();
+		pDatos.setLayout(new BoxLayout(pDatos,BoxLayout.Y_AXIS));
+		pDatos.setBorder(new EmptyBorder(50, 200, 50, 200));
+		pDatos.setLayout(new GridLayout(5, 1));
+		
+		 pDatos.setBorder(BorderFactory.createCompoundBorder(
+	                BorderFactory.createEmptyBorder(0, 100, 0, 100),
+	                BorderFactory.createTitledBorder(
+	                        BorderFactory.createLineBorder(Color.GRAY), "Datos Personales",
+	                        TitledBorder.LEFT, TitledBorder.CENTER, new Font("Arial", Font.BOLD, 14), Color.BLACK
+	                )
+	        ));
 
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pSur, BorderLayout.SOUTH);
@@ -60,18 +75,18 @@ public class VentanaMisReservas extends JFrame {
 		pNorte.add(lblReserva);
 		
 		//datos del usuario
-//		lblNombre = new JLabel("NOMBRE: " + u.getNombre());
-//		lblApellido = new JLabel("APELLIDO: " + u.getApellido());
-//		lbldni = new JLabel("DNI: " + u.getDni());
-//		lbltlf = new JLabel("TLF: " + u.getTlf());
-//		lblContrasenia = new JLabel("CONTRASEÑA: " + u.getContrasenia());
-//		pDatos.add(lblNombre);
-//		pDatos.add(lblApellido);
-//		pDatos.add(lbldni);
-//		pDatos.add(lbltlf);
-//		pDatos.add(lblContrasenia);
-//		pCentro.add(pDatos);
-//		
+		lblNombre = new JLabel(" - NOMBRE: " + BD.buscarUsario(Principal.con,dni).getNombre());
+		lblApellido = new JLabel(" - APELLIDO: " + BD.buscarUsario(Principal.con,dni).getApellido());
+		lbldni = new JLabel(" - DNI: " + BD.buscarUsario(Principal.con,dni).getDni());
+		lbltlf = new JLabel(" - TLF: " + BD.buscarUsario(Principal.con,dni).getTlf());
+		lblContrasenia = new JLabel(" - CONTRASEÑA: " + BD.buscarUsario(Principal.con,dni).getContrasenia());
+		pDatos.add(lblNombre);
+		pDatos.add(lblApellido);
+		pDatos.add(lbldni);
+		pDatos.add(lbltlf);
+		pDatos.add(lblContrasenia);
+		pCentro.add(pDatos);
+		
 		
 		//Tabla
 		modeloTabla = new DefaultTableModel();
@@ -99,7 +114,6 @@ public class VentanaMisReservas extends JFrame {
 				l.setText(value.toString());
 				l.setBackground(table.getBackground());
 			}
-			
 			
 			return l;
 		});

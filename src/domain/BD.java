@@ -77,7 +77,7 @@ public class BD {
 			if(rs.next()) {
 				String nombre = rs.getString("Nombre");
 				String apellido = rs.getString("Apellido");
-				String tlf = rs.getString("Telefono");
+				String tlf = rs.getString("tlf");
 				String dni = rs.getString("dni");
 				String contrasenia = rs.getString("Contrasenia");
 				usuario = new Usuario(nombre, apellido, tlf, dni, contrasenia);
