@@ -148,7 +148,7 @@ public class BD {
 				String salida = rs.getString("hsalida");
 				String numeroPlaza = rs.getString("numeroPlaza");
 				String precioTotal = rs.getString("precioTotal");
-				reserva = new Reserva( ciudad, DNI, matricula,nombreParking, llegada, salida, Integer.parseInt(numeroPlaza), Float.parseFloat(precioTotal));
+				reserva = new Reserva(ciudad, DNI, matricula,nombreParking, llegada, salida, Integer.parseInt(numeroPlaza), Float.parseFloat(precioTotal));
 			}
 			rs.close();
 			st.close();
