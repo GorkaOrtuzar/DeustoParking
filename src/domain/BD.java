@@ -41,7 +41,7 @@ public class BD {
 		try {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(sql);
-			sql = "CREATE TABLE IF NOT EXISTS Reserva(Ciudad String, dni String, nombreParking String, hllegada Date, hsalida Date, numeroPlaza int, precioTotal float)";
+			sql = "CREATE TABLE IF NOT EXISTS Reserva(Ciudad String, dni String, matricula String,nombreParking String, hllegada String, hsalida String, numeroPlaza int, precioTotal float)";
 			stmt.executeUpdate(sql);
 			sql = "CREATE TABLE IF NOT EXISTS Parking(Parking String,precioHora float, plazasLibres int)";
 			stmt.executeUpdate(sql);

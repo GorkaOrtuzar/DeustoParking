@@ -35,7 +35,7 @@ public class VentanaMisReservas extends JFrame {
 	private JLabel lblReserva;
 	private JLabel lblNombre, lblApellido,lbltlf,lbldni,lblContrasenia;
 	
-	private DefaultTableModel modeloTabla; 
+	private ModeloTablaMisReservas modeloTabla; 
 	private JTable tabla; 
 	private JScrollPane scrollTabla;
 	private JFrame vActual, vAnterior;
@@ -89,16 +89,15 @@ public class VentanaMisReservas extends JFrame {
 		
 		
 		//Tabla
-		modeloTabla = new DefaultTableModel();
+		modeloTabla = new ModeloTablaMisReservas(null);
 		tabla = new JTable(modeloTabla);
 		scrollTabla = new JScrollPane(tabla);
 		scrollTabla.setBorder(BorderFactory.createEmptyBorder()); 	
-		String [] titulos = {"FECHA DE ENTRADA","FECHA DE SALIDA","NOMBRE DEL PARKING", "PRECIO"};
-		modeloTabla.setColumnIdentifiers(titulos);
 		tabla.setPreferredScrollableViewportSize(new java.awt.Dimension(700, 300));
 		tabla.getTableHeader().setReorderingAllowed(false);
-		cargarTabla();
+		BD.obtenerListaReservasPorDNI(Principal.con, dni);
 		pCentro.add(scrollTabla);
+		
 				
 		//renderer de las celdas	
 		tabla.setDefaultRenderer(Object.class, (table,value,isSelected,hasFocus,row,column)->{
