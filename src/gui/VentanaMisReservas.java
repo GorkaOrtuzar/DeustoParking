@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.BorderFactory;
@@ -24,6 +25,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import domain.BD;
+import domain.Reserva;
 import domain.Usuario;
 
 public class VentanaMisReservas extends JFrame {
@@ -95,7 +97,8 @@ public class VentanaMisReservas extends JFrame {
 		scrollTabla.setBorder(BorderFactory.createEmptyBorder()); 	
 		tabla.setPreferredScrollableViewportSize(new java.awt.Dimension(700, 300));
 		tabla.getTableHeader().setReorderingAllowed(false);
-		BD.obtenerListaReservasPorDNI(Principal.con, dni);
+		List<Reserva> reservas = BD.obtenerListaReservasPorDNI(Principal.con, dni);
+		modeloTabla.setlReservas(reservas);
 		pCentro.add(scrollTabla);
 		
 				

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 import domain.Reserva;
+import domain.Utilidades;
 
 public class ModeloTablaMisReservas extends DefaultTableModel {
 
@@ -50,8 +51,8 @@ public class ModeloTablaMisReservas extends DefaultTableModel {
 		Reserva r = lMisReservas.get(row);
 		
 		switch (column) {
-		case 0:  return r.gethLlegada();
-		case 1: return r.gethSalida();
+		case 0:  return Utilidades.dateToString(r.gethLlegada());
+		case 1: return Utilidades.dateToString(r.gethSalida());
 		case 2: return r.getNomParking();
 		case 3: return r.getPrecioTotal();
 		default:
