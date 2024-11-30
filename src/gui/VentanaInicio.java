@@ -32,7 +32,9 @@ import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import org.jdatepicker.JDatePicker;
 import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import java.util.Date;
@@ -56,9 +58,6 @@ public class VentanaInicio extends JFrame{
 		super();
 		vActual = this;
 		
-		
-
-		
 		//Instanciar los paneles
 		pCentro = new JPanel();
 		pCentro.setLayout(new BoxLayout(pCentro,BoxLayout.Y_AXIS));
@@ -68,17 +67,8 @@ public class VentanaInicio extends JFrame{
 		pImagen = new JPanel();
 		pTabla =  new JPanel();
 		pMisReservas = new JPanel(new BorderLayout());
+				
 		
-//		modeloEntrada = new UtilDateModel();
-//		modeloSalida = new UtilDateModel();
-//		
-//		configurarModeloFecha(modeloEntrada, r.gethLlegada());
-//		configurarModeloFecha(modeloSalida, r.gethSalida());
-//		
-//		Properties p = new Properties();
-//		p.put("text.today", "Hoy");
-//		p.put("text.month", "Mes");
-//		p.put("text.year", "Año");
 		
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pCentro, BorderLayout.CENTER);
@@ -122,51 +112,72 @@ public class VentanaInicio extends JFrame{
 	    pComboBox.add(ComboCiudades);
 	    pTabla.add(pComboBox);
 	    
-	    //JSpinner Entrada
-	    JPanel pJSpinnerEntrada = new JPanel();
-		pJSpinnerEntrada.setBounds(20,20,50,20);
-		pJSpinnerEntrada.setLayout(new GridLayout(2, 1));
-		JLabel FechaEntrada= new  JLabel("Fecha de entrada: ");
-		JSpinner SFechaEntrada = new JSpinner(new SpinnerDateModel());
-		Dimension spinner1 = new Dimension(10, 25);
-		SFechaEntrada.setPreferredSize(spinner1);
-        SFechaEntrada.setEditor(new JSpinner.DateEditor(SFechaEntrada, "dd/MM/yyyy"));
-	    pJSpinnerEntrada.add(FechaEntrada);
-	    pJSpinnerEntrada.add(SFechaEntrada);
-	    pTabla.add(pJSpinnerEntrada);
 	    
-//	    dpaFechaEntradaPanel = new JDatePanelImpl(modeloEntrada, p);
-//		dpaFechaEntradaPanel.addActionListener(e -> {
-//			modeloEntrada.setValue(r.gethLlegada());
-//			modeloEntrada.setSelected(true);
-//	    	pJSpinnerSalida.add(dpaFechaSalidaPanel);
-//		});
+	    //calendarios
+	    JLabel lblEntrada = new JLabel("Fecha de entrada: ");
+	    lblEntrada.setBounds(20, 20, 120, 25);
+	    
+	    Properties properties = new Properties();
+        properties.put("text.today", "Hoy");
+        properties.put("text.month", "Mes");
+        properties.put("text.year", "Año");
+
+        //CalendarioEntrada
+        UtilDateModel modeloEntrada = new UtilDateModel();
+        JDatePanelImpl panelFechaEntrada = new JDatePanelImpl(modeloEntrada, properties);
+        JDatePickerImpl DPentrada = new JDatePickerImpl(panelFechaEntrada, null);
+        DPentrada.setBounds(150, 20, 200, 30);
+        JPanel pPickerEntrada = new JPanel();
+        pPickerEntrada.setLayout(new GridLayout(2, 1));
+        pPickerEntrada.add(lblEntrada);
+        pPickerEntrada.add(DPentrada);
+        pTabla.add(pPickerEntrada);
+        
+        //Calendario Salida
+        JLabel lblSalida = new JLabel("Fecha de salida: ");
+	    lblEntrada.setBounds(20, 20, 120, 25);
+        UtilDateModel modeloSalida = new UtilDateModel();
+        JDatePanelImpl panelFechaSalida = new JDatePanelImpl(modeloSalida, properties);
+        JDatePickerImpl DPSalida = new JDatePickerImpl(panelFechaSalida, null);
+        DPentrada.setBounds(150, 20, 200, 30);
+        JPanel pPickerSalida = new JPanel();
+        pPickerSalida.add(lblSalida);
+        pPickerSalida.setLayout(new GridLayout(2, 1));
+        pPickerSalida.add(DPSalida);
+        pTabla.add(pPickerSalida);
+        
+	    
+//	    //JSpinner Entrada
+//	    JPanel pJSpinnerEntrada = new JPanel();
+//		pJSpinnerEntrada.setBounds(20,20,50,20);
+//		pJSpinnerEntrada.setLayout(new GridLayout(2, 1));
+//		JLabel FechaEntrada= new  JLabel("Fecha de entrada: ");
+//		JSpinner SFechaEntrada = new JSpinner(new SpinnerDateModel());
+//		Dimension spinner1 = new Dimension(10, 25);
+//		SFechaEntrada.setPreferredSize(spinner1);
+//        SFechaEntrada.setEditor(new JSpinner.DateEditor(SFechaEntrada, "dd/MM/yyyy"));
+//	    pJSpinnerEntrada.add(FechaEntrada);
+//	    pJSpinnerEntrada.add(SFechaEntrada);
+//	    pTabla.add(pJSpinnerEntrada);
+//	    
 //		
-		
-	    //JSpinner Salida
-	    JPanel pJSpinnerSalida = new JPanel();
-		pJSpinnerSalida.setBounds(20,20,50,20);
-		pJSpinnerSalida.setLayout(new GridLayout(2, 1));
-		JLabel FechaSalida= new  JLabel("Fecha de salida: ");
-		JSpinner SFechaSalida = new JSpinner(new SpinnerDateModel());
-		Dimension spinner2 = new Dimension(10, 25);
-		SFechaSalida.setPreferredSize(spinner2);
-        SFechaSalida.setEditor(new JSpinner.DateEditor(SFechaSalida, "dd/MM/yyyy"));
-	    pJSpinnerSalida.add(FechaSalida);
-	    pJSpinnerSalida.add(SFechaSalida);
-	    pTabla.add(pJSpinnerSalida);
+//	    //JSpinner Salida
+//	    JPanel pJSpinnerSalida = new JPanel();
+//		pJSpinnerSalida.setBounds(20,20,50,20);
+//		pJSpinnerSalida.setLayout(new GridLayout(2, 1));
+//		JLabel FechaSalida= new  JLabel("Fecha de salida: ");
+//		JSpinner SFechaSalida = new JSpinner(new SpinnerDateModel());
+//		Dimension spinner2 = new Dimension(10, 25);
+//		SFechaSalida.setPreferredSize(spinner2);
+//        SFechaSalida.setEditor(new JSpinner.DateEditor(SFechaSalida, "dd/MM/yyyy"));
+//	    pJSpinnerSalida.add(FechaSalida);
+//	    pJSpinnerSalida.add(SFechaSalida);
+//	    pTabla.add(pJSpinnerSalida);
 	    
-//	    dpaFechaSalidaPanel = new JDatePanelImpl(modeloSalida, p);
-//		dpaFechaSalidaPanel.addActionListener(e -> {
-//			modeloSalida.setValue(r.gethSalida());
-//			modeloSalida.setSelected(true);
-//      pJSpinnerSalida.add(dpaFechaSalidaPanel);
-	    
-//		});
+
 		
 	    //JButton
 	    JPanel pJButtonBuscar = new JPanel();
-	    pJSpinnerSalida.setLayout(new GridLayout(2, 1));
 		pJButtonBuscar.setBounds(20,20,50,20);
 		JLabel lblVacia = new JLabel("");
 		JButton btnBuscar = new JButton("BUSCAR");
@@ -180,9 +191,10 @@ public class VentanaInicio extends JFrame{
 		//Action listener del boton buscar
 		btnBuscar.addActionListener((e)->{
 			String ciudad = (String) ComboCiudades.getSelectedItem();
-			Date fechaEntrada = (Date) SFechaEntrada.getValue();
-			Date fechaSalida = (Date) SFechaSalida.getValue();
+			Date fechaEntrada = (Date) DPentrada.getModel().getValue();
+			Date fechaSalida = (Date) DPSalida.getModel().getValue();
 			Reserva r = new Reserva(ciudad, fechaEntrada, fechaSalida);
+			System.out.println(r);
 			new VentanaReservaParking(vActual, r);
 			vActual.dispose();
 		});
