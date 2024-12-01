@@ -25,6 +25,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JSpinner.DateEditor;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerModel;
 import javax.swing.border.LineBorder;
@@ -47,10 +48,6 @@ public class VentanaInicio extends JFrame{
 	// Declarar los valores
 	private JPanel pCentro, pNorte,pTabla,pImagen, pMisReservas,pBloque1;
 	private JLabel lblDesutoCar;
-	//private JDatePanelImpl dpaFechaEntradaPanel, dpaFechaSalidaPanel;
-	private UtilDateModel modeloEntrada, modeloSalida;
-
-
 	
 	private JFrame vActual;
 	
