@@ -90,6 +90,7 @@ public class VentanaIngresarDatos extends JFrame {
 		btnSiguiente.addActionListener((e)->{
 			String Nombre = txtNombre.getText();
 			String Apellido = txtApellido.getText();
+			String matricula = txtMatricula.getText();
 			String tlf = txtTlf.getText();
 			String dni = txtDni.getText();
 			String contrasenia = txtContrasenia.getText();
@@ -114,11 +115,12 @@ public class VentanaIngresarDatos extends JFrame {
 				JOptionPane.showMessageDialog(null, "Contraseña no valido", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 
 			}else {
-			Usuario u = new Usuario(Nombre, Apellido, tlf, dni, contrasenia);
+			Usuario u = new Usuario(Nombre, Apellido,tlf, dni, contrasenia);
+			Reserva re = new Reserva(r.getCiudad(),dni,matricula,r.getNomParking(),Utilidades.dateToString(r.gethLlegada()),Utilidades.dateToString(r.gethSalida()),r.getNumPlaza(),r.getPrecioTotal());
 			BD.insertarUsuario(Principal.con, u);
 			
 			vActual.dispose(); 
-			new VentanaResumen(vActual, r, u);
+			new VentanaResumen(vActual, re, u);
 			}
 			
 		});
