@@ -44,7 +44,7 @@ public class BD {
 			stmt.executeUpdate(sql);
 			sql = "CREATE TABLE IF NOT EXISTS Reserva(Ciudad String, dni String, matricula String,nombreParking String, hllegada String, hsalida String, numeroPlaza int, precioTotal float)";
 			stmt.executeUpdate(sql);
-			sql = "CREATE TABLE IF NOT EXISTS Parking(Parking String,precioHora float, plazasLibres int)";
+			sql = "CREATE TABLE IF NOT EXISTS Parking(nomParking String,precioHora float, plazasLibres int)";
 			stmt.executeUpdate(sql);
 			//crear TablaPlazas
 			sql = "CREATE TABLE IF NOT EXISTS Plaza(pisoPlaza String, secPlaza String, numPlaza int, ocupado boolean, minusvalido boolean)";
@@ -135,6 +135,31 @@ public class BD {
 		return l;
 	}
 	
+	//METODOS PARKING
+	//obtenerParking
+	
+	public static List<Parking> obtenerListaParking(Connection con){
+		String sql = "SELECT * FROM Parking";
+		List<Parking> lp = new ArrayList<Parking>();
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			while (rs.next()) {
+				//nomParking String,precioHora float, plazasLibres int
+				String nomParking = rs.getString("nomParking");
+				float precioHora = rs.getFloat("precioHora");
+				int plazasLibres = rs.getInt("plazasLibres");
+				Parking parking = new Parking(nomParking, precioHora, plazasLibres);
+				lp.add(parking);
+			}
+			rs.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lp;
+	}
+	
 	//Metodos reservar
 	// buscarReserva
 	public static Reserva buscarReserva(Connection con, String dni) {
@@ -202,7 +227,7 @@ public class BD {
 		return l;	
 	}
 	
-	// obtner lista reservas por dni
+	// obtener lista reservas por dni
 	public static List<Reserva> obtenerListaReservasPorDNI(Connection con, String dni){
 		String sql = String.format("SELECT * FROM Reserva WHERE dni = '%s'", dni);
 		List<Reserva> l = new ArrayList<>();

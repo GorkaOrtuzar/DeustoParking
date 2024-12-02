@@ -20,6 +20,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.border.TitledBorder;
 
+import domain.BD;
 import domain.Parking;
 import domain.Reserva;
 import domain.Utilidades;
@@ -180,18 +181,13 @@ public class VentanaReservaParking extends JFrame{
 	
 
 	private void cargarTablaDatos() {
-		List<Parking> lp = new ArrayList<>();
-		lp.add(new Parking("Parking1", 12.3f, 26));
-		lp.add(new Parking("Parking2", 19f, 20));
-		lp.add(new Parking("Parking3", 10f, 59));
-		lp.add(new Parking("ParkingVIP", 30f, 17));
-		lp.add(new Parking("ParkingCentral", 25.5f, 105));
-		lp.add(new Parking("ParkingTechado", 17.90f, 237));
+//		List<Parking> lp = new ArrayList<>();
+//		lp.add(new Parking("ParkingVIP", 30f, 17));
+//		lp.add(new Parking("ParkingCentral", 25.5f, 105));
+//		lp.add(new Parking("ParkingTechado", 17.90f, 237));
 		modeloTabla = (ModeloTablaReservaParking) tabla.getModel();
-		modeloTabla.setlParkings(lp);
+		modeloTabla.setlParkings(BD.obtenerListaParking(BD.initBD("db/deustoParking.db")));
 		tabla.setModel(modeloTabla);
-		
-		
 	}
 
 }

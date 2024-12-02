@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import domain.BD;
+import domain.Parking;
 import domain.Plaza;
 import domain.Reserva;
 import domain.Usuario;
@@ -37,6 +38,13 @@ public class Principal {
 			BD.insertarReserva(con, r3);
 			BD.insertarReserva(con, r4);
 			
+			//Habria que cambiar datos todavia
+			BD.insertarParking(con, new Parking("ParkingVIP", 30f, 17));
+			BD.insertarParking(con, new Parking("ParkingCentral", 25.5f, 105));
+			BD.insertarParking(con, new Parking("ParkingTechado", 17.90f, 237));
+			
+			
+			//Prueba para true o false
 			for (Plaza p : BD.obtenerListaPlaza(con)) {
 				System.out.println(p);
 				

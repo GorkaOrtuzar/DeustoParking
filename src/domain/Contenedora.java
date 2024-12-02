@@ -64,6 +64,7 @@ public class Contenedora {
 					lUsuarios.add(u);
 				}
 			}
+			sc.close();
 				
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -87,8 +88,8 @@ public class Contenedora {
 			String contrasenia = partes[4];
 			Usuario u = new Usuario(Nombre, Apellido, tlf, dni, contrasenia);
 			BD.insertarUsuario(con, u);
-		sc.close();
 		}
+		sc.close();
 	}catch (FileNotFoundException e) {
 		e.printStackTrace();
 		}
