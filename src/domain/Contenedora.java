@@ -1,15 +1,12 @@
 package domain;
 
 import java.io.BufferedOutputStream;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,7 +15,6 @@ public class Contenedora {
 
 	private static List<Usuario> lUsuarios;
 	private static List<Reserva> lReservas;
-	private static HashMap<Usuario, ArrayList<Reserva>>mapaReservasPorUsuario;
 	
 	public static List<Usuario> getlUsuarios() {
 		return lUsuarios;
@@ -41,7 +37,7 @@ public class Contenedora {
 	}
 	
 	//Guardar UsuariosEnCSV
-	public static void guardarUSuarioEnCSV(String nomfich) {
+	public static void guardarUsuarioEnCSV(String nomfich) {
 		try {
 			ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(nomfich)));
 			oos.writeObject(lUsuarios);
