@@ -103,7 +103,7 @@ public class VentanaInicio extends JFrame{
 		pComboBox.setBounds(20,20,50,20);
 		pComboBox.setLayout(new GridLayout(2, 1));
 		JLabel Ciudades= new  JLabel("Ciudades: ");
-		String[] ciudades = {"Ciudad1", "Ciudad2", "Ciudad3"};
+		String[] ciudades = {"Bilbao", "Barcelona", "Madrid"};
 	    JComboBox<String> ComboCiudades = new JComboBox<>(ciudades);
 	    pComboBox.add(Ciudades);
 	    pComboBox.add(ComboCiudades);
