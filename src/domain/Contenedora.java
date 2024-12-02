@@ -89,7 +89,6 @@ public class Contenedora {
 			String tlf= partes[2];
 			String dni = partes[3];
 			String contrasenia = partes[4];
-
 			Usuario u = new Usuario(Nombre, Apellido, tlf, dni, contrasenia);
 			BD.insertarUsuario(con, u);
 		sc.close();
