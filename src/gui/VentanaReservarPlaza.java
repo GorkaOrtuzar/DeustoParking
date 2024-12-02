@@ -4,8 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -14,20 +19,24 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import domain.BD;
 import domain.Plaza;
 import domain.Reserva;
 
 public class VentanaReservarPlaza extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
-	private JPanel pCentro, pNorte, pSur, pCont, pPrincipal, pIzq;
-	private JLabel lblReservarPlaza;
-	private JButton btnSiguiente;
+	private JPanel pCentro, pNorte, pSur, pCont, pPrincipal, pIzq, pComboBox;
+	private JLabel lblReservarPlaza, lblParkings;
+	private JButton btnSiguiente, btnVolver;
 	private JFrame vActual;
 	
 	private ModeloTablaReservarPlaza modeloTabla;
 	private JTable tabla;
 	private JScrollPane scrollTabla;
+	private List<Plaza> lPlazas;
+	private JComboBox<String> comboParking;
+	private DefaultComboBoxModel<String> modeloCombo;
 	
 	
 	public VentanaReservarPlaza(JFrame va, Reserva r) {
@@ -57,36 +66,51 @@ public class VentanaReservarPlaza extends JFrame{
 		pNorte.add(lblReservarPlaza);
 		
 		//ComboBox
-		JPanel pComboBox = new JPanel();
-		JLabel Parkings = new JLabel("Planta: ");
-		String[] parkings = {"0", "-1", "-2", "-3"};
-		JComboBox<String> comboParking = new JComboBox<String>(parkings);
-		pComboBox.add(Parkings);
+		pComboBox = new JPanel();
+		lblParkings = new JLabel("Planta: ");
+		comboParking = new JComboBox<>();
+		modeloCombo  = new DefaultComboBoxModel<>();
+		comboParking.setModel(modeloCombo);
+		
+		if(r.getNomParking().equals("ParkingTechado")) {
+			modeloCombo.addElement("Izquierda");
+			modeloCombo.addElement("Centro");
+			modeloCombo.addElement("Derecha");
+		} else {
+			modeloCombo.addElement("-1");
+			modeloCombo.addElement("-2");
+			modeloCombo.addElement("-3");
+		}
+		
+		pComboBox.add(lblParkings);
 		pComboBox.add(comboParking);
 		pIzq.add(pComboBox);
 		
+		comboParking.addActionListener((e)-> {
+			String plantaSeleccionada = (String) comboParking.getSelectedItem();
+			filtrarPlazasPorPlanta(plantaSeleccionada);
+		});
+		
 		//Creación botón
 		btnSiguiente = new JButton("Siguiente");
+		btnVolver = new JButton("Volver");
 		pSur.add(btnSiguiente);
+		pSur.add(btnVolver);
 		
 		btnSiguiente.addActionListener((e)->{
 			vActual.dispose();
 			new VentanaIngresarDatos(vActual, r);
 			
+		});
+		
+		btnVolver.addActionListener((e)->{
+			vActual.dispose();
+			new VentanaReservaParking(vActual, r);
 			
 		});
 		
-		
-		//Creación de la lista
-		List<Plaza> lPlazas = Arrays.asList(
-				new Plaza(1, "A", 1, false),   
-	            new Plaza(1, "B", 1, true),   
-	            new Plaza(1, "A", 3, true) 
-		);
-		
-		
 		//Creación tabla
-		modeloTabla = new ModeloTablaReservarPlaza(lPlazas);
+		modeloTabla = new ModeloTablaReservarPlaza();
 		tabla = new JTable(modeloTabla);
 		scrollTabla = new JScrollPane(tabla);
 		tabla.setDefaultRenderer(Object.class, new RendererTablaReservarPlaza());
@@ -121,6 +145,26 @@ public class VentanaReservarPlaza extends JFrame{
         setVisible(true);
 		
 		}
+	
+	//método filtrar plazas por planta
+	private void filtrarPlazasPorPlanta(String planta) {
+	    List<Plaza> plazasFiltradas = new ArrayList<>();
+	    
+	    //Recorremos la lista de plazas
+	    for (Plaza plaza : BD.obtenerListaPlaza(BD.initBD("db/deustoParking.db"))) {
+	        if ((planta.equals("-1") || planta.equals("Izquierda")) && plaza.getPiso().equals("-1")) {
+	            plazasFiltradas.add(plaza);
+	            
+	        } else if ((planta.equals("-2") || planta.equals("Centro")) && plaza.getPiso().equals("-2")) {
+	            plazasFiltradas.add(plaza);
+	         
+	        }else if((planta.equals("-3") || planta.equals("Derecha")) && plaza.getPiso().equals("-3")) {
+	            plazasFiltradas.add(plaza);	            
+	        }
+	    }
+	    
+	    modeloTabla.actualizarDatos(plazasFiltradas); 
+	}
 	
 	
 

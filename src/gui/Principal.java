@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import domain.BD;
+import domain.Plaza;
 import domain.Reserva;
 import domain.Usuario;
 
@@ -35,6 +36,11 @@ public class Principal {
 			BD.insertarReserva(con, r2);
 			BD.insertarReserva(con, r3);
 			BD.insertarReserva(con, r4);
+			
+			for (Plaza p : BD.obtenerListaPlaza(con)) {
+				System.out.println(p);
+				
+			}
 
 			
 		} catch (SQLException e) {

@@ -1,5 +1,6 @@
 package gui;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -11,18 +12,12 @@ import domain.Plaza;
 public class ModeloTablaReservarPlaza extends DefaultTableModel{
 	
 	private static final long serialVersionUID = 1L;
-	private Map<String, Plaza> mPlazas;
+	private List<Plaza> listaPlazas;
 	private List<String> lTitulos; 
 	
-	public ModeloTablaReservarPlaza(List<Plaza> lPlazas) {
+	public ModeloTablaReservarPlaza() {
 		this.lTitulos = Arrays.asList(" ", "A", "B", "C", "D", "E", "F", "G", "H");
-		this.mPlazas = new HashMap<>();
-		
-		for (Plaza plaza : lPlazas) {
-            String clave = plaza.getSeccion() + "-" + plaza.getNumPlaza();
-            mPlazas.put(clave, plaza);
-        }
-
+		this.listaPlazas = new ArrayList<>();
         super.setColumnIdentifiers(lTitulos.toArray());
 		
 	}
@@ -33,10 +28,9 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 			return 9;
 	}
 	
-    //ERROR
 //  @Override
 //  public int getColumnCount() {
-//      return lTitulos.size(); // Número de columnas
+//      return 9;
 //  }
 	
 	@Override
@@ -52,43 +46,35 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 	 @Override
 	    public Object getValueAt(int row, int column) {
 	        if (column == 0) {
-	            if (row == 0) {
-	                return 1;
-	            }
-	            else if (row == 1) {
-	                return "";  
-	            }
-	            else if (row == 2) {
-	                return 2;
-	            }
-	            else if (row == 3) {
-	                return 3;
-	            }
-	            else if(row==4) {
-	            	return "";
-	            }
-	            else if(row==5) {
-	            	return 4;
-	            }
-	            else if(row==6) {
-	            	return 5;
-	            }
-	            else if(row==7) {
-	            	return "";
-	            }
-	            else if(row==8) {
-	            	return 6;
+	        	switch (row) {
+	        	
+	            	case 0: return 1;
+	            	case 2: return 2;
+	            	case 3: return 3;
+	            	case 5: return 4;
+	            	case 6: return 5;
+	            	case 8: return 6;
+	            	default: return "";
 	            }
 	        }
 
-	        if (column != 0) {
+	        if (column > 0) {
 	            String seccion = lTitulos.get(column);
-	            int numPlaza = row + 1; 
-	            String clave = seccion + "-" + numPlaza; 
-	            return mPlazas.getOrDefault(clave, null); 
+	            
+	            for(Plaza p: listaPlazas) {
+	            	if(p.getSeccion().equals(seccion) && p.getNumPlaza()== (row+1)) {
+	            		return p;
+	            	}
+	            }
 	        }
 
 	        return null;  
 	    }
+	 
+	 public void actualizarDatos(List<Plaza> plazasFiltradas) {
+		 this.listaPlazas.clear();
+		 this.listaPlazas.addAll(plazasFiltradas);
+		 fireTableDataChanged(); // Actualiza la tabla
+	 }
 		
 	}

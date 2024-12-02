@@ -3,28 +3,30 @@ package domain;
 import java.util.Objects;
 
 public class Plaza {
-	private int piso;
+	private String piso;
 	private String seccion;
 	private int numPlaza;
 	private boolean ocupada;
+	private boolean minusvalido;
 	
 	public Plaza() {
 		super();
 	}
 
-	public Plaza(int piso, String seccion, int numPlaza, boolean ocupada) {
+	public Plaza(String piso, String seccion, int numPlaza, boolean ocupada, boolean minusvalido) {
 		super();
 		this.piso = piso;
 		this.seccion = seccion;
 		this.numPlaza = numPlaza;
 		this.ocupada = ocupada;
+		this.minusvalido = minusvalido;
 	}
 
-	public int getPiso() {
+	public String getPiso() {
 		return piso;
 	}
 
-	public void setPiso(int piso) {
+	public void setPiso(String piso) {
 		this.piso = piso;
 	}
 
@@ -52,9 +54,19 @@ public class Plaza {
 		this.ocupada = ocupada;
 	}
 
+	public boolean isMinusvalido() {
+		return minusvalido;
+	}
+
+	public void setMinusvalido(boolean minusvalido) {
+		this.minusvalido = minusvalido;
+	}
+
+	
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(numPlaza, ocupada, piso, seccion);
+		return Objects.hash(minusvalido, numPlaza, ocupada, piso, seccion);
 	}
 
 	@Override
@@ -66,16 +78,14 @@ public class Plaza {
 		if (getClass() != obj.getClass())
 			return false;
 		Plaza other = (Plaza) obj;
-		return numPlaza == other.numPlaza && ocupada == other.ocupada && piso == other.piso
-				&& Objects.equals(seccion, other.seccion);
+		return minusvalido == other.minusvalido && numPlaza == other.numPlaza && ocupada == other.ocupada
+				&& Objects.equals(piso, other.piso) && Objects.equals(seccion, other.seccion);
 	}
 
 	@Override
 	public String toString() {
-		return "Plaza [piso=" + piso + ", seccion=" + seccion + ", numPlaza=" + numPlaza + ", ocupada=" + ocupada + "]";
+		return "Plaza [piso=" + piso + ", seccion=" + seccion + ", numPlaza=" + numPlaza + ", ocupada=" + ocupada
+				+ ", minusvalido=" + minusvalido + "]";
 	}
-	
-	
-	
-	
+
 }

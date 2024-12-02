@@ -25,9 +25,9 @@ public class RendererTablaReservarPlaza extends DefaultTableCellRenderer {
 		if(column!=0 && (row==1 || row==4 || row==7)) {
 	    	imagen("imagenes/carretera.jpg", l, 210, 190);
 	    }
-		if((column ==1 || column==2 || column==7 || column == 8)&&(row==8)){
-	    	imagen("imagenes/azulArriba.png", l, 180, 180);
-	    }
+		
+		
+		
 		if (value == null) {
 	        l.setText("");
 	    } else if (value instanceof Plaza) {
@@ -35,14 +35,20 @@ public class RendererTablaReservarPlaza extends DefaultTableCellRenderer {
 	        if (plaza.isOcupada()) {
 	        	if(row==0 || row==3 || row==6) {
 	        		imagen("imagenes/rojoAbajo.png", l, 180, 180);
-	        	}else if(row==2 || row==5) {
+	        	} else if(row==2 || row==5) {
 	        		imagen("imagenes/rojoArriba.png", l, 180, 180);
+	        	}
+	        }else if(!plaza.isOcupada() && !plaza.isMinusvalido()) {
+	        	if(row== 0 || row ==3 || row==6) {
+	        		imagen("imagenes/verdeAbajo.png", l, 180, 180);
+	        	}else if(row== 2 || row ==5) {
+	        		imagen("imagenes/verdeArriba.png", l, 180, 180);
 	        	}
 	        } else {
 	        	if(row==0 || row ==3 || row==6) {
-	        		imagen("imagenes/verdeAbajo.png", l, 180, 180);
+	        		imagen("imagenes/azulAbajo.png", l, 180, 180);
 	        	}else if(row==2 || row==5) {
-	        		imagen("imagenes/verdeArriba.png", l, 180, 180);
+	        		imagen("imagenes/azulArriba.png", l, 180, 180);
 	        	}
 	        }
 	    } else {

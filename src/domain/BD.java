@@ -46,6 +46,9 @@ public class BD {
 			stmt.executeUpdate(sql);
 			sql = "CREATE TABLE IF NOT EXISTS Parking(Parking String,precioHora float, plazasLibres int)";
 			stmt.executeUpdate(sql);
+			//crear TablaPlazas
+			sql = "CREATE TABLE IF NOT EXISTS Plaza(pisoPlaza String, secPlaza String, numPlaza int, ocupado boolean, minusvalido boolean)";
+			stmt.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -257,6 +260,35 @@ public class BD {
 		}
 		return parking;	
 	}
+	
+	//MÉTODO PLAZAS
+	// obtener lista Plazas
+	public static List<Plaza> obtenerListaPlaza(Connection con){
+		String sql = "SELECT * FROM Plaza";
+		List<Plaza> lp = new ArrayList<>();
+			
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			while(rs.next()) {
+				//pisoPlaza String, secPlaza String, numPlaza int, ocupado boolean, minusvalido boolean
+				String pisoPlaza = rs.getString("pisoPlaza");
+				String secPlaza = rs.getString("secPlaza");
+				int numPlaza = rs.getInt("numPlaza");
+				boolean ocupado = rs.getBoolean("ocupado");
+				boolean minusvalido = rs.getBoolean("minusvalido");
+				Plaza plaza = new Plaza(pisoPlaza, secPlaza, numPlaza, ocupado, minusvalido);
+				lp.add(plaza);
+			}
+			rs.close();
+			st.close();
+			
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return lp;
+	}
+	
 	public static void cerrarBD(Connection con) {
 		if(con != null) {
 			try {
@@ -264,8 +296,6 @@ public class BD {
 			} catch (SQLException e) {
 			}
 		}
-	}
-	
-	
+	}	
 	
 }
