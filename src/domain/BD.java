@@ -14,6 +14,7 @@ public class BD {
 	public static Connection initBD(String nombreBD) {
 		Connection con = null;
 		try {
+			
 			Class.forName("org.sqlite.JDBC");
 			con = DriverManager.getConnection("jdbc:sqlite:"+nombreBD);
 			System.out.println("Nombre: "+nombreBD);
