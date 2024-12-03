@@ -105,9 +105,15 @@ public class VentanaIngresarDatos extends JFrame {
 			}else if(tlf.length()!= 9) {
 				JOptionPane.showMessageDialog(null, "Telefono no valido", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 
+			}else if(matricula== null) {
+				JOptionPane.showMessageDialog(null, "Matricula no valida ", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
+			}else if(!matricula.matches("^\\d{4}[A-Za-z]{3}$")) { // linea creada por el chatGPT
+				JOptionPane.showMessageDialog(null, "Matricula no valida ", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
+
 			}else if(dni == null) {
 				JOptionPane.showMessageDialog(null, "DNI no valido", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 
+			
 			}else if(dni.length()!= 9) {
 				JOptionPane.showMessageDialog(null, "DNI no valido", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 
