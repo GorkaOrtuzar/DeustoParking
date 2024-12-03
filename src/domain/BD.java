@@ -314,6 +314,8 @@ public class BD {
 			return lp;
 	}
 	
+	//UPDATE PLAZA
+	
 	public static void cerrarBD(Connection con) {
 		if(con != null) {
 			try {
