@@ -267,16 +267,16 @@ public class BD {
 	}
 	
 	public static Parking buscarParking(Connection con, String nparking) {
-		String sql = String.format("SELECT * FROM Reserva WHERE parking = '%s'", nparking);
+		String sql = String.format("SELECT * FROM Parking WHERE nomParking = '%s'", nparking);
 		Parking parking= null;
 		try {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql); 
 			if(rs.next()) {
-				String Parking = rs.getString("parking");
+				String nomParking = rs.getString("nomParking");
 				String precioHora = rs.getString("precioHora");
 				String plazasLibres = rs.getString("plazasLibres");
-				parking = new Parking(Parking, Float.parseFloat(precioHora), Integer.parseInt(plazasLibres));
+				parking = new Parking(nomParking, Float.parseFloat(precioHora), Integer.parseInt(plazasLibres));
 			}
 			rs.close();
 			st.close();

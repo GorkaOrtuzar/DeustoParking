@@ -28,7 +28,7 @@ public class Principal {
 			BD.insertarUsuario(con,u1);
 			BD.insertarUsuario(con,u2);
 			
-			Reserva r1 = new Reserva("Ciudad2","12345678A","1234ABC","parking1","11/10/2023","17/10/2023",4,30);
+			Reserva r1 = new Reserva("Ciudad2","12345678A","1234ABC","parkingCentral","11/10/2023","17/10/2023",4,30);
 			Reserva r2 = new Reserva("Ciudad3","12345678A","1234ABC","parkingVIP","11/1/2023","21/1/2023",16,60);
 			Reserva r3 = new Reserva("Ciudad2","87654321B","2468BBB","parkingVIP","11/1/2023","21/1/2023",16,60);
 			Reserva r4 = new Reserva("Ciudad3","12345678A","1234ABC","parkingVIP","11/1/2023","21/1/2023",16,60);
