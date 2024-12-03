@@ -27,6 +27,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
+import domain.BD;
+import domain.Reserva;
+
 
 public class VentanaPago extends JFrame{
 
@@ -41,7 +44,7 @@ public class VentanaPago extends JFrame{
     private ButtonGroup btnGrupo;
 	private JFrame vActual, vAnterior;
 	
-	public VentanaPago(JFrame va) {
+	public VentanaPago(JFrame va, Reserva r) {
 		
 		super();
 		vActual = this;
@@ -273,6 +276,7 @@ public class VentanaPago extends JFrame{
 		}else {
 			JOptionPane.showMessageDialog(null, "Introduzca al Titular de la Tarjeta", "ERROR - Titular de la Tarjeta", JOptionPane.ERROR_MESSAGE);
 		}	
+		BD.insertarReserva(Principal.con, r);
 	});
 		
 		btnVolver = new JButton("Volver");

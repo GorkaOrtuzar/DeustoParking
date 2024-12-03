@@ -251,7 +251,7 @@ public class VentanaResumen extends JFrame{
 		btnConfirReserva = new JButton("Confirmar Reserva");
 		btnConfirReserva.addActionListener((e)->{
 			vActual.dispose(); 
-			new VentanaPago(vActual);
+			new VentanaPago(vActual, r);
 		});
 
 		pSur.add(btnAtras);
