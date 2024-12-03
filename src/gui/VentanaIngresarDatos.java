@@ -120,6 +120,7 @@ public class VentanaIngresarDatos extends JFrame {
 			}else if(contrasenia == null) {
 				JOptionPane.showMessageDialog(null, "Contraseña no valido", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 
+				
 			}else {
 			Usuario u = new Usuario(Nombre, Apellido,tlf, dni, contrasenia);
 			Reserva re = new Reserva(r.getCiudad(),dni,matricula,r.getNomParking(),Utilidades.dateToString(r.gethLlegada()),Utilidades.dateToString(r.gethSalida()),r.getNumPlaza(),r.getPrecioTotal());
