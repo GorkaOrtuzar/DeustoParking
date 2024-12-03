@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
@@ -11,8 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -33,9 +36,10 @@ public class VentanaReservaParking extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	//Declaramos valores
-	private JPanel pCentro, pCentroN, pCentroS, pSur, pNorte;
+	private JPanel pCentro, pCentroN, pCentroS, pSur, pNorte,pEste;
 	private JButton btnAtras, btnReservar;
 	private JTextArea txtReserva;
+	private JLabel lblMenor20,lblentre20y50,lblentre50y100,lblmas100,lblLibre;
 	
 	//Declaramos tabla
 	private ModeloTablaReservaParking modeloTabla; 
@@ -65,12 +69,17 @@ public class VentanaReservaParking extends JFrame{
 		pSur = new JPanel();
 		//pSur.setLayout(new GridLayout(1, 2));
 		
+		
 		pCentroN = new JPanel();
 		pCentroS = new JPanel();
 		
 		txtReserva = new JTextArea();
 		txtReserva.setColumns(40);
 		txtReserva.setEditable(false);
+
+		pEste = new JPanel();
+		pEste.setLayout(new BoxLayout(pEste,BoxLayout.Y_AXIS));
+		getContentPane().add(pEste, BorderLayout.EAST);
 
 		
 		btnAtras = new JButton("Atrás");
@@ -165,6 +174,28 @@ public class VentanaReservaParking extends JFrame{
 		});
 		
 		
+		
+		 lblMenor20 = new JLabel("Parking que tiene menos de 20 plazas libres");
+			lblMenor20.setForeground(new Color(251, 53, 29));
+			lblentre20y50 = new JLabel("Parking que tiene entre 20 y 50 plazas libres");
+			lblentre20y50.setForeground(new Color(248,190,56));
+			lblentre50y100 = new JLabel("Parking que tiene entre 50 y 100 plazas libres");
+			lblentre50y100.setForeground(new Color(250,238,88));;
+			lblmas100 = new JLabel("Parking que tiene mas de 100 plazas libres");
+			lblmas100.setForeground(new Color(27, 221, 11));
+			lblLibre = new JLabel("Parkig vacio");
+			lblLibre.setForeground(Color.BLUE);
+			
+			pEste.setPreferredSize(new Dimension(300, 20));
+			getContentPane().add(pEste, BorderLayout.EAST);
+			
+
+			
+			pEste.add(lblMenor20);
+			pEste.add(lblentre20y50);
+			pEste.add(lblentre50y100);
+			pEste.add(lblmas100);
+			pEste.add(lblLibre);
 		
 		
 		//Tamaño de la ventana
