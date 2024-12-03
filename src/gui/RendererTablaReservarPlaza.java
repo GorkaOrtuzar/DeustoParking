@@ -33,9 +33,8 @@ public class RendererTablaReservarPlaza extends DefaultTableCellRenderer {
 	    } else if (value instanceof Plaza) {
 	        Plaza plaza = (Plaza) value;
 	        if (plaza.isOcupada()) {
-	        	if(row % 3 == 0) {
+	        	if(row % 3 == 0) { // linea creada por IA Generativa 
 	        		imagen("imagenes/rojoAbajo.png", l, 180, 180);
-	        		System.out.println("ROJO ABAJO");
 	        	} else if((row + 1) % 3 == 0) {
 	        		imagen("imagenes/rojoArriba.png", l, 180, 180);
 	        	}
@@ -43,21 +42,17 @@ public class RendererTablaReservarPlaza extends DefaultTableCellRenderer {
 	        }else if(plaza.isMinusvalido()){
 	        	if(row % 3 == 0) {
 	        		imagen("imagenes/azulAbajo.png", l, 180, 180);
-	        		System.out.println("AZUL ABAJO");
 
 	        	}else if((row + 1) % 3 == 0) {
 	        		imagen("imagenes/azulArriba.png", l, 180, 180);
-	        		System.out.println("AZUL ARRIBA");
 
 	        	}
 	        }else if(!plaza.isOcupada() && !plaza.isMinusvalido()) {
 	        	if(row % 3 == 0 ) {
 	        		imagen("imagenes/verdeAbajo.png", l, 180, 180);
-	        		System.out.println("VERDE ABAJO");
 
 	        	}else if((row + 1) % 3 == 0) {
 	        		imagen("imagenes/verdeArriba.png", l, 180, 180);
-	        		System.out.println("VERDE ARRIBA");
 
 	        	}
 	        

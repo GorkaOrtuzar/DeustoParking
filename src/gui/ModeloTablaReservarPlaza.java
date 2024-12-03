@@ -74,7 +74,7 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 	 public void actualizarDatos(List<Plaza> plazasFiltradas) {
 		 this.listaPlazas.clear();
 		 this.listaPlazas.addAll(plazasFiltradas);
-		 fireTableDataChanged(); // Actualiza la tabla
+		 fireTableDataChanged(); // Sacado de Proyectos del Año pasado --> Actualiza la tabla
 	 }
 		
 	}
