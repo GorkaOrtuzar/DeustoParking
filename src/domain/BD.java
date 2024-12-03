@@ -47,7 +47,7 @@ public class BD {
 			sql = "CREATE TABLE IF NOT EXISTS Parking(nomParking String,precioHora float, plazasLibres int)";
 			stmt.executeUpdate(sql);
 			//crear TablaPlazas
-			sql = "CREATE TABLE IF NOT EXISTS Plaza(pisoPlaza String, secPlaza String, numPlaza int, ocupado boolean, minusvalido boolean)";
+			sql = "CREATE TABLE IF NOT EXISTS Plaza(pisoPlaza String, secPlaza String, numPlaza int, ocupado int, minusvalido int)";
 			stmt.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -300,8 +300,13 @@ public class BD {
 				String pisoPlaza = rs.getString("pisoPlaza");
 				String secPlaza = rs.getString("secPlaza");
 				int numPlaza = rs.getInt("numPlaza");
-				boolean ocupado = rs.getBoolean("ocupado");
-				boolean minusvalido = rs.getBoolean("minusvalido");
+				
+				int ocupadoInt = rs.getInt("ocupado");
+				boolean ocupado = (ocupadoInt == 1);
+				
+				int minusvalidoInt = rs.getInt("minusvalido");
+				boolean minusvalido = (minusvalidoInt == 1);
+				
 				Plaza plaza = new Plaza(pisoPlaza, secPlaza, numPlaza, ocupado, minusvalido);
 				lp.add(plaza);
 			}

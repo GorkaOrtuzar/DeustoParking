@@ -33,23 +33,34 @@ public class RendererTablaReservarPlaza extends DefaultTableCellRenderer {
 	    } else if (value instanceof Plaza) {
 	        Plaza plaza = (Plaza) value;
 	        if (plaza.isOcupada()) {
-	        	if(row==0 || row==3 || row==6) {
+	        	if(row % 3 == 0) {
 	        		imagen("imagenes/rojoAbajo.png", l, 180, 180);
-	        	} else if(row==2 || row==5) {
+	        		System.out.println("ROJO ABAJO");
+	        	} else if((row + 1) % 3 == 0) {
 	        		imagen("imagenes/rojoArriba.png", l, 180, 180);
 	        	}
-	        }else if(!plaza.isOcupada() && !plaza.isMinusvalido()) {
-	        	if(row== 0 || row ==3 || row==6) {
-	        		imagen("imagenes/verdeAbajo.png", l, 180, 180);
-	        	}else if(row== 2 || row ==5) {
-	        		imagen("imagenes/verdeArriba.png", l, 180, 180);
-	        	}
-	        } else {
-	        	if(row==0 || row ==3 || row==6) {
+	        	
+	        }else if(plaza.isMinusvalido()){
+	        	if(row % 3 == 0) {
 	        		imagen("imagenes/azulAbajo.png", l, 180, 180);
-	        	}else if(row==2 || row==5) {
+	        		System.out.println("AZUL ABAJO");
+
+	        	}else if((row + 1) % 3 == 0) {
 	        		imagen("imagenes/azulArriba.png", l, 180, 180);
+	        		System.out.println("AZUL ARRIBA");
+
 	        	}
+	        }else if(!plaza.isOcupada() && !plaza.isMinusvalido()) {
+	        	if(row % 3 == 0 ) {
+	        		imagen("imagenes/verdeAbajo.png", l, 180, 180);
+	        		System.out.println("VERDE ABAJO");
+
+	        	}else if((row + 1) % 3 == 0) {
+	        		imagen("imagenes/verdeArriba.png", l, 180, 180);
+	        		System.out.println("VERDE ARRIBA");
+
+	        	}
+	        
 	        }
 	    } else {
 	        l.setText(value.toString());

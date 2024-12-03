@@ -152,15 +152,25 @@ public class VentanaReservarPlaza extends JFrame{
 	    
 	    //Recorremos la lista de plazas
 	    for (Plaza plaza : BD.obtenerListaPlaza(BD.initBD("db/deustoParking.db"))) {
-	        if ((planta.equals("-1") || planta.equals("Izquierda")) && plaza.getPiso().equals("-1")) {
-	            plazasFiltradas.add(plaza);
-	            
-	        } else if ((planta.equals("-2") || planta.equals("Centro")) && plaza.getPiso().equals("-2")) {
-	            plazasFiltradas.add(plaza);
-	         
-	        }else if((planta.equals("-3") || planta.equals("Derecha")) && plaza.getPiso().equals("-3")) {
-	            plazasFiltradas.add(plaza);	            
-	        }
+	    	
+	    	if(planta.equals("-1")&&plaza.getPiso().equals("-1")) {
+	    		plazasFiltradas.add(plaza);
+	    		
+	    	}else if(planta.equals("Izquierda") && plaza.getPiso().equals("Izquierda")) {
+	    		plazasFiltradas.add(plaza);
+	    		
+	    	}else if(planta.equals("-2") && plaza.getPiso().equals("-2")) {
+	    		plazasFiltradas.add(plaza);
+	    		
+	    	}else if(planta.equals("Centro") && plaza.getPiso().equals("Centro")) {
+	    		plazasFiltradas.add(plaza);
+	    		
+	    	}else if(planta.equals("-3") && plaza.getPiso().equals("-3")) {
+	    		plazasFiltradas.add(plaza);
+	    		
+	    	}else if(planta.equals("Derecha") && plaza.getPiso().equals("Derecha")) {
+	    		plazasFiltradas.add(plaza);
+	    	}
 	    }
 	    
 	    modeloTabla.actualizarDatos(plazasFiltradas); 

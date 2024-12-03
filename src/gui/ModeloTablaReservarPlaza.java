@@ -28,10 +28,10 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 			return 9;
 	}
 	
-//  @Override
-//  public int getColumnCount() {
-//      return 9;
-//  }
+  @Override
+  public int getColumnCount() {
+      return 9;
+  }
 	
 	@Override
 	public String getColumnName(int column) {
