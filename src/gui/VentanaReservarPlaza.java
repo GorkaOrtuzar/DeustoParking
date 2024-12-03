@@ -94,8 +94,8 @@ public class VentanaReservarPlaza extends JFrame{
 		//Creación botón
 		btnSiguiente = new JButton("Siguiente");
 		btnVolver = new JButton("Volver");
-		pSur.add(btnSiguiente);
 		pSur.add(btnVolver);
+		pSur.add(btnSiguiente);
 		
 		btnSiguiente.addActionListener((e)->{
 			vActual.dispose();
