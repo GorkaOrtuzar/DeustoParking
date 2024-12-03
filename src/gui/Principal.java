@@ -40,8 +40,8 @@ public class Principal {
 			
 			//Habria que cambiar datos todavia
 			BD.insertarParking(con, new Parking("ParkingVIP", 30f, 17));
-			BD.insertarParking(con, new Parking("ParkingCentral", 25.5f, 105));
-			BD.insertarParking(con, new Parking("ParkingTechado", 17.90f, 237));
+			BD.insertarParking(con, new Parking("ParkingCentral", 25.5f, 78));
+			BD.insertarParking(con, new Parking("ParkingTechado", 17.90f, 122));
 			
 			
 			//Prueba para true o false
