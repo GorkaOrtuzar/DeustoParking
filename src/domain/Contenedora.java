@@ -36,67 +36,6 @@ public class Contenedora {
 		lReservas.add(r);
 	}
 	
-	//Guardar UsuariosEnCSV
-	public static void guardarUsuarioEnCSV(String nomfich) {
-		try {
-			ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(nomfich)));
-			oos.writeObject(lUsuarios);
-			oos.flush();
-			oos.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	public static void cargarUsuarioEnLista(String nomFich) {
-		try {
-			Scanner sc = new Scanner(new FileReader(nomFich));
-			String linea = sc.next();
-			while(sc.hasNext()) {
-				linea = sc.nextLine();
-				String[] partes = linea.split(";");
-				String Nombre = partes[0];
-				String Apellido = partes[1];
-				String tlf= partes[2];
-				String dni = partes[3];
-				String contrasenia = partes[4];
-				Usuario u = new Usuario(Nombre, Apellido, tlf, dni, contrasenia);
-				if (buscarUsuario(dni) == null) {
-					lUsuarios.add(u);
-				}
-			}
-			sc.close();
-				
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-	
-	 //Metodo que vuelca todos los Usuarios del fichero a la base de datos
-	public static void volcado_FichCSV_Usuarios_a_BD(Connection con, String nomFich) {
-	try {
-		Scanner sc = new Scanner(new FileReader(nomFich));
-		String linea;
-		while (sc.hasNext()) {
-			linea = sc.nextLine();
-			String[] partes = linea.split(";");
-			String Nombre = partes[0];
-			String Apellido = partes[1];
-			String tlf= partes[2];
-			String dni = partes[3];
-			String contrasenia = partes[4];
-			Usuario u = new Usuario(Nombre, Apellido, tlf, dni, contrasenia);
-			BD.insertarUsuario(con, u);
-		}
-		sc.close();
-	}catch (FileNotFoundException e) {
-		e.printStackTrace();
-		}
-
-	}
-
-	
 	//Buscar usuario
 	public static Usuario buscarUsuario(String DNI) {
 		boolean enc = false;

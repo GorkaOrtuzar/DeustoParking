@@ -45,10 +45,10 @@ public class Principal {
 			
 			
 			//Prueba para true o false
-			for (Plaza p : BD.obtenerListaPlaza(con)) {
-				System.out.println(p);
-				
-			}
+//			for (Plaza p : BD.obtenerListaPlaza(con)) {
+//				System.out.println(p);
+//				
+//			}
 
 			
 		} catch (SQLException e) {

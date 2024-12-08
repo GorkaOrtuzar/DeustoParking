@@ -144,35 +144,7 @@ public class VentanaInicio extends JFrame{
         pTabla.add(pPickerSalida);
         
 	    
-//	    //JSpinner Entrada
-//	    JPanel pJSpinnerEntrada = new JPanel();
-//		pJSpinnerEntrada.setBounds(20,20,50,20);
-//		pJSpinnerEntrada.setLayout(new GridLayout(2, 1));
-//		JLabel FechaEntrada= new  JLabel("Fecha de entrada: ");
-//		JSpinner SFechaEntrada = new JSpinner(new SpinnerDateModel());
-//		Dimension spinner1 = new Dimension(10, 25);
-//		SFechaEntrada.setPreferredSize(spinner1);
-//        SFechaEntrada.setEditor(new JSpinner.DateEditor(SFechaEntrada, "dd/MM/yyyy"));
-//	    pJSpinnerEntrada.add(FechaEntrada);
-//	    pJSpinnerEntrada.add(SFechaEntrada);
-//	    pTabla.add(pJSpinnerEntrada);
-//	    
-//		
-//	    //JSpinner Salida
-//	    JPanel pJSpinnerSalida = new JPanel();
-//		pJSpinnerSalida.setBounds(20,20,50,20);
-//		pJSpinnerSalida.setLayout(new GridLayout(2, 1));
-//		JLabel FechaSalida= new  JLabel("Fecha de salida: ");
-//		JSpinner SFechaSalida = new JSpinner(new SpinnerDateModel());
-//		Dimension spinner2 = new Dimension(10, 25);
-//		SFechaSalida.setPreferredSize(spinner2);
-//        SFechaSalida.setEditor(new JSpinner.DateEditor(SFechaSalida, "dd/MM/yyyy"));
-//	    pJSpinnerSalida.add(FechaSalida);
-//	    pJSpinnerSalida.add(SFechaSalida);
-//	    pTabla.add(pJSpinnerSalida);
-	    
 
-		
 	    //JButton
 	    JPanel pJButtonBuscar = new JPanel();
 		pJButtonBuscar.setBounds(20,20,50,20);
@@ -191,7 +163,7 @@ public class VentanaInicio extends JFrame{
 			Date fechaEntrada = (Date) DPentrada.getModel().getValue();
 			Date fechaSalida = (Date) DPSalida.getModel().getValue();
 			Reserva r = new Reserva(ciudad, fechaEntrada, fechaSalida);
-			System.out.println(r);
+			//System.out.println(r);
 			new VentanaReservaParking(vActual, r);
 			vActual.dispose();
 		});

@@ -106,10 +106,10 @@ public class VentanaReservaParking extends JFrame{
 				Reserva reservaFinal = new Reserva(ciudad, fechaEntrada, fechaSalida, nomParking, numPlazasLibre, precio);
 				listaReservas.add(reservaFinal);
 				
-				for (Reserva reserva : listaReservas) {
-					System.out.println(reserva);
-				}
-				
+//				for (Reserva reserva : listaReservas) {
+//					System.out.println(reserva);
+//				}
+//				
 				vActual.dispose();
 				new VentanaReservarPlaza(vActual, reservaFinal);
 			}else {
