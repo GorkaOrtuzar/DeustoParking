@@ -1,14 +1,6 @@
 package domain;
 
-import java.io.BufferedOutputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.sql.Connection;
 import java.util.List;
-import java.util.Scanner;
 
 
 public class Contenedora {
