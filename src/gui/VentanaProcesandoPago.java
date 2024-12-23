@@ -13,6 +13,8 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 
+import domain.Reserva;
+
 public class VentanaProcesandoPago extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -20,7 +22,7 @@ public class VentanaProcesandoPago extends JFrame {
 	private JProgressBar pbEspera;
 	private JFrame vActual;
 	
-	public VentanaProcesandoPago(JFrame va) {
+	public VentanaProcesandoPago(JFrame va, Reserva r) {
 		super();
 		vActual = this;
 		
@@ -44,7 +46,7 @@ public class VentanaProcesandoPago extends JFrame {
                     JOptionPane.showMessageDialog(null, "¡La compra se ha realizado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                     pbEspera.setIndeterminate(false);
                     vActual.dispose(); 
-					new VentanaGuardar(vActual);
+					new VentanaGuardar(vActual ,r);
                 });
 				
 				return null;

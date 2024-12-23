@@ -254,7 +254,7 @@ public class VentanaPago extends JFrame{
 							if ((rbtnVisa.isSelected()||rbtnMaster.isSelected()||rbtnGoogle.isSelected()||rbtnApple.isSelected())){
 								if(cbtnTerminos.isSelected()) {
 									vActual.dispose(); 
-									new VentanaProcesandoPago(vActual);
+									new VentanaProcesandoPago(vActual, r);
 								}else {
 									JOptionPane.showMessageDialog(null, "Acepte los Términos y Condiciones de Uso", "ERROR - Términos y Condiciones de Uso", JOptionPane.ERROR_MESSAGE);
 								}
