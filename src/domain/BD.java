@@ -135,6 +135,22 @@ public class BD {
 		return l;
 	}
 	
+	//Actualizar datos del usuario
+	public static void updateUsuario(Connection con, Usuario usuario) {
+	    String sql = "UPDATE Usuario SET nombre = ?, apellido = ?, tlf = ?, contrasenia = ? WHERE dni = ?";
+	    try (PreparedStatement ps = con.prepareStatement(sql)) {
+	        ps.setString(1, usuario.getNombre());
+	        ps.setString(2, usuario.getApellido());
+	        ps.setString(3, usuario.getTlf());
+	        ps.setString(4, usuario.getDni());
+	        ps.setString(5, usuario.getContrasenia());
+	        ps.executeUpdate();
+	        System.out.println("Usuario actualizado correctamente");
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+	
 	//METODOS PARKING
 	//obtenerParking
 	

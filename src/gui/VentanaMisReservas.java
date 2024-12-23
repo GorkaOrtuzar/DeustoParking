@@ -2,10 +2,13 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -20,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
@@ -33,10 +37,10 @@ public class VentanaMisReservas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel pCentro, pSur, pNorte, pDatos;
-	private JButton btnCerrar;
+	private JButton btnCerrar,btnEditable,btnGuardar;
 	private JLabel lblReserva;
 	private JLabel lblNombre, lblApellido,lbltlf,lbldni,lblContrasenia;
-	
+	private JTextField txtNombre,txtApellido,txttlf,txtdni,txtContrasenia;
 	private ModeloTablaMisReservas modeloTabla; 
 	private JTable tabla; 
 	private JScrollPane scrollTabla;
@@ -56,7 +60,7 @@ public class VentanaMisReservas extends JFrame {
 		pDatos = new JPanel();
 		pDatos.setLayout(new BoxLayout(pDatos,BoxLayout.Y_AXIS));
 		pDatos.setBorder(new EmptyBorder(50, 200, 50, 200));
-		pDatos.setLayout(new GridLayout(5, 1));
+		pDatos.setLayout(new GridLayout(6, 1));
 		
 		 pDatos.setBorder(BorderFactory.createCompoundBorder(
 	                BorderFactory.createEmptyBorder(0, 100, 0, 100),
@@ -77,18 +81,69 @@ public class VentanaMisReservas extends JFrame {
 		pNorte.add(lblReserva);
 		
 		//datos del usuario
-		lblNombre = new JLabel(" - NOMBRE: " + BD.buscarUsario(Principal.con,dni).getNombre());
-		lblApellido = new JLabel(" - APELLIDO: " + BD.buscarUsario(Principal.con,dni).getApellido());
-		lbldni = new JLabel(" - DNI: " + BD.buscarUsario(Principal.con,dni).getDni());
-		lbltlf = new JLabel(" - TLF: " + BD.buscarUsario(Principal.con,dni).getTlf());
-		lblContrasenia = new JLabel(" - CONTRASEÑA: " + BD.buscarUsario(Principal.con,dni).getContrasenia());
+		lblNombre = new JLabel(" - NOMBRE: " );
+		txtNombre = new JTextField(BD.buscarUsario(Principal.con,dni).getNombre());
+		lblApellido = new JLabel(" - APELLIDO: " );
+		txtApellido = new JTextField( BD.buscarUsario(Principal.con,dni).getApellido());
+		lbldni = new JLabel(" - DNI: " );
+		txtdni = new JTextField(BD.buscarUsario(Principal.con,dni).getDni());
+		lbltlf = new JLabel(" - TLF: ");
+		txttlf = new JTextField(BD.buscarUsario(Principal.con,dni).getTlf());
+		lblContrasenia = new JLabel(" - CONTRASEÑA: ");
+		txtContrasenia = new JTextField(BD.buscarUsario(Principal.con,dni).getContrasenia());
 		pDatos.add(lblNombre);
+		pDatos.add(txtNombre);
 		pDatos.add(lblApellido);
+		pDatos.add(txtApellido);
 		pDatos.add(lbldni);
+		pDatos.add(txtdni);
 		pDatos.add(lbltlf);
+		pDatos.add(txttlf);
 		pDatos.add(lblContrasenia);
+		pDatos.add(txtContrasenia);
 		pCentro.add(pDatos);
 		
+		//Caracteristicas de los txtFields
+		
+		txtNombre.setMaximumSize(new Dimension(100, 20));
+		txtApellido.setMaximumSize(new Dimension (100, 20));
+		txtdni.setMaximumSize(new Dimension (100, 20));
+		txttlf.setMaximumSize(new Dimension (100, 20));
+		txtContrasenia.setMaximumSize(new Dimension (100, 20));
+		
+		txtNombre.setEditable(false);
+		txtApellido.setEditable(false);
+		txtdni.setEditable(false);
+		txttlf.setEditable(false);
+		txtContrasenia.setEditable(false);
+		
+		txtNombre.setBorder(null);
+		txtApellido.setBorder(null);
+		txtdni.setBorder(null);
+		txttlf.setBorder(null);
+		txtContrasenia.setBorder(null);
+		
+
+		//cambiar el txt de estado
+		btnEditable = new JButton("Editar los datos");
+		pSur.add(btnEditable);
+		btnEditable.addActionListener((e)-> {
+			boolean editable = true;
+			txtNombre.setEditable(editable);
+			txtApellido.setEditable(editable);
+			txtdni.setEditable(editable);
+			txttlf.setEditable(editable);
+			txtContrasenia.setEditable(editable);
+			if(editable== true) {
+				String Nombre = txtNombre.getText();
+				String Apellido = txtApellido.getText();
+				String Dni = txtdni.getText();
+				String tlf = txttlf.getText();
+				String contrasenia = txtContrasenia.getText();
+				Usuario u = new Usuario(Nombre, Apellido, tlf, Dni, contrasenia);
+				BD.updateUsuario(Principal.con, u);
+			}
+		});
 		
 		//Tabla
 		modeloTabla = new ModeloTablaMisReservas(null);
