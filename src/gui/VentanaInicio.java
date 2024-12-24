@@ -51,7 +51,7 @@ public class VentanaInicio extends JFrame{
 	
 	private JFrame vActual;
 	
-	public VentanaInicio( JFrame va) {
+	public VentanaInicio(JFrame va) {
 		super();
 		vActual = this;
 		

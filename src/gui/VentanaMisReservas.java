@@ -60,7 +60,7 @@ public class VentanaMisReservas extends JFrame {
 		pDatos = new JPanel();
 		pDatos.setLayout(new BoxLayout(pDatos,BoxLayout.Y_AXIS));
 		pDatos.setBorder(new EmptyBorder(50, 200, 50, 200));
-		pDatos.setLayout(new GridLayout(6, 1));
+		pDatos.setLayout(new GridLayout(5, 1));
 		
 		 pDatos.setBorder(BorderFactory.createCompoundBorder(
 	                BorderFactory.createEmptyBorder(0, 100, 0, 100),
@@ -150,7 +150,7 @@ public class VentanaMisReservas extends JFrame {
 		tabla = new JTable(modeloTabla);
 		scrollTabla = new JScrollPane(tabla);
 		scrollTabla.setBorder(BorderFactory.createEmptyBorder()); 	
-		tabla.setPreferredScrollableViewportSize(new java.awt.Dimension(700, 300));
+		tabla.setPreferredScrollableViewportSize(new Dimension(700, 300));
 		tabla.getTableHeader().setReorderingAllowed(false);
 		List<Reserva> reservas = BD.obtenerListaReservasPorDNI(Principal.con, dni);
 		modeloTabla.setlReservas(reservas);
