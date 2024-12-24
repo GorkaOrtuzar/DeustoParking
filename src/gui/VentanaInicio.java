@@ -42,6 +42,7 @@ import java.util.Date;
 import java.util.Properties;
 
 import domain.Reserva;
+import domain.Utilidades;
 
 public class VentanaInicio extends JFrame{
 	
@@ -124,6 +125,17 @@ public class VentanaInicio extends JFrame{
         JDatePanelImpl panelFechaEntrada = new JDatePanelImpl(modeloEntrada, properties);
         JDatePickerImpl DPentrada = new JDatePickerImpl(panelFechaEntrada, null);
         DPentrada.setBounds(150, 20, 200, 30);
+        DPentrada.addActionListener((e)->{
+        	Date fechaEntradaSelect = (Date) DPentrada.getModel().getValue();
+        	if(fechaEntradaSelect!= null) {
+        		String fechaEntradaSelectString = Utilidades.dateToString(fechaEntradaSelect);
+        		lblEntrada.setText("Fecha de entrada: " + fechaEntradaSelectString);
+        	}else {
+        		JOptionPane.showMessageDialog(null, "No has seleccionado ninguna fecha","MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
+        	}
+        });
+        
+        
         JPanel pPickerEntrada = new JPanel();
         pPickerEntrada.setLayout(new GridLayout(2, 1));
         pPickerEntrada.add(lblEntrada);
@@ -132,11 +144,23 @@ public class VentanaInicio extends JFrame{
         
         //Calendario Salida
         JLabel lblSalida = new JLabel("Fecha de salida: ");
-	    lblEntrada.setBounds(20, 20, 120, 25);
+	    lblSalida.setBounds(20, 20, 120, 25);
         UtilDateModel modeloSalida = new UtilDateModel();
         JDatePanelImpl panelFechaSalida = new JDatePanelImpl(modeloSalida, properties);
         JDatePickerImpl DPSalida = new JDatePickerImpl(panelFechaSalida, null);
-        DPentrada.setBounds(150, 20, 200, 30);
+        DPSalida.setBounds(150, 20, 200, 30);
+        
+        DPSalida.addActionListener((e)->{
+        	Date fechaSalidaSelect = (Date) DPSalida.getModel().getValue();
+        	if(fechaSalidaSelect!= null) {
+        		String fechaSalidaSelectString = Utilidades.dateToString(fechaSalidaSelect);
+        		lblSalida.setText("Fecha de Salida: " + fechaSalidaSelectString);
+        	}else {
+        		JOptionPane.showMessageDialog(null, "No has seleccionado ninguna fecha","MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
+        	}
+        });
+        
+        
         JPanel pPickerSalida = new JPanel();
         pPickerSalida.add(lblSalida);
         pPickerSalida.setLayout(new GridLayout(2, 1));
@@ -164,8 +188,12 @@ public class VentanaInicio extends JFrame{
 			Date fechaSalida = (Date) DPSalida.getModel().getValue();
 			Reserva r = new Reserva(ciudad, fechaEntrada, fechaSalida);
 			//System.out.println(r);
+			if(!ciudad.equals(null)|| !(fechaEntrada == null)||!(fechaSalida == null)) {
 			new VentanaReservaParking(vActual, r);
 			vActual.dispose();
+			}else {
+				JOptionPane.showMessageDialog(null, "Ls campos no han sido rellenados correctamente","MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
+			}
 		});
 		
 		
