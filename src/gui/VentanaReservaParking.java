@@ -173,28 +173,42 @@ public class VentanaReservaParking extends JFrame{
 			}
 		});
 		
-		
-		
+		//
+		 JPanel pMenor20 = new JPanel();
+		 pMenor20.setPreferredSize(new Dimension(5,5));
+		 pMenor20.setBackground(new Color(251, 53, 29));
 		 lblMenor20 = new JLabel("Parking que tiene menos de 20 plazas libres");
-			lblMenor20.setForeground(new Color(251, 53, 29));
-			lblentre20y50 = new JLabel("Parking que tiene entre 20 y 50 plazas libres");
-			lblentre20y50.setForeground(new Color(248,190,56));
-			lblentre50y100 = new JLabel("Parking que tiene entre 50 y 100 plazas libres");
-			lblentre50y100.setForeground(new Color(250,238,88));;
-			lblmas100 = new JLabel("Parking que tiene mas de 100 plazas libres");
-			lblmas100.setForeground(new Color(27, 221, 11));
-			lblLibre = new JLabel("Parkig vacio");
-			lblLibre.setForeground(Color.BLUE);
+		 JPanel pEntre20y50 = new JPanel();
+		 pEntre20y50.setPreferredSize(new Dimension(5,5));
+		 pEntre20y50.setBackground(new Color(248,190,56));
+		 lblentre20y50 = new JLabel("Parking que tiene entre 20 y 50 plazas libres");
+		 JPanel pEntre50y100 = new JPanel();
+		 pEntre50y100.setPreferredSize(new Dimension(5,5));
+		 pEntre50y100.setBackground(new Color(250,238,88));
+		 lblentre50y100 = new JLabel("Parking que tiene entre 50 y 100 plazas libres");
+		 JPanel pMas100 = new JPanel();
+		 pMas100.setPreferredSize(new Dimension(5,5));
+		 pMas100.setBackground(new Color(27, 221, 11));
+		 lblmas100 = new JLabel("Parking que tiene mas de 100 plazas libres");
+		 JPanel pLibre = new JPanel();
+		 pLibre.setPreferredSize(new Dimension(5,5));
+		 pLibre.setBackground(Color.BLUE);
+		 lblLibre = new JLabel("Parkig vacio");
 			
-			pEste.setPreferredSize(new Dimension(300, 20));
-			getContentPane().add(pEste, BorderLayout.EAST);
+		pEste.setPreferredSize(new Dimension(300, 10));
+		pEste.setLayout(new GridLayout(5, 2));
+		getContentPane().add(pEste, BorderLayout.EAST);
 			
 
-			
+			pEste.add(pMenor20);
 			pEste.add(lblMenor20);
+			pEste.add(pEntre20y50);
 			pEste.add(lblentre20y50);
+			pEste.add(pEntre50y100);
 			pEste.add(lblentre50y100);
+			pEste.add(pMas100);
 			pEste.add(lblmas100);
+			pEste.add(pLibre);
 			pEste.add(lblLibre);
 		
 		
