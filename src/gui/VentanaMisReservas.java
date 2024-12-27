@@ -207,6 +207,8 @@ public class VentanaMisReservas extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(50, 50, 1600, 800);
 		setTitle("Mis reservas");
+		ImageIcon icono = new ImageIcon("imagenes/logito.png");
+		setIconImage(icono.getImage());
 		setVisible(true);
 	}
 		

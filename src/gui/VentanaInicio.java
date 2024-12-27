@@ -203,6 +203,8 @@ public class VentanaInicio extends JFrame{
 		ImageIcon imagen = new ImageIcon("imagenes/logoDeustoParking.png");
 		JLabel lblImagen = new JLabel(imagen);
 		lblImagen.setBounds(0, 0, 100, 100);
+		ImageIcon icono = new ImageIcon("imagenes/logito.png");
+		setIconImage(icono.getImage());
 		pImagen.add(lblImagen);
 		
 		

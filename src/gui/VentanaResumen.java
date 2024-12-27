@@ -14,6 +14,7 @@ import java.util.Properties;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -267,6 +268,8 @@ public class VentanaResumen extends JFrame{
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(50, 50, 1600, 800);
 		setTitle("Resumen");
+		ImageIcon icono = new ImageIcon("imagenes/logito.png");
+		setIconImage(icono.getImage());
 		setVisible(true);	
 	}
 	

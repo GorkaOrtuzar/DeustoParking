@@ -311,6 +311,8 @@ public class VentanaPago extends JFrame{
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(50, 50, 1600, 800);
         setTitle("Pago");
+        ImageIcon icono = new ImageIcon("imagenes/logito.png");
+		setIconImage(icono.getImage());
         setVisible(true);
 	}
 	public void cargarImg(String ruta, JLabel lbl, JPanel p) {

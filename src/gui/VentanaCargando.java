@@ -29,6 +29,8 @@ public class VentanaCargando extends JFrame{
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(50, 50, 1600, 800);
 		setTitle("Cargando...");
+		ImageIcon icono = new ImageIcon("imagenes/logito.png");
+		setIconImage(icono.getImage());
 		
 		lbl = new JLabel(new ImageIcon("imagenes\\LogoDeustoParking.png"));
 		lbl.setLayout(new BorderLayout());

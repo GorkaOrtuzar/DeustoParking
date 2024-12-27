@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.util.logging.Level;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -98,6 +99,8 @@ public class VentanaInicioSesion extends JFrame {
 		});
 		setBounds(300, 200, 300, 300);
 		setTitle("Inicio Sesion");
+		ImageIcon icono = new ImageIcon("imagenes/logito.png");
+		setIconImage(icono.getImage());
 		setVisible(true);	
 	}
 

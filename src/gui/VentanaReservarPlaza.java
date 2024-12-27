@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -141,7 +142,9 @@ public class VentanaReservarPlaza extends JFrame{
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(50, 50, 1600, 800);
-        setTitle("Pago");
+        setTitle("Plazas");
+        ImageIcon icono = new ImageIcon("imagenes/logito.png");
+		setIconImage(icono.getImage());
         setVisible(true);
 		
 		}
