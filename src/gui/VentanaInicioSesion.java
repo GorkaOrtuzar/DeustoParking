@@ -23,6 +23,7 @@ import domain.Usuario;
 
 public class VentanaInicioSesion extends JFrame {
 	
+	
 	private static final long serialVersionUID = 1L;
 	private JPanel pCentro, pNorte,pSur;
 	private JLabel lblDni,lblContrasenia;
