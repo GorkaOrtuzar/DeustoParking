@@ -1,10 +1,10 @@
 package gui;
 
 import java.awt.BorderLayout;
+
 import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.sql.Connection;
-import java.util.logging.Level;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -17,9 +17,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import domain.BD;
-import domain.Contenedora;
-import domain.Reserva;
-import domain.Usuario;
 
 public class VentanaInicioSesion extends JFrame {
 	
@@ -33,9 +30,9 @@ public class VentanaInicioSesion extends JFrame {
 	
 	private JFrame vActual;
 	private JFrame vAnterior;
-	private Connection con;
 	
 
+	
 	
 	 public VentanaInicioSesion(JFrame va) {
 		 super();
@@ -69,8 +66,39 @@ public class VentanaInicioSesion extends JFrame {
 		
 		btnVer = new JButton("Ver mis reservas");
 		pSur.add(btnVer);
-		btnVer.addActionListener((e)->{
+		
+		this.addKeyListener(new KeyListener() {
 			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode()== KeyEvent.VK_ENTER) {
+					evento();
+				}
+			}
+		});
+		btnVer.addActionListener((e)->{
+			evento();
+		});
+		setBounds(300, 200, 300, 300);
+		setTitle("Inicio Sesion");
+		ImageIcon icono = new ImageIcon("imagenes/logito.png");
+		setIconImage(icono.getImage());
+		setVisible(true);	
+	}
+	 
+	public void evento() {
 		String dni = txtDNI.getText();
 		String contr = txtContrasenia.getText();
 		 if(dni.isEmpty()) {
@@ -95,14 +123,6 @@ public class VentanaInicioSesion extends JFrame {
 				 txtContrasenia.setText("");
 		
 				}
-			 
-			 	 
-		});
-		setBounds(300, 200, 300, 300);
-		setTitle("Inicio Sesion");
-		ImageIcon icono = new ImageIcon("imagenes/logito.png");
-		setIconImage(icono.getImage());
-		setVisible(true);	
 	}
 
 }

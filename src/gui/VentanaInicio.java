@@ -128,8 +128,13 @@ public class VentanaInicio extends JFrame{
         DPentrada.addActionListener((e)->{
         	Date fechaEntradaSelect = (Date) DPentrada.getModel().getValue();
         	if(fechaEntradaSelect!= null) {
-        		String fechaEntradaSelectString = Utilidades.dateToString(fechaEntradaSelect);
-        		lblEntrada.setText("Fecha de entrada: " + fechaEntradaSelectString);
+        		if(fechaEntradaSelect.before(new Date())) {
+        			JOptionPane.showMessageDialog(null, "No puedes seleccionar una fecha anterior a hoy", "Fecha inválida", JOptionPane.WARNING_MESSAGE);
+                    DPentrada.getModel().setSelected(false);
+        		}else {
+	        		String fechaEntradaSelectString = Utilidades.dateToString(fechaEntradaSelect);
+	        		lblEntrada.setText("Fecha de entrada: " + fechaEntradaSelectString);
+        		}
         	}else {
         		JOptionPane.showMessageDialog(null, "No has seleccionado ninguna fecha","MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
         	}
@@ -153,8 +158,14 @@ public class VentanaInicio extends JFrame{
         DPSalida.addActionListener((e)->{
         	Date fechaSalidaSelect = (Date) DPSalida.getModel().getValue();
         	if(fechaSalidaSelect!= null) {
-        		String fechaSalidaSelectString = Utilidades.dateToString(fechaSalidaSelect);
-        		lblSalida.setText("Fecha de Salida: " + fechaSalidaSelectString);
+        		if(fechaSalidaSelect.before((Date) DPentrada.getModel().getValue())) {
+        			 JOptionPane.showMessageDialog(null, "No puedes seleccionar una fecha anterior a hoy", "Fecha inválida", JOptionPane.WARNING_MESSAGE);
+                     DPentrada.getModel().setSelected(false); 
+        		}else {
+        			String fechaSalidaSelectString = Utilidades.dateToString(fechaSalidaSelect);
+            		lblSalida.setText("Fecha de Salida: " + fechaSalidaSelectString);
+        		}
+        		
         	}else {
         		JOptionPane.showMessageDialog(null, "No has seleccionado ninguna fecha","MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
         	}
@@ -195,9 +206,6 @@ public class VentanaInicio extends JFrame{
 				JOptionPane.showMessageDialog(null, "Ls campos no han sido rellenados correctamente","MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 			}
 		});
-		
-		
-		
 		
 		//imagen
 		ImageIcon imagen = new ImageIcon("imagenes/logoDeustoParking.png");
