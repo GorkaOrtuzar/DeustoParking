@@ -45,11 +45,11 @@ public class VentanaMisReservas extends JFrame {
 	private JTable tabla; 
 	private JScrollPane scrollTabla;
 	private JFrame vActual, vAnterior;
-	
+	private boolean editable;
 	public VentanaMisReservas(JFrame va, String dni ) {
 		vActual = this;
 		vAnterior = va;
-		
+		editable = true;
 		
 		//Instanciar los paneles
 		pNorte = new JPanel();
@@ -128,13 +128,17 @@ public class VentanaMisReservas extends JFrame {
 		btnEditable = new JButton("Editar los datos");
 		pSur.add(btnEditable);
 		btnEditable.addActionListener((e)-> {
-			boolean editable = true;
 			txtNombre.setEditable(editable);
 			txtApellido.setEditable(editable);
 			txtdni.setEditable(editable);
 			txttlf.setEditable(editable);
 			txtContrasenia.setEditable(editable);
-			if(editable== true) {
+		
+			if(editable) {
+				editable = false;
+				btnEditable.setText("Guardar los datos");
+			}
+			else {
 				String Nombre = txtNombre.getText();
 				String Apellido = txtApellido.getText();
 				String Dni = txtdni.getText();
@@ -142,6 +146,8 @@ public class VentanaMisReservas extends JFrame {
 				String contrasenia = txtContrasenia.getText();
 				Usuario u = new Usuario(Nombre, Apellido, tlf, Dni, contrasenia);
 				BD.updateUsuario(Principal.con, u);
+				btnEditable.setText("Editar los datos");
+				editable = true;
 			}
 		});
 		

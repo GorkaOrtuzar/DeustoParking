@@ -67,22 +67,177 @@ public class VentanaInicioSesion extends JFrame {
 		btnVer = new JButton("Ver mis reservas");
 		pSur.add(btnVer);
 		
-		this.addKeyListener(new KeyListener() {
+		pCentro.addKeyListener(new KeyListener() {
 			
 			@Override
 			public void keyTyped(KeyEvent e) {
 				// TODO Auto-generated method stub
-				
+				System.out.println("T");
 			}
 			
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-				
+				System.out.println("R");
 			}
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
+				System.out.println("P");
+				if(e.getKeyCode()== KeyEvent.VK_ENTER) {
+					evento();
+				}
+			}
+		});
+		lblDni.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("T");
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("R");
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				System.out.println("P");
+				if(e.getKeyCode()== KeyEvent.VK_ENTER) {
+					evento();
+				}
+			}
+		});
+		txtDNI.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("T");
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("R");
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				System.out.println("P");
+				if(e.getKeyCode()== KeyEvent.VK_ENTER) {
+					evento();
+				}
+			}
+		});
+		lblContrasenia.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("T");
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("R");
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				System.out.println("P");
+				if(e.getKeyCode()== KeyEvent.VK_ENTER) {
+					evento();
+				}
+			}
+		});
+		txtContrasenia.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("T");
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("R");
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				System.out.println("P");
+				if(e.getKeyCode()== KeyEvent.VK_ENTER) {
+					evento();
+				}
+			}
+		});
+		btnVer.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("T");
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("R");
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				System.out.println("P");
+				if(e.getKeyCode()== KeyEvent.VK_ENTER) {
+					evento();
+				}
+			}
+		});
+		pNorte.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("T");
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("R");
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				System.out.println("P");
+				if(e.getKeyCode()== KeyEvent.VK_ENTER) {
+					evento();
+				}
+			}
+		});
+		pSur.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("T");
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("R");
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				System.out.println("P");
 				if(e.getKeyCode()== KeyEvent.VK_ENTER) {
 					evento();
 				}

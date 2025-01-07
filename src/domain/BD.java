@@ -207,7 +207,7 @@ public class BD {
 	//Insertar Reserva
 	public static void insertarReserva(Connection con, Reserva reserva){
 			String sql = String.format("INSERT INTO Reserva VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s')", 
-					reserva.getCiudad(), reserva.getDni(),reserva.getMatricula(), reserva.getNomParking(), reserva.gethLlegada(),reserva.gethSalida(), reserva.getNumPlaza(),reserva.getSeccion(), reserva.getPrecioTotal());
+					reserva.getCiudad(), reserva.getDni(),reserva.getMatricula(), reserva.getNomParking(), Utilidades.dateToString(reserva.gethLlegada()),Utilidades.dateToString(reserva.gethSalida()), reserva.getNumPlaza(),reserva.getSeccion(), reserva.getPrecioTotal());
 			try {
 				Statement st = con.createStatement();
 				st.executeUpdate(sql);

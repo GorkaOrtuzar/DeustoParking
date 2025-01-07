@@ -193,21 +193,76 @@ public class VentanaReservaParking extends JFrame{
 		 lblLibre = new JLabel("Parkig vacio");
 			
 		pEste.setPreferredSize(new Dimension(300, 10));
-		pEste.setLayout(new GridLayout(5, 2));
-		getContentPane().add(pEste, BorderLayout.EAST);
-			
-
-			pEste.add(pMenor20);
-			pEste.add(lblMenor20);
-			pEste.add(pEntre20y50);
-			pEste.add(lblentre20y50);
-			pEste.add(pEntre50y100);
-			pEste.add(lblentre50y100);
-			pEste.add(pMas100);
-			pEste.add(lblmas100);
-			pEste.add(pLibre);
-			pEste.add(lblLibre);
 		
+		JPanel p = new JPanel();
+		p.setLayout(new BorderLayout());
+		JPanel p1 = new JPanel(new GridLayout(5, 1));
+		JPanel p2 = new JPanel(new GridLayout(5, 1));
+		p.add(p1, BorderLayout.WEST);
+		p.add(p2, BorderLayout.CENTER);
+		//getContentPane().add(pEste, BorderLayout.EAST);
+		pEste.add(p);	
+
+			p1.add(pMenor20);
+			p2.add(lblMenor20);
+			p1.add(pEntre20y50);
+			p2.add(lblentre20y50);
+			p1.add(pEntre50y100);
+			p2.add(lblentre50y100);
+			p1.add(pMas100);
+			p2.add(lblmas100);
+			p1.add(pLibre);
+			p2.add(lblLibre);
+		
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
+		pEste.add(new JPanel());
 		
 		//Tamaño de la ventana
 		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();

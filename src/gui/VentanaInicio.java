@@ -119,6 +119,7 @@ public class VentanaInicio extends JFrame{
         properties.put("text.today", "Hoy");
         properties.put("text.month", "Mes");
         properties.put("text.year", "Año");
+        
 
         //CalendarioEntrada
         UtilDateModel modeloEntrada = new UtilDateModel();
@@ -158,7 +159,7 @@ public class VentanaInicio extends JFrame{
         DPSalida.addActionListener((e)->{
         	Date fechaSalidaSelect = (Date) DPSalida.getModel().getValue();
         	if(fechaSalidaSelect!= null) {
-        		if(fechaSalidaSelect.before((Date) DPentrada.getModel().getValue())) {
+        		if(fechaSalidaSelect.before(new Date())) {
         			 JOptionPane.showMessageDialog(null, "No puedes seleccionar una fecha anterior a hoy", "Fecha inválida", JOptionPane.WARNING_MESSAGE);
                      DPentrada.getModel().setSelected(false); 
         		}else {
