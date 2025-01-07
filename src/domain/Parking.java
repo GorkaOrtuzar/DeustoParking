@@ -10,7 +10,12 @@ public class Parking {
 	public Parking() {
 		super();
 	}
-
+	
+	public Parking(String parking) {
+		super();
+		this.parking = parking;
+	}
+	
 	public Parking(String parking, Float precioHora, int plazasLibres) {
 		super();
 		this.parking = parking;

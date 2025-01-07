@@ -21,6 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import domain.BD;
+import domain.Parking;
 import domain.Plaza;
 import domain.Reserva;
 
@@ -76,10 +77,13 @@ public class VentanaReservarPlaza extends JFrame{
 			modeloCombo.addElement("Izquierda");
 			modeloCombo.addElement("Centro");
 			modeloCombo.addElement("Derecha");
-		} else {
+		} else if(r.getNomParking().equals("ParkingCentral")) {
 			modeloCombo.addElement("-1");
 			modeloCombo.addElement("-2");
 			modeloCombo.addElement("-3");
+		} else {
+			modeloCombo.addElement("0");
+			modeloCombo.addElement("1");
 		}
 		
 		pComboBox.add(lblParkings);
@@ -97,12 +101,6 @@ public class VentanaReservarPlaza extends JFrame{
 		pSur.add(btnVolver);
 		pSur.add(btnSiguiente);
 		
-		btnSiguiente.addActionListener((e)->{
-			vActual.dispose();
-			new VentanaIngresarDatos(vActual, r);
-			
-		});
-		
 		btnVolver.addActionListener((e)->{
 			vActual.dispose();
 			new VentanaReservaParking(vActual, r);
@@ -110,10 +108,11 @@ public class VentanaReservarPlaza extends JFrame{
 		});
 		
 		//Creación tabla
+		Parking p = new Parking(r.getNomParking());
 		modeloTabla = new ModeloTablaReservarPlaza();
 		tabla = new JTable(modeloTabla);
 		scrollTabla = new JScrollPane(tabla);
-		tabla.setDefaultRenderer(Object.class, new RendererTablaReservarPlaza());
+		tabla.setDefaultRenderer(Object.class, new RendererTablaReservarPlaza(p));
 		pCentro.add(scrollTabla);
 		
 		tabla.addMouseListener(new MouseAdapter() {
@@ -238,8 +237,6 @@ public class VentanaReservarPlaza extends JFrame{
 	    }
 	    
 	    modeloTabla.actualizarDatos(plazasFiltradas); 
-	}
-	
-	
+	}	
 
 }
