@@ -12,6 +12,7 @@ public class Reserva {
 	private Date hLlegada;
 	private Date hSalida;
 	private int numPlaza;
+	private String seccion;
 	private float precioTotal;
 	
 	public Reserva() {
@@ -51,7 +52,7 @@ public class Reserva {
 	}
 
 	public Reserva(String ciudad, String dni, String matricula, String nomParking, String hLlegada, String hSalida,
-			int numPlaza, float precioTotal) {
+			int numPlaza, String seccion, float precioTotal) {
 		super();
 		this.ciudad = ciudad;
 		this.dni = dni;
@@ -60,6 +61,7 @@ public class Reserva {
 		this.hLlegada = Utilidades.stringToDate(hLlegada);
 		this.hSalida = Utilidades.stringToDate(hSalida);
 		this.numPlaza = numPlaza;
+		this.seccion = seccion;
 		this.precioTotal = precioTotal;
 	}
 
@@ -119,6 +121,14 @@ public class Reserva {
 		this.ciudad = ciudad;
 	}
 
+	public String getSeccion() {
+		return seccion;
+	}
+
+	public void setSeccion(String seccion) {
+		this.seccion = seccion;
+	}
+
 	public float getPrecioTotal() {
 		return precioTotal;
 	}
@@ -129,7 +139,7 @@ public class Reserva {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(ciudad, dni, hLlegada, hSalida, matricula, nomParking, numPlaza, precioTotal);
+		return Objects.hash(ciudad, dni, hLlegada, hSalida, matricula, nomParking, numPlaza, precioTotal, seccion);
 	}
 
 	@Override
@@ -143,15 +153,17 @@ public class Reserva {
 		Reserva other = (Reserva) obj;
 		return Objects.equals(ciudad, other.ciudad) && Objects.equals(dni, other.dni)
 				&& Objects.equals(hLlegada, other.hLlegada) && Objects.equals(hSalida, other.hSalida)
-				&& matricula == other.matricula && Objects.equals(nomParking, other.nomParking)
-				&& numPlaza == other.numPlaza && precioTotal == other.precioTotal;
+				&& Objects.equals(matricula, other.matricula) && Objects.equals(nomParking, other.nomParking)
+				&& numPlaza == other.numPlaza
+				&& Float.floatToIntBits(precioTotal) == Float.floatToIntBits(other.precioTotal)
+				&& Objects.equals(seccion, other.seccion);
 	}
 
 	@Override
 	public String toString() {
-		return "Reserva [Ciudad=" + ciudad + ", dni=" + dni + ", matricula=" + matricula + ", nomParking=" + nomParking
-				+ ", hLlegada=" + Utilidades.dateToString(hLlegada) + ", hSalida=" + Utilidades.dateToString(hSalida) + ", numPlaza=" + numPlaza + ", precioTotal="
-				+ precioTotal + "]";
+		return "Reserva [ciudad=" + ciudad + ", dni=" + dni + ", matricula=" + matricula + ", nomParking=" + nomParking
+				+ ", hLlegada=" + hLlegada + ", hSalida=" + hSalida + ", numPlaza=" + numPlaza + ", seccion=" + seccion
+				+ ", precioTotal=" + precioTotal + "]";
 	}
 
 }

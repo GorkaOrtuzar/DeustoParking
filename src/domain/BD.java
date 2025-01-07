@@ -42,7 +42,7 @@ public class BD {
 		try {
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(sql);
-			sql = "CREATE TABLE IF NOT EXISTS Reserva(Ciudad String, dni String, matricula String,nombreParking String, hllegada String, hsalida String, numeroPlaza int, precioTotal float)";
+			sql = "CREATE TABLE IF NOT EXISTS Reserva(Ciudad String, dni String, matricula String,nombreParking String, hllegada String, hsalida String, numeroPlaza int, seccion String, precioTotal float)";
 			stmt.executeUpdate(sql);
 			sql = "CREATE TABLE IF NOT EXISTS Parking(nomParking String,precioHora float, plazasLibres int)";
 			stmt.executeUpdate(sql);
@@ -192,8 +192,9 @@ public class BD {
 				String llegada = rs.getString("hllegada");
 				String salida = rs.getString("hsalida");
 				String numeroPlaza = rs.getString("numeroPlaza");
+				String seccion = rs.getString("seccion");
 				String precioTotal = rs.getString("precioTotal");
-				reserva = new Reserva(ciudad, DNI, matricula,nombreParking, llegada, salida, Integer.parseInt(numeroPlaza), Float.parseFloat(precioTotal));
+				reserva = new Reserva(ciudad, DNI, matricula,nombreParking, llegada, salida, Integer.parseInt(numeroPlaza), seccion, Float.parseFloat(precioTotal));
 			}
 			rs.close();
 			st.close();
@@ -231,8 +232,9 @@ public class BD {
 				String llegada = rs.getString("hllegada");
 				String salida = rs.getString("hsalida");
 				String numeroPlaza = rs.getString("numeroPlaza");
+				String seccion = rs.getString("seccion");
 				String precioTotal = rs.getString("precioTotal");
-				Reserva reserva = new Reserva(ciudad, DNI, matricula,nombreParking, llegada, salida, Integer.parseInt(numeroPlaza), Float.parseFloat(precioTotal));
+				Reserva reserva = new Reserva(ciudad, DNI, matricula,nombreParking, llegada, salida, Integer.parseInt(numeroPlaza), seccion, Float.parseFloat(precioTotal));
 				l.add(reserva);
 			}
 			rs.close();
@@ -258,8 +260,9 @@ public class BD {
 				String llegada = rs.getString("hllegada");
 				String salida = rs.getString("hsalida");
 				String numeroPlaza = rs.getString("numeroPlaza");
+				String seccion = rs.getString("seccion");
 				String precioTotal = rs.getString("precioTotal");
-				Reserva reserva = new Reserva(ciudad, DNI, matricula,nombreParking, llegada, salida, Integer.parseInt(numeroPlaza), Float.parseFloat(precioTotal));
+				Reserva reserva = new Reserva(ciudad, DNI, matricula,nombreParking, llegada, salida, Integer.parseInt(numeroPlaza), seccion, Float.parseFloat(precioTotal));
 				l.add(reserva);
 			}
 			rs.close();
