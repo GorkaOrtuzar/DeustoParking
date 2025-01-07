@@ -336,6 +336,18 @@ public class BD {
 	}
 	
 	//UPDATE PLAZA
+	public static void actualizarEstadoPlaza(Connection con, String pisoPlaza, String seccion, int numPlaza, boolean ocupada, boolean min) {
+	    String q = "UPDATE Plaza SET ocupado = ? WHERE secPlaza = ? AND numPlaza = ?";
+	    
+	    try (PreparedStatement ps = con.prepareStatement(q)) {
+	    	ps.setBoolean(1, ocupada); 
+	        ps.setString(2, seccion);
+	        ps.setInt(3, numPlaza);
+	        ps.executeUpdate();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
 	
 	public static void cerrarBD(Connection con) {
 		if(con != null) {
