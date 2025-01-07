@@ -76,5 +76,12 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 		 this.listaPlazas.addAll(plazasFiltradas);
 		 fireTableDataChanged(); // Sacado de Proyectos del Año pasado --> Actualiza la tabla
 	 }
+	 public void actualizarTablaPlaza() {
+		 fireTableDataChanged(); // Sacado de Proyectos del Año pasado --> Actualiza la tabla
+	 }
+	 
+	 public Plaza getPlazaRow(int row) {
+		 return listaPlazas.get(row);
+	 }
 		
 	}

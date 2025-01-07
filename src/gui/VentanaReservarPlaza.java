@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -116,6 +119,68 @@ public class VentanaReservarPlaza extends JFrame{
 		scrollTabla = new JScrollPane(tabla);
 		tabla.setDefaultRenderer(Object.class, new RendererTablaReservarPlaza());
 		pCentro.add(scrollTabla);
+		
+		tabla.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        int fila = tabla.getSelectedRow();
+		        int columna = tabla.getSelectedColumn();
+
+		        if (fila != -1) {
+		            Plaza p = (Plaza) modeloTabla.getValueAt(fila, columna);
+
+		            if (p != null) { 
+		                System.out.println(p);
+
+		                int opcion = JOptionPane.showOptionDialog(vActual,"¿Desea reservar esta plaza?",
+		                    "Reservar Plaza",
+		                    JOptionPane.YES_NO_OPTION,
+		                    JOptionPane.QUESTION_MESSAGE,
+		                    null,
+		                    new Object[]{"Sí", "No"},
+		                    null
+		                );
+
+		                if (opcion == JOptionPane.YES_OPTION) {
+		                    int conf = JOptionPane.showConfirmDialog(
+		                        vActual,
+		                        "¿Está seguro que quiere reservar esta plaza?",
+		                        "Confirmar Reserva",
+		                        JOptionPane.YES_NO_OPTION
+		                    );
+
+		                    if (conf == JOptionPane.YES_OPTION) {
+		                        p.setOcupada(true);
+		                        if (BD.initBD("db/deustoParking.db") != null) {
+		                            BD.actualizarEstadoPlaza(BD.initBD("db/deustoParking.db"),p.getPiso() ,p.getSeccion(), p.getNumPlaza(), true, p.isMinusvalido());
+		                            r.setNumPlaza(p.getNumPlaza());
+		                            r.setSeccion(p.getSeccion());
+		                            vActual.dispose();
+		                            new VentanaIngresarDatos(vActual, r);
+		                        } else {
+		                            JOptionPane.showMessageDialog(vActual, "Conexión a la base de datos no establecida.", "Error", JOptionPane.ERROR_MESSAGE);
+		                        }
+		                        modeloTabla.actualizarTablaPlaza();
+		                        tabla.repaint();
+		                        tabla.revalidate();
+		                        JOptionPane.showMessageDialog(
+		                            vActual,
+		                            "Plaza reservada correctamente.",
+		                            "Reserva Exitosa",
+		                            JOptionPane.INFORMATION_MESSAGE
+		                        );
+		                        
+				                System.out.println("NUEVO" + p);
+
+		                    }
+		                }
+		            } else {
+		                System.out.println("No se seleccionó una plaza válida.");
+		            }
+		        }
+		    }
+		});
+
 		
 		//Quitar bordes a las celdas
 		tabla.setIntercellSpacing(new Dimension(0, 0));  

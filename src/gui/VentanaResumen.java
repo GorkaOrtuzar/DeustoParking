@@ -164,7 +164,7 @@ public class VentanaResumen extends JFrame{
 		cambiarLetraRespuesta(lblNomParkingRe);
 		lblNomPlaza = new JLabel("Número Plaza: ");
 		cambiarLetra(lblNomPlaza);
-		lblNomPlazaRe = new JLabel(String.valueOf(r.getNumPlaza()));
+		lblNomPlazaRe = new JLabel(String.valueOf(r.getNumPlaza()+ r.getSeccion()));
 		cambiarLetraRespuesta(lblNomPlazaRe);
 		lblPrecioTotal = new JLabel("Precio Total: ");
 		cambiarLetra(lblPrecioTotal);
