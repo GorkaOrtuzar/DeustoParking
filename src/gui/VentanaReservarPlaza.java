@@ -110,7 +110,7 @@ public class VentanaReservarPlaza extends JFrame{
 		
 		//Creación tabla
 		Parking pa = new Parking(r.getNomParking());
-		modeloTabla = new ModeloTablaReservarPlaza();
+		modeloTabla = new ModeloTablaReservarPlaza(pa);
 		tabla = new JTable(modeloTabla);
 		scrollTabla = new JScrollPane(tabla);
 		tabla.setDefaultRenderer(Object.class, new RendererTablaReservarPlaza(pa));

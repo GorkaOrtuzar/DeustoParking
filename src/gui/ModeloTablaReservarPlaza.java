@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+
+import domain.Parking;
 import domain.Plaza;
 
 public class ModeloTablaReservarPlaza extends DefaultTableModel{
@@ -11,12 +13,13 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 	private static final long serialVersionUID = 1L;
 	private List<Plaza> listaPlazas;
 	private List<String> lTitulos; 
+	private Parking parking;
 	
-	public ModeloTablaReservarPlaza() {
+	public ModeloTablaReservarPlaza(Parking p) {
 		this.lTitulos = Arrays.asList(" ", "A", "B", "C", "D", "E", "F", "G", "H");
 		this.listaPlazas = new ArrayList<>();
         super.setColumnIdentifiers(lTitulos.toArray());
-		
+		this.parking = p;
 	}
 
 	
@@ -42,17 +45,30 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 	
 	 @Override
 	    public Object getValueAt(int row, int column) {
-	        if (column == 0) {
-	        	switch (row) {
-	        	
-	            	case 0: return 1;
-	            	case 2: return 2;
-	            	case 3: return 3;
-	            	case 5: return 4;
-	            	case 6: return 5;
-	            	case 8: return 6;
-	            	default: return "";
-	            }
+		 if (parking.getParking().equals("ParkingVIP")) {
+		        	if (column == 0) {
+			        	switch (row) {
+		            	case 0: return 1;
+		            	case 2: return 2;
+		            	case 4: return 3;
+		            	case 6: return 4;
+		            	case 8: return 5;
+		            	default: return "";
+		            }
+		        }
+		            
+		 } else if (parking.getParking().equals("ParkingCentral") || parking.getParking().equals("ParkingTechado")) {
+		        	if (column == 0) {
+			        	switch (row) {
+			            	case 0: return 1;
+			            	case 2: return 2;
+			            	case 3: return 3;
+			            	case 5: return 4;
+			            	case 6: return 5;
+			            	case 8: return 6;
+			            	default: return "";
+			            }
+		        	}
 	        }
 
 	        if (column > 0) {
