@@ -123,10 +123,11 @@ public class VentanaReservarPlaza extends JFrame{
 		        int columna = tabla.getSelectedColumn();
 
 		        if (fila != -1) {
-		            Plaza p = (Plaza) modeloTabla.getValueAt(fila, columna);
+		        	int i =modeloTabla.getPlaza(fila);
+		            Plaza p = (Plaza) modeloTabla.getValueAt(i, columna);
 
 		            if (p != null) { 
-		                System.out.println(p);
+		                System.out.println(p.getNumPlaza() + p.getSeccion());
 
 		                int opcion = JOptionPane.showOptionDialog(vActual,"¿Desea reservar esta plaza?",
 		                    "Reservar Plaza",
