@@ -28,7 +28,6 @@ import domain.Reserva;
 
 public class VentanaReservarPlaza extends JFrame{
 	
-	static Connection con;
 	private static final long serialVersionUID = 1L;
 	private JPanel pCentro, pNorte, pSur, pCont, pPrincipal, pIzq, pComboBox;
 	private JLabel lblReservarPlaza, lblParkings;
@@ -148,11 +147,11 @@ public class VentanaReservarPlaza extends JFrame{
 
 		                    if (conf == JOptionPane.YES_OPTION) {
 		                        p.setOcupada(true);
-		                        if (con != null) {
-		                            BD.actualizarEstadoPlaza(con,p.getPiso() ,p.getSeccion(), p.getNumPlaza(), true, p.isMinusvalido());
+		                        if (Principal.con != null) {
+		                            BD.actualizarEstadoPlaza(Principal.con,p.getPiso() ,p.getSeccion(), p.getNumPlaza(), true, p.isMinusvalido());
 		                            r.setNumPlaza(p.getNumPlaza());
 		                            r.setSeccion(p.getSeccion());
-		                            BD.restarPlazasLibresParking(con, pa.getParking());
+		                            BD.restarPlazasLibresParking(Principal.con, pa.getParking());
 		                            vActual.dispose();
 		                            new VentanaIngresarDatos(vActual, r);
 		                        } else {
@@ -168,7 +167,7 @@ public class VentanaReservarPlaza extends JFrame{
 		                            JOptionPane.INFORMATION_MESSAGE
 		                        );
 		                        
-				                System.out.println("NUEVO" + p);
+				                System.out.println("Nueva" + p);
 
 		                    }
 		                }
@@ -217,7 +216,7 @@ public class VentanaReservarPlaza extends JFrame{
 	    List<Plaza> plazasFiltradas = new ArrayList<>();
 	    
 	    //Recorremos la lista de plazas
-	    for (Plaza plaza : BD.obtenerListaPlaza(BD.initBD("db/deustoParking.db"))) {
+	    for (Plaza plaza : BD.obtenerListaPlaza(Principal.con)) {
 	    	
 	    	if(planta.equals("-1")&&plaza.getPiso().equals("-1")) {
 	    		plazasFiltradas.add(plaza);

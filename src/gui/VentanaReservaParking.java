@@ -285,7 +285,7 @@ public class VentanaReservaParking extends JFrame{
 //		lp.add(new Parking("ParkingCentral", 25.5f, 105));
 //		lp.add(new Parking("ParkingTechado", 17.90f, 237));
 		modeloTabla = (ModeloTablaReservaParking) tabla.getModel();
-		modeloTabla.setlParkings(BD.obtenerListaParking(BD.initBD("db/deustoParking.db")));
+		modeloTabla.setlParkings(BD.obtenerListaParking(Principal.con));
 		tabla.setModel(modeloTabla);
 	}
 
