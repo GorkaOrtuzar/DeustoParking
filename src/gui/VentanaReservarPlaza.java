@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,7 @@ import domain.Reserva;
 
 public class VentanaReservarPlaza extends JFrame{
 	
+	static Connection con;
 	private static final long serialVersionUID = 1L;
 	private JPanel pCentro, pNorte, pSur, pCont, pPrincipal, pIzq, pComboBox;
 	private JLabel lblReservarPlaza, lblParkings;
@@ -108,11 +110,11 @@ public class VentanaReservarPlaza extends JFrame{
 		});
 		
 		//Creación tabla
-		Parking p = new Parking(r.getNomParking());
+		Parking pa = new Parking(r.getNomParking());
 		modeloTabla = new ModeloTablaReservarPlaza();
 		tabla = new JTable(modeloTabla);
 		scrollTabla = new JScrollPane(tabla);
-		tabla.setDefaultRenderer(Object.class, new RendererTablaReservarPlaza(p));
+		tabla.setDefaultRenderer(Object.class, new RendererTablaReservarPlaza(pa));
 		pCentro.add(scrollTabla);
 		
 		tabla.addMouseListener(new MouseAdapter() {
@@ -146,10 +148,11 @@ public class VentanaReservarPlaza extends JFrame{
 
 		                    if (conf == JOptionPane.YES_OPTION) {
 		                        p.setOcupada(true);
-		                        if (BD.initBD("db/deustoParking.db") != null) {
-		                            BD.actualizarEstadoPlaza(BD.initBD("db/deustoParking.db"),p.getPiso() ,p.getSeccion(), p.getNumPlaza(), true, p.isMinusvalido());
+		                        if (con != null) {
+		                            BD.actualizarEstadoPlaza(con,p.getPiso() ,p.getSeccion(), p.getNumPlaza(), true, p.isMinusvalido());
 		                            r.setNumPlaza(p.getNumPlaza());
 		                            r.setSeccion(p.getSeccion());
+		                            BD.restarPlazasLibresParking(con, pa.getParking());
 		                            vActual.dispose();
 		                            new VentanaIngresarDatos(vActual, r);
 		                        } else {

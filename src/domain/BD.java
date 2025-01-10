@@ -359,6 +359,27 @@ public class BD {
 			} catch (SQLException e) {
 			}
 		}
-	}	
+	}
+	
+	public static void sumarPlazasLibresParking(Connection con, String nomParking) {
+		String sql = "UPDATE Parking SET plazasLibres = plazasLibres + 1 WHERE nomParking = ?";
+		
+		try(PreparedStatement ps = con.prepareStatement(sql)){
+			ps.setString(1, nomParking);
+			ps.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public static void restarPlazasLibresParking(Connection con, String nomParking) {
+		String sql = "UPDATE Parking SET plazasLibres = plazasLibres - 1 WHERE nomParking = ?";
+		
+		try(PreparedStatement ps = con.prepareStatement(sql)){
+			ps.setString(1, nomParking);
+			ps.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 }

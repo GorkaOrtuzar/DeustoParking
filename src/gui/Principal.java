@@ -14,6 +14,8 @@ import domain.Usuario;
 public class Principal {
 
 	static Connection con;
+	private static Thread t;
+	
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		String nombreBD;
 		nombreBD = "db/deustoParking.db";
@@ -56,6 +58,33 @@ public class Principal {
 		}
 		
 		
+	}
+	
+	private static void hiloSumarNumPlazas() {
+		try {
+			t = new Thread(()->{
+				long fechaHoy = System.currentTimeMillis();
+
+				for(Reserva r : BD.obtenerListaReservas(con)){
+					for(Plaza p : BD.obtenerListaPlaza(con)) {
+							if(r.getNumPlaza()==p.getNumPlaza() &&  r.getSeccion().equals(p.getSeccion())) {
+								if(p.isOcupada()) {
+									if(r.gethSalida().getTime()<fechaHoy) {
+										p.setOcupada(false);
+										BD.sumarPlazasLibresParking(con, r.getNomParking());
+									}
+								}
+								
+						}
+					}
+				}
+			
+			});
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		t.start();
 	}
 
 }
