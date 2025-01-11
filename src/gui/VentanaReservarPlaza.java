@@ -122,8 +122,8 @@ public class VentanaReservarPlaza extends JFrame{
 		        int fila = tabla.getSelectedRow();
 		        int columna = tabla.getSelectedColumn();
 
-		        if (fila != -1) {
-		        	int i =modeloTabla.getPlaza(fila);
+		        if (fila != -1 && columna !=-1) {
+		        	int i = modeloTabla.getPlaza(fila);
 		            Plaza p = (Plaza) modeloTabla.getValueAt(i, columna);
 
 		            if (p != null) { 
@@ -149,8 +149,8 @@ public class VentanaReservarPlaza extends JFrame{
 		                    if (conf == JOptionPane.YES_OPTION) {
 		                        p.setOcupada(true);
 		                        if (Principal.con != null) {
-		                            BD.actualizarEstadoPlaza(Principal.con,p.getPiso() ,p.getSeccion(), p.getNumPlaza(), true, p.isMinusvalido());
-		                            r.setNumPlaza(p.getNumPlaza());
+		                            BD.actualizarEstadoPlaza(Principal.con,p.getPiso() ,p.getSeccion(), i, true, p.isMinusvalido());
+		                            r.setNumPlaza(i);
 		                            r.setSeccion(p.getSeccion());
 		                            BD.restarPlazasLibresParking(Principal.con, pa.getParking());
 		                            vActual.dispose();

@@ -10,6 +10,8 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -128,6 +130,23 @@ public class VentanaPago extends JFrame{
                     txtNumTarjeta.setText("0000 0000 0000 0000");
                     txtNumTarjeta.setForeground(Color.GRAY);
                 }
+            }
+        });
+        
+        txtNumTarjeta.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                String text = txtNumTarjeta.getText().replaceAll("\\D", ""); 
+                StringBuilder formattedText = new StringBuilder();
+                
+                for (int i = 0; i < text.length(); i++) {
+                    if (i > 0 && i % 4 == 0) {
+                        formattedText.append(" ");
+                    }
+                    formattedText.append(text.charAt(i));
+                }
+                
+                txtNumTarjeta.setText(formattedText.toString());
             }
         });
 

@@ -72,18 +72,22 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 	        }
 
 	        if (column > 0) {
-	        	if ((parking.equals("ParkingVIP") && (row == 1 || row == 3 || row == 5 || row == 7)) ||
-	        		    ((parking.equals("ParkingCentral") || parking.equals("ParkingTechado")) &&
+	        	if ((parking.getParking().equals("ParkingVIP") && (row == 1 || row == 3 || row == 5 || row == 7)) ||
+	        		    ((parking.getParking().equals("ParkingCentral") || parking.getParking().equals("ParkingTechado")) &&
 	        		    (row == 1 || row == 4 || row == 7))) {
 	        		    return null; 
 	        		}
+	        	
+	        	if(column>0) {
+	        		String seccion = lTitulos.get(column);
+		            for (Plaza p : listaPlazas) {
+		                if (p.getSeccion().equals(seccion) && p.getNumPlaza() == (row + 1)) {
+		                    return p;
+		                }
+		            }
+	        	}
 
-	            String seccion = lTitulos.get(column);
-	            for (Plaza p : listaPlazas) {
-	                if (p.getSeccion().equals(seccion) && p.getNumPlaza() == (row + 1)) {
-	                    return p;
-	                }
-	            }
+	            
 	        }
 
 	        return null;  
@@ -105,12 +109,12 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 	 public int getPlaza(int row) {
 		    int i = 0;
 
-		    if (parking.equals("ParkingVIP")) {
+		    if (parking.getParking().equals("ParkingVIP")) {
 		        if (row > 1) i++;
 		        if (row > 3) i++;
 		        if (row > 5) i++;
 		        if (row > 7) i++;
-		    } else if (parking.equals("ParkingCentral") || parking.equals("ParkingTechado")) {
+		    } else if (parking.getParking().equals("ParkingCentral") || parking.getParking().equals("ParkingTechado")) {
 		        if (row > 1) i++;
 		        if (row > 4) i++;
 		        if (row > 7) i++;
