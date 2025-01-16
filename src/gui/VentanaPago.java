@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -29,8 +30,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-import domain.BD;
+import db.BD;
 import domain.Reserva;
+import main.Principal;
 
 
 public class VentanaPago extends JFrame{

@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -28,9 +29,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
-import domain.BD;
+import db.BD;
 import domain.Reserva;
 import domain.Usuario;
+import main.Principal;
 
 public class VentanaMisReservas extends JFrame {
 

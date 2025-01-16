@@ -1,8 +1,15 @@
-package domain;
+package db;
 
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import domain.Parking;
+import domain.Plaza;
+import domain.Reserva;
+import domain.Usuario;
+import domain.Utilidades;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

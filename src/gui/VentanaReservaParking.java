@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
@@ -21,9 +22,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
-import domain.BD;
+
+import db.BD;
 import domain.Reserva;
 import domain.Utilidades;
+import main.Principal;
 
 public class VentanaReservaParking extends JFrame{
 	

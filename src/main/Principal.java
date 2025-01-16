@@ -1,19 +1,21 @@
-package gui;
+package main;
 
 import java.io.FileNotFoundException;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import domain.BD;
+import db.BD;
 import domain.Parking;
 import domain.Plaza;
 import domain.Reserva;
 import domain.Usuario;
+import gui.VentanaCargando;
 
 public class Principal {
 
-	static Connection con;
+	public static Connection con;
 	private static Thread t;
 	
 	public static void main(String[] args) throws FileNotFoundException, IOException {
