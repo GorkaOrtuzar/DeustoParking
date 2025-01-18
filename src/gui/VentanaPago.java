@@ -239,22 +239,22 @@ public class VentanaPago extends JFrame{
 
         btnGrupo = new ButtonGroup();
 
-        cargarImg("imagenes/visa.png", lblVisa, pTipoPago);
+        cargarImg("resources/imagenes/visa.png", lblVisa, pTipoPago);
         rbtnVisa = new JRadioButton("Tarjeta Visa");
         btnGrupo.add(rbtnVisa);
         pTipoPago.add(rbtnVisa);
 
-        cargarImg("imagenes/masterCard.png", lblMasterCard, pTipoPago);
+        cargarImg("resources/imagenes/masterCard.png", lblMasterCard, pTipoPago);
         rbtnMaster = new JRadioButton("Tarjeta MasterCard");
         btnGrupo.add(rbtnMaster);
         pTipoPago.add(rbtnMaster);
 
-        cargarImg("imagenes/googlePay.png", lblGooglePay, pTipoPago);
+        cargarImg("resources/imagenes/googlePay.png", lblGooglePay, pTipoPago);
         rbtnGoogle = new JRadioButton("GooglePay");
         btnGrupo.add(rbtnGoogle);
         pTipoPago.add(rbtnGoogle);
 
-        cargarImg("imagenes/applePay.png", lblApplePay, pTipoPago);
+        cargarImg("resources/imagenes/applePay.png", lblApplePay, pTipoPago);
         rbtnApple = new JRadioButton("ApplePay");
         btnGrupo.add(rbtnApple);
         pTipoPago.add(rbtnApple);
@@ -332,7 +332,7 @@ public class VentanaPago extends JFrame{
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(50, 50, 1600, 800);
         setTitle("Pago");
-        ImageIcon icono = new ImageIcon("imagenes/logito.png");
+        ImageIcon icono = new ImageIcon("resources/imagenes/logito.png");
 		setIconImage(icono.getImage());
         setVisible(true);
 	}

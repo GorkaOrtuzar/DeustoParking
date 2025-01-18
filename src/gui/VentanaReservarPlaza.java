@@ -2,12 +2,12 @@ package gui;
 
 import java.awt.BorderLayout;
 
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -208,7 +208,7 @@ public class VentanaReservarPlaza extends JFrame{
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(50, 50, 1600, 800);
         setTitle("Plazas");
-        ImageIcon icono = new ImageIcon("imagenes/logito.png");
+        ImageIcon icono = new ImageIcon("resources/imagenes/logito.png");
 		setIconImage(icono.getImage());
         setVisible(true);
 		

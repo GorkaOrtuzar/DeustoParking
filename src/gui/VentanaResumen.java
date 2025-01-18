@@ -268,7 +268,7 @@ public class VentanaResumen extends JFrame{
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(50, 50, 1600, 800);
 		setTitle("Resumen");
-		ImageIcon icono = new ImageIcon("imagenes/logito.png");
+		ImageIcon icono = new ImageIcon("resources/imagenes/logito.png");
 		setIconImage(icono.getImage());
 		setVisible(true);	
 	}

@@ -20,7 +20,8 @@ public class Principal {
 	
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		String nombreBD;
-		nombreBD = "db/deustoParking.db";
+		nombreBD = "resources/db/deustoParking.db";
+		@SuppressWarnings("unused")
 		VentanaCargando va = new VentanaCargando();
 		con = BD.initBD(nombreBD);
 		
@@ -62,6 +63,7 @@ public class Principal {
 		
 	}
 	
+	@SuppressWarnings("unused")
 	private static void hiloSumarNumPlazas() {
 		try {
 			t = new Thread(()->{

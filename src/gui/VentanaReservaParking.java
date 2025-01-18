@@ -30,9 +30,7 @@ import main.Principal;
 
 public class VentanaReservaParking extends JFrame{
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	
 	//Declaramos valores
@@ -276,7 +274,7 @@ public class VentanaReservaParking extends JFrame{
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(50, 50, 1600, 800);
 		setTitle("Reservar plaza de parking");
-		ImageIcon icono = new ImageIcon("imagenes/logito.png");
+		ImageIcon icono = new ImageIcon("resources/imagenes/logito.png");
 		setIconImage(icono.getImage());
 		setVisible(true);
 	}

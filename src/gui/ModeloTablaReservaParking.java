@@ -1,14 +1,16 @@
 package gui;
 
 import java.util.Arrays;
+
 import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
 import domain.Parking;
-import domain.Reserva;
 
 public class ModeloTablaReservaParking extends DefaultTableModel {
+	
+	private static final long serialVersionUID = 1L;
 	private List<Parking> lParkings;
 	private List<String> lTitulos = Arrays.asList("Nombre Parking" ,"Plazas Disponibles" ,"Precio");
 

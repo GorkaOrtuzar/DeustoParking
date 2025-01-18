@@ -1,18 +1,14 @@
 package gui;
 
 import java.awt.BorderLayout;
+
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.time.LocalDate;
 
 import javax.swing.BoxLayout;
-import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -20,20 +16,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
-import javax.swing.JSpinner.DateEditor;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.SpinnerDateModel;
-import javax.swing.SpinnerModel;
-import javax.swing.border.LineBorder;
-import javax.swing.event.ChangeListener;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 
-import org.jdatepicker.JDatePicker;
+
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
@@ -46,6 +30,8 @@ import domain.Utilidades;
 
 public class VentanaInicio extends JFrame{
 	
+	
+	private static final long serialVersionUID = 1L;
 	// Declarar los valores
 	private JPanel pCentro, pNorte,pTabla,pImagen, pMisReservas,pBloque1;
 	private JLabel lblDesutoCar;
@@ -209,10 +195,10 @@ public class VentanaInicio extends JFrame{
 		});
 		
 		//imagen
-		ImageIcon imagen = new ImageIcon("imagenes/logoDeustoParking.png");
+		ImageIcon imagen = new ImageIcon("resources/imagenes/logoDeustoParking.png");
 		JLabel lblImagen = new JLabel(imagen);
 		lblImagen.setBounds(0, 0, 100, 100);
-		ImageIcon icono = new ImageIcon("imagenes/logito.png");
+		ImageIcon icono = new ImageIcon("resources/imagenes/logito.png");
 		setIconImage(icono.getImage());
 		pImagen.add(lblImagen);
 		

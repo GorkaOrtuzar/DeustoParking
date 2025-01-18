@@ -2,18 +2,13 @@ package gui;
 
 import java.awt.BorderLayout;
 
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.List;
-import java.util.Scanner;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -27,7 +22,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableModel;
 
 import db.BD;
 import domain.Reserva;
@@ -39,13 +33,14 @@ public class VentanaMisReservas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel pCentro, pSur, pNorte, pDatos;
-	private JButton btnCerrar,btnEditable,btnGuardar;
+	private JButton btnCerrar,btnEditable;
 	private JLabel lblReserva;
 	private JLabel lblNombre, lblApellido,lbltlf,lbldni,lblContrasenia;
 	private JTextField txtNombre,txtApellido,txttlf,txtdni,txtContrasenia;
 	private ModeloTablaMisReservas modeloTabla; 
 	private JTable tabla; 
 	private JScrollPane scrollTabla;
+	@SuppressWarnings("unused")
 	private JFrame vActual, vAnterior;
 	private boolean editable;
 	public VentanaMisReservas(JFrame va, String dni ) {
@@ -215,30 +210,11 @@ public class VentanaMisReservas extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(50, 50, 1600, 800);
 		setTitle("Mis reservas");
-		ImageIcon icono = new ImageIcon("imagenes/logito.png");
+		ImageIcon icono = new ImageIcon("resources/imagenes/logito.png");
 		setIconImage(icono.getImage());
 		setVisible(true);
 	}
 		
-	// Metodo que carga el fichero en la tabla
-		private void cargarTabla() {
-			//Vamos a cargar a tabla con la información del fichero asignaturas.txt
-			File f = new File("ficheros/reservasEjemplo.txt");
-			
-			if(f.exists()) {
-				try {
-					Scanner sc = new Scanner(f);
-					while(sc.hasNextLine()) { 
-						String linea = sc.nextLine(); 
-						String [] datos = linea.split(",");
-						Object [] fila = {datos[4], datos[5], datos[3],datos[7]};
-						modeloTabla.addRow(fila);
-					}
-					sc.close();
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				}
-			}
-	}
+	
 }
 			

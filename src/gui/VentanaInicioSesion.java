@@ -250,13 +250,14 @@ public class VentanaInicioSesion extends JFrame {
 		});
 		setBounds(300, 200, 300, 300);
 		setTitle("Inicio Sesion");
-		ImageIcon icono = new ImageIcon("imagenes/logito.png");
+		ImageIcon icono = new ImageIcon("resources/imagenes/logito.png");
 		setIconImage(icono.getImage());
 		setVisible(true);	
 	}
 	 
 	public void evento() {
 		String dni = txtDNI.getText();
+		@SuppressWarnings("deprecation")
 		String contr = txtContrasenia.getText();
 		 if(dni.isEmpty()) {
 				JOptionPane.showMessageDialog(null, "Inserte un Usuario","ERROR",JOptionPane.ERROR_MESSAGE);

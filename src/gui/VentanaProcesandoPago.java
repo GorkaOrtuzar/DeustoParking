@@ -26,7 +26,7 @@ public class VentanaProcesandoPago extends JFrame {
 		super();
 		vActual = this;
 		
-		lblGif = new JLabel(new ImageIcon("imagenes/cocheGif.gif"));
+		lblGif = new JLabel(new ImageIcon("resources/imagenes/cocheGif.gif"));
 		lblGif.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblGif, BorderLayout.CENTER);
 		
@@ -42,7 +42,7 @@ public class VentanaProcesandoPago extends JFrame {
 				Thread.sleep(5000);
 				
 				SwingUtilities.invokeLater(() -> {
-                    lblGif.setIcon(new ImageIcon("imagenes/procesandoParado.jpg"));
+                    lblGif.setIcon(new ImageIcon("resources/imagenes/procesandoParado.jpg"));
                     JOptionPane.showMessageDialog(null, "¡La compra se ha realizado con éxito!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                     pbEspera.setIndeterminate(false);
                     vActual.dispose(); 
@@ -70,7 +70,7 @@ public class VentanaProcesandoPago extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(50, 50, 1600, 800);
         setTitle("Procesando Pago...");
-        ImageIcon icono = new ImageIcon("imagenes/logito.png");
+        ImageIcon icono = new ImageIcon("resources/imagenes/logito.png");
 		setIconImage(icono.getImage());
         setVisible(true);
 	}

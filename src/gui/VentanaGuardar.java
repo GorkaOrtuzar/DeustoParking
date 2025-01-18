@@ -80,7 +80,7 @@ public class VentanaGuardar extends JFrame{
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("Guardar");
-		ImageIcon icono = new ImageIcon("imagenes/logito.png");
+		ImageIcon icono = new ImageIcon("resources/imagenes/logito.png");
 		setIconImage(icono.getImage());
 		setVisible(true);
 	}

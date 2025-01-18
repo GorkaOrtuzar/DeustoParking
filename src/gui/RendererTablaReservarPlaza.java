@@ -31,11 +31,11 @@ public class RendererTablaReservarPlaza extends DefaultTableCellRenderer {
 		if (column != 0) {
 	        if (parking.getParking().equals("ParkingVIP")) {
 	            if (row == 1 || row == 3 || row == 5 || row == 7) {
-	                imagen("imagenes/carretera.jpg", l, 210, 190);
+	                imagen("resources/imagenes/carretera.jpg", l, 210, 190);
 	            }
 	        } else if (parking.getParking().equals("ParkingCentral") || parking.getParking().equals("ParkingTechado")) {
 	            if (row == 1 || row == 4 || row == 7) {
-	                imagen("imagenes/carretera.jpg", l, 210, 190);
+	                imagen("resources/imagenes/carretera.jpg", l, 210, 190);
 	            }
 	        }
 	    }
@@ -49,25 +49,25 @@ public class RendererTablaReservarPlaza extends DefaultTableCellRenderer {
 	        if(parking.getParking().equals("ParkingCentral") || parking.getParking().equals("ParkingTechado")) {
 	        	if (plaza.isOcupada()) {
 	        	if(row % 3 == 0) { // linea creada por IA Generativa 
-	        		imagen("imagenes/rojoAbajo.png", l, 180, 180);
+	        		imagen("resources/imagenes/rojoAbajo.png", l, 180, 180);
 	        	} else if((row + 1) % 3 == 0) {
-	        		imagen("imagenes/rojoArriba.png", l, 180, 180);
+	        		imagen("resources/imagenes/rojoArriba.png", l, 180, 180);
 	        	}
 	        	
 	        }else if(plaza.isMinusvalido()){
 	        	if(row % 3 == 0) {
-	        		imagen("imagenes/azulAbajo.png", l, 180, 180);
+	        		imagen("resources/imagenes/azulAbajo.png", l, 180, 180);
 
 	        	}else if((row + 1) % 3 == 0) {
-	        		imagen("imagenes/azulArriba.png", l, 180, 180);
+	        		imagen("resources/imagenes/azulArriba.png", l, 180, 180);
 
 	        	}
 	        }else if(!plaza.isOcupada() && !plaza.isMinusvalido()) {
 	        	if(row % 3 == 0 ) {
-	        		imagen("imagenes/verdeAbajo.png", l, 180, 180);
+	        		imagen("resources/imagenes/verdeAbajo.png", l, 180, 180);
 
 	        	}else if((row + 1) % 3 == 0) {
-	        		imagen("imagenes/verdeArriba.png", l, 180, 180);
+	        		imagen("resources/imagenes/verdeArriba.png", l, 180, 180);
 
 	        	}
 	        
@@ -76,25 +76,25 @@ public class RendererTablaReservarPlaza extends DefaultTableCellRenderer {
 	      } else if(parking.getParking().equals("ParkingVIP")) {
 		    	if (plaza.isOcupada()) {
 		        	if(row % 3 == 0) { // linea creada por IA Generativa 
-		        		imagen("imagenes/rojoAbajo.png", l, 180, 180);
+		        		imagen("resources/imagenes/rojoAbajo.png", l, 180, 180);
 		        	} else if((row + 1) % 3 == 0) {
-		        		imagen("imagenes/rojoArriba.png", l, 180, 180);
+		        		imagen("resources/imagenes/rojoArriba.png", l, 180, 180);
 		        	}
 		        	
 		        }else if(plaza.isMinusvalido()){
 		        	if(row % 3 == 0) {
-		        		imagen("imagenes/azulAbajo.png", l, 180, 180);
+		        		imagen("resources/imagenes/azulAbajo.png", l, 180, 180);
 
 		        	}else if((row + 1) % 3 == 0) {
-		        		imagen("imagenes/azulArriba.png", l, 180, 180);
+		        		imagen("resources/imagenes/azulArriba.png", l, 180, 180);
 
 		        	}
 		        }else if(!plaza.isOcupada() && !plaza.isMinusvalido()) {
 		        	if(row % 3 == 0 ) {
-		        		imagen("imagenes/verdeAbajo.png", l, 180, 180);
+		        		imagen("resources/imagenes/verdeAbajo.png", l, 180, 180);
 
 		        	}else if((row + 1) % 3 == 0) {
-		        		imagen("imagenes/verdeArriba.png", l, 180, 180);
+		        		imagen("resources/imagenes/verdeArriba.png", l, 180, 180);
 
 		        	}
 		        }

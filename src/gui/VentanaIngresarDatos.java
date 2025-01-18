@@ -2,18 +2,12 @@ package gui;
 
 import java.awt.BorderLayout;
 
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,18 +16,16 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
-
 import db.BD;
-import domain.Contenedora;
 import domain.Reserva;
 import domain.Usuario;
 import domain.Utilidades;
 
 public class VentanaIngresarDatos extends JFrame {
 	
+	
+	private static final long serialVersionUID = 1L;
 	private JPanel pNorte,pCentro,pSur,pDatosPersonales,pInfoParking;
 	//info pNorte
 	private JLabel lblIntroDatos,lblConfirma,lblPago;
@@ -198,7 +190,7 @@ public class VentanaIngresarDatos extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(50, 50, 1600, 800);
 		setTitle("Introduce los Datos");
-		ImageIcon icono = new ImageIcon("imagenes/logito.png");
+		ImageIcon icono = new ImageIcon("resources/imagenes/logito.png");
 		setIconImage(icono.getImage());
 		setVisible(true);
 	}
