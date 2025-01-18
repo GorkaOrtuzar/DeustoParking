@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -47,5 +48,25 @@ public class Contenedora {
 			return null;
 		}
 	}
+	//Metodo recursivo
+	public static List<String> obtenerCombinacionesAparcamiento(int plazasLibres) {
+        List<String> resultados = new ArrayList<>();
+        generarCombinaciones(plazasLibres, "", resultados);
+        return resultados;
+    }
+
+    private static void generarCombinaciones(int plazasLibres, String combinacionActual, List<String> resultados) {
+        // Caso base: si no hay más plazas libres, se añade la combinación actual
+        if (plazasLibres == 0) {
+            resultados.add(combinacionActual);
+            return;
+        }
+
+        // Llamada recursiva para aparcar en la plaza actual
+        generarCombinaciones(plazasLibres - 1, combinacionActual+ " |APARCAR| " , resultados); // Aparcar en la plaza
+        // Llamada recursiva para no aparcar en la plaza actual
+        generarCombinaciones(plazasLibres - 1, combinacionActual+ " |NO APARCAR| ", resultados); // No aparcar en la plaza
+    }
+
 	
 }

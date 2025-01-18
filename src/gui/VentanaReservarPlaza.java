@@ -23,6 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import db.BD;
+import domain.Contenedora;
 import domain.Parking;
 import domain.Plaza;
 import domain.Reserva;
@@ -33,7 +34,7 @@ public class VentanaReservarPlaza extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JPanel pCentro, pNorte, pSur, pCont, pPrincipal, pIzq, pComboBox;
 	private JLabel lblReservarPlaza, lblParkings;
-	private JButton btnSiguiente, btnVolver;
+	private JButton btnSiguiente, btnVolver, btnRecursivo;
 	private JFrame vActual;
 	
 	private ModeloTablaReservarPlaza modeloTabla;
@@ -101,8 +102,10 @@ public class VentanaReservarPlaza extends JFrame{
 		//Creación botón
 		btnSiguiente = new JButton("Siguiente");
 		btnVolver = new JButton("Volver");
+		btnRecursivo = new JButton("Simular Combinaciones");
 		pSur.add(btnVolver);
 		pSur.add(btnSiguiente);
+		pSur.add(btnRecursivo);
 		
 		btnVolver.addActionListener((e)->{
 			vActual.dispose();
@@ -180,6 +183,25 @@ public class VentanaReservarPlaza extends JFrame{
 		        }
 		    }
 		});
+		
+		btnRecursivo.addActionListener((e)->{
+			String s = JOptionPane.showInputDialog("Introduce el número de plazas que quieres combinar: ");
+			if(s!=null) {
+			    //int plazasLibres = 3; // Número de plazas libres en el parking
+			    int plazasLibres = Integer.parseInt(s);
+				List<String> combinaciones = Contenedora.obtenerCombinacionesAparcamiento(plazasLibres);
+				//
+				StringBuilder sb = new StringBuilder();
+				for (String combinacion : combinaciones) {
+				    sb.append(combinacion).append("\n"); // Añade la combinación seguida de un salto de línea
+				}
+
+				// Mostrar las combinaciones en una ventana de diálogo
+				JOptionPane.showMessageDialog(null, sb.toString(),"COMBINACIONES",JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+		});
+
 
 		
 		//Quitar bordes a las celdas
