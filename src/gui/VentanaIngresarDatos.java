@@ -118,7 +118,7 @@ public class VentanaIngresarDatos extends JFrame {
 			}else {
 			Usuario u = new Usuario(Nombre, Apellido,tlf, dni, contrasenia);
 			Reserva re = new Reserva(r.getCiudad(),dni,matricula,r.getNomParking(),Utilidades.dateToString(r.gethLlegada()),Utilidades.dateToString(r.gethSalida()),r.getNumPlaza(), r.getSeccion(), r.getPrecioTotal());
-			BD.insertarUsuario(BD.initBD("db/deustoParking.db"), u);
+			BD.insertarUsuario(BD.initBD("resources/db/deustoParking.db"), u);
 			
 			vActual.dispose(); 
 			new VentanaResumen(vActual, re, u);

@@ -25,17 +25,18 @@ public class RendererTablaReservarPlaza extends DefaultTableCellRenderer {
 			int row, int column) {
 		super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 		JLabel l = new JLabel();
-//		l.setOpaque(true);
 		l.setHorizontalAlignment(JLabel.CENTER);
 		
 		if (column != 0) {
 	        if (parking.getParking().equals("ParkingVIP")) {
 	            if (row == 1 || row == 3 || row == 5 || row == 7) {
 	                imagen("resources/imagenes/carretera.jpg", l, 210, 190);
+	                return l;
 	            }
 	        } else if (parking.getParking().equals("ParkingCentral") || parking.getParking().equals("ParkingTechado")) {
 	            if (row == 1 || row == 4 || row == 7) {
 	                imagen("resources/imagenes/carretera.jpg", l, 210, 190);
+	                return l;
 	            }
 	        }
 	    }
@@ -74,32 +75,20 @@ public class RendererTablaReservarPlaza extends DefaultTableCellRenderer {
 	        }
 	        	
 	      } else if(parking.getParking().equals("ParkingVIP")) {
-		    	if (plaza.isOcupada()) {
-		        	if(row % 3 == 0) { // linea creada por IA Generativa 
-		        		imagen("resources/imagenes/rojoAbajo.png", l, 180, 180);
-		        	} else if((row + 1) % 3 == 0) {
-		        		imagen("resources/imagenes/rojoArriba.png", l, 180, 180);
-		        	}
-		        	
-		        }else if(plaza.isMinusvalido()){
-		        	if(row % 3 == 0) {
-		        		imagen("resources/imagenes/azulAbajo.png", l, 180, 180);
-
-		        	}else if((row + 1) % 3 == 0) {
-		        		imagen("resources/imagenes/azulArriba.png", l, 180, 180);
-
-		        	}
-		        }else if(!plaza.isOcupada() && !plaza.isMinusvalido()) {
-		        	if(row % 3 == 0 ) {
-		        		imagen("resources/imagenes/verdeAbajo.png", l, 180, 180);
-
-		        	}else if((row + 1) % 3 == 0) {
-		        		imagen("resources/imagenes/verdeArriba.png", l, 180, 180);
-
-		        	}
-		        }
-		    }
-	        
+	    	  if (plaza.isOcupada()) {
+  	            if (row % 2 == 0) { 
+  	                imagen("resources/imagenes/rojoArriba.png", l, 180, 180);
+  	            }
+	    	  } else if (plaza.isMinusvalido()) {
+  	            if (row % 2 == 0) { 
+  	                imagen("resources/imagenes/azulArriba.png", l, 180, 180);
+  	            }
+	    	  } else if (!plaza.isOcupada() && !plaza.isMinusvalido()) {
+  	            if (row % 2 == 0) { 
+  	                imagen("resources/imagenes/verdeArriba.png", l, 180, 180);
+  	            }
+	    	  }
+	      }
 	        
 	    } else {
 	        l.setText(value.toString());

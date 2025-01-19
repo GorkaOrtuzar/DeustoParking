@@ -247,6 +247,12 @@ public class VentanaReservarPlaza extends JFrame{
 	    		
 	    	}else if(planta.equals("Derecha") && plaza.getPiso().equals("Derecha")) {
 	    		plazasFiltradas.add(plaza);
+	    		
+	    	}else if(planta.equals("0")&&plaza.getPiso().equals("0")) {
+	    		plazasFiltradas.add(plaza);
+	    		
+	    	}else if(planta.equals("1")&&plaza.getPiso().equals("1")) {
+	    		plazasFiltradas.add(plaza);
 	    	}
 	    }
 	    

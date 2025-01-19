@@ -46,54 +46,40 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 	 @Override
 	    public Object getValueAt(int row, int column) {
 		 if (column == 0) {
-	        	switch (row) {
-	        	
-	            	case 0: return 1;
-	            	case 2: return 2;
-	            	case 3: return 3;
-	            	case 5: return 4;
-	            	case 6: return 5;
-	            	case 8: return 6;
-	            	default: return "";
-	            }
-	        }
-//		 if (parking.getParking().equals("ParkingVIP")) {
-//		        	if (column == 0) {
-//			        	switch (row) {
-//		            	case 0: return 1;
-//		            	case 2: return 2;
-//		            	case 4: return 3;
-//		            	case 6: return 4;
-//		            	case 8: return 5;
-//		            	default: return "";
-//		            }
-//		        }
-//		            
-//		 } else if (parking.getParking().equals("ParkingCentral") || parking.getParking().equals("ParkingTechado")) {
-//		        	if (column == 0) {
-//			        	switch (row) {
-//			            	case 0: return 1;
-//			            	case 2: return 2;
-//			            	case 3: return 3;
-//			            	case 5: return 4;
-//			            	case 6: return 5;
-//			            	case 8: return 6;
-//			            	default: return "";
-//			            }
-//		        	}
-	        if (column > 0) {
-	        	String seccion = lTitulos.get(column);
-	            
-	            for(Plaza p: listaPlazas) {
-	            	if(p.getSeccion().equals(seccion) && p.getNumPlaza()== (row+1)) {
-	            		return p;
-	            	}
-	            }
- 
-	        }
+			 if (parking.getParking().equals("ParkingVIP")) {
+				 
+				 switch (row) {
+		                case 0: return 1;
+		                case 2: return 2;
+		                case 4: return 3;
+		                case 6: return 4;
+		                case 8: return 5;
+		                default: return "";
+		            }
+			 } else if (parking.getParking().equals("ParkingCentral") || parking.getParking().equals("ParkingTechado")) {
+		            switch (row) {
+		                case 0: return 1;
+		                case 2: return 2;
+		                case 3: return 3;
+		                case 5: return 4;
+		                case 6: return 5;
+		                case 8: return 6;
+		                default: return "";
+		            }
+		        }
+		    }
 
-	        return null;  
-	    }
+		    if (column > 0) {
+		        String seccion = lTitulos.get(column);
+		        for (Plaza p : listaPlazas) {
+		            if (p.getSeccion().equals(seccion) && p.getNumPlaza() == (row + 1)) {
+		                return p;
+		            }
+		        }
+		    }
+
+		    return null; 
+	 }
 	 
 	 public void actualizarDatos(List<Plaza> plazasFiltradas) {
 		 this.listaPlazas.clear();
