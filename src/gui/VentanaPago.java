@@ -49,13 +49,11 @@ public class VentanaPago extends JFrame{
 	private JFrame vActual, vAnterior;
 	
 	public VentanaPago(JFrame va, Reserva r) {
-		
 		super();
+		
 		vActual = this;
 		vAnterior=va;
 		
-
-        // PANEL NORTE
         pNorte = new JPanel();
 		pNorte.setLayout(new FlowLayout(FlowLayout.CENTER, 300, 10));
 		
@@ -68,18 +66,14 @@ public class VentanaPago extends JFrame{
 		pNorte.add(lblConfirma);
 		pNorte.add(lblPago);
         
-        // PANEL CENTRO
         pCentro = new JPanel();
         pCentro.setLayout(new BoxLayout(pCentro, BoxLayout.Y_AXIS));
         pCentro.add(Box.createVerticalStrut(40));
         
-
-        // Panel Tarjeta
         pContTarjeta = new JPanel();
         pTarjeta = new JPanel();
         pTarjeta.setLayout(new GridLayout(2, 2, 100, 15)); 
 
-        // Panel Tarjeta - Datos de la Tarjeta
         pContTarjeta.setPreferredSize(new Dimension(300, 80));
         pContTarjeta.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createEmptyBorder(10, 20, 10, 20),
@@ -159,7 +153,6 @@ public class VentanaPago extends JFrame{
 
         pContTarjeta.add(pTarjeta);
 
-        // Panel Fecha de Expiración de Tarjeta
         pFecha = new JPanel();
         pFecha.setPreferredSize(new Dimension(300, 60));
         pFecha.setBorder(BorderFactory.createCompoundBorder(
@@ -200,7 +193,6 @@ public class VentanaPago extends JFrame{
         pFecha.add(pCombos);
         pFecha.add(Box.createHorizontalStrut(100));
 
-        // Panel CVV
         pCVV = new JPanel();
         pCVV.setLayout(new FlowLayout());
         txtCVV = new JTextField("CVV");
@@ -226,7 +218,6 @@ public class VentanaPago extends JFrame{
         pCVV.add(txtCVV);
         pFecha.add(pCVV);
 
-        // Panel Tipo de Pago
         pTipoPago = new JPanel();
         pTipoPago.setLayout(new GridLayout(2, 4));
         pTipoPago.setBorder(BorderFactory.createCompoundBorder(
@@ -306,14 +297,12 @@ public class VentanaPago extends JFrame{
 			vAnterior.setVisible(true);
 		});
 		
-		
         pSur = new JPanel();
         pSur.setLayout(new FlowLayout(FlowLayout.CENTER));
         pSur.add(btnVolver);
         pSur.add(Box.createHorizontalStrut(30));
         pSur.add(btnSiguiente);
         
-
         pCentro.add(pContTarjeta);
         pCentro.add(pFecha);
         pCentro.add(pTipoPago);

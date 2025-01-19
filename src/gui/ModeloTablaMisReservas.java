@@ -60,7 +60,4 @@ public class ModeloTablaMisReservas extends DefaultTableModel {
 		}
 
 	}
-	
-	
-	
 }

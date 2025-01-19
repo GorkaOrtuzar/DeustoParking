@@ -21,7 +21,6 @@ public class BD {
 	public static Connection initBD(String nombreBD) {
 		Connection con = null;
 		try {
-			
 			Class.forName("org.sqlite.JDBC");
 			con = DriverManager.getConnection("jdbc:sqlite:"+nombreBD);
 			System.out.println("Nombre: "+nombreBD);
@@ -53,7 +52,6 @@ public class BD {
 			stmt.executeUpdate(sql);
 			sql = "CREATE TABLE IF NOT EXISTS Parking(nomParking String,precioHora float, plazasLibres int)";
 			stmt.executeUpdate(sql);
-			//crear TablaPlazas
 			sql = "CREATE TABLE IF NOT EXISTS Plaza(pisoPlaza String, secPlaza String, numPlaza int, ocupado int, minusvalido int)";
 			stmt.executeUpdate(sql);
 		} catch (SQLException e) {
@@ -77,8 +75,6 @@ public class BD {
 		}
 	}
 	
-	//Metodos usuario
-	//buscar usuario
 	public static Usuario buscarUsario(Connection con, String DNI) {
 		String sql = String.format("SELECT * FROM Usuario WHERE dni = '%s'", DNI);
 		Usuario usuario= null;
@@ -101,7 +97,6 @@ public class BD {
 		return usuario;
 	}
 	
-	// Insertar Usuario
 	public static void insertarUsuario(Connection con, Usuario usuario){
 		if(buscarUsario(con,usuario.getDni())==null){
 			String sql = "INSERT INTO Usuario (nombre, apellido, tlf, dni, contrasenia) VALUES (?, ?, ?, ?, ?)";
@@ -117,8 +112,7 @@ public class BD {
 			    e.printStackTrace();
 			}
 		}
-		}
-	// Obtener lista de Usuarios
+	}
 	public static List<Usuario> obtenerListaUsario(Connection con){
 		String sql = "SELECT * FROM Usuario";
 		List<Usuario> l = new ArrayList<>();
@@ -142,7 +136,6 @@ public class BD {
 		return l;
 	}
 	
-	//Actualizar datos del usuario
 	public static void updateUsuario(Connection con, Usuario usuario) {
 	    String sql = "UPDATE Usuario SET nombre = ?, apellido = ?, tlf = ?, contrasenia = ? WHERE dni = ?";
 	    try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -152,14 +145,10 @@ public class BD {
 	        ps.setString(4, usuario.getDni());
 	        ps.setString(5, usuario.getContrasenia());
 	        ps.executeUpdate();
-	        System.out.println("Usuario actualizado correctamente");
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    }
 	}
-	
-	//METODOS PARKING
-	//obtenerParking
 	
 	public static List<Parking> obtenerListaParking(Connection con){
 		String sql = "SELECT * FROM Parking";
@@ -168,7 +157,6 @@ public class BD {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 			while (rs.next()) {
-				//nomParking String,precioHora float, plazasLibres int
 				String nomParking = rs.getString("nomParking");
 				float precioHora = rs.getFloat("precioHora");
 				int plazasLibres = rs.getInt("plazasLibres");
@@ -183,8 +171,6 @@ public class BD {
 		return lp;
 	}
 	
-	//Metodos reservar
-	// buscarReserva
 	public static Reserva buscarReserva(Connection con, String dni) {
 		String sql = String.format("SELECT * FROM Reserva WHERE dni = '%s'", dni);
 		Reserva reserva= null;
@@ -211,7 +197,6 @@ public class BD {
 		return reserva;	
 	}
 	
-	//Insertar Reserva
 	public static void insertarReserva(Connection con, Reserva reserva){
 			String sql = String.format("INSERT INTO Reserva VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s')", 
 					reserva.getCiudad(), reserva.getDni(),reserva.getMatricula(), reserva.getNomParking(), Utilidades.dateToString(reserva.gethLlegada()),Utilidades.dateToString(reserva.gethSalida()), reserva.getNumPlaza(),reserva.getSeccion(), reserva.getPrecioTotal());
@@ -224,7 +209,6 @@ public class BD {
 		}
 	}
 	
-	//Obtener lista reservas
 	public static List<Reserva> obtenerListaReservas(Connection con){
 		String sql = "SELECT * FROM Reserva";
 		List<Reserva> l = new ArrayList<>();
@@ -252,7 +236,6 @@ public class BD {
 		return l;	
 	}
 	
-	// obtener lista reservas por dni
 	public static List<Reserva> obtenerListaReservasPorDNI(Connection con, String dni){
 		String sql = String.format("SELECT * FROM Reserva WHERE dni = '%s'", dni);
 		List<Reserva> l = new ArrayList<>();
@@ -312,8 +295,6 @@ public class BD {
 		return parking;	
 	}
 	
-	//MÉTODO PLAZAS
-	// obtener lista Plazas
 	public static List<Plaza> obtenerListaPlaza(Connection con){
 		String sql = "SELECT * FROM Plaza";
 		List<Plaza> lp = new ArrayList<>();
@@ -322,7 +303,6 @@ public class BD {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 			while(rs.next()) {
-				//pisoPlaza String, secPlaza String, numPlaza int, ocupado boolean, minusvalido boolean
 				String pisoPlaza = rs.getString("pisoPlaza");
 				String secPlaza = rs.getString("secPlaza");
 				int numPlaza = rs.getInt("numPlaza");
@@ -345,7 +325,6 @@ public class BD {
 			return lp;
 	}
 	
-	//UPDATE PLAZA
 	public static void actualizarEstadoPlaza(Connection con, String pisoPlaza, String seccion, int numPlaza, boolean ocupada, boolean min) {
 	    String q = "UPDATE Plaza SET ocupado = ? WHERE secPlaza = ? AND numPlaza = ?";
 	    
@@ -388,5 +367,4 @@ public class BD {
 			e.printStackTrace();
 		}
 	}
-	
 }

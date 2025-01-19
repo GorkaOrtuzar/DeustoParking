@@ -46,8 +46,5 @@ public class RendererTablaReservaParking implements TableCellRenderer {
 		}
 		
 		return l;
-		
-
 	}
-
 }

@@ -40,5 +40,4 @@ public class Vehiculo {
 	public String toString() {
 		return "Coche [marca=" + marca + ", modelo=" + modelo + ", matricula=" + matricula + "]";
 	}
-	
 }

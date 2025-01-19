@@ -87,5 +87,4 @@ public class Usuario {
 				+ ", contrasenia=" + contrasenia + "]";
 	}
 	
-	
 }

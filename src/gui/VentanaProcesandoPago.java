@@ -59,7 +59,6 @@ public class VentanaProcesandoPago extends JFrame {
 			
 		};
 		
-		
 		barra.execute();
 		
 		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
@@ -74,5 +73,4 @@ public class VentanaProcesandoPago extends JFrame {
 		setIconImage(icono.getImage());
         setVisible(true);
 	}
-	
 }

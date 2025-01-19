@@ -30,16 +30,13 @@ import main.Principal;
 
 public class VentanaReservaParking extends JFrame{
 	
-	
 	private static final long serialVersionUID = 1L;
 	
-	//Declaramos valores
 	private JPanel pCentro, pCentroN, pCentroS, pSur, pNorte,pEste;
 	private JButton btnAtras, btnReservar;
 	private JTextArea txtReserva;
 	private JLabel lblMenor20,lblentre20y50,lblentre50y100,lblmas100,lblLibre;
 	
-	//Declaramos tabla
 	private ModeloTablaReservaParking modeloTabla; 
 	private JTable tabla; 
 	private JScrollPane scrollTabla;
@@ -49,24 +46,18 @@ public class VentanaReservaParking extends JFrame{
 	
 	private static List<Reserva> listaReservas = new ArrayList<>();
 	
-	
 	public VentanaReservaParking(JFrame va, Reserva r) {
 		super();
 		vActual = this;
 		vAnterior = va;
 		
-		
-		//Tamaño Ventana
 		setBounds(300, 200, 600, 400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		//Instanciar Paneles, TextArea y Botones
 		pNorte = new JPanel();
 		pCentro = new JPanel();
-		pCentro.setLayout(new GridLayout(2, 1)); //2 filas, 1 columna
+		pCentro.setLayout(new GridLayout(2, 1));
 		pSur = new JPanel();
-		//pSur.setLayout(new GridLayout(1, 2));
-		
 		
 		pCentroN = new JPanel();
 		pCentroS = new JPanel();
@@ -79,7 +70,6 @@ public class VentanaReservaParking extends JFrame{
 		pEste.setLayout(new BoxLayout(pEste,BoxLayout.Y_AXIS));
 		getContentPane().add(pEste, BorderLayout.EAST);
 
-		
 		btnAtras = new JButton("Atrás");
 		
 		btnAtras.addActionListener((e)->{
@@ -103,24 +93,15 @@ public class VentanaReservaParking extends JFrame{
 				
 				Reserva reservaFinal = new Reserva(ciudad, fechaEntrada, fechaSalida, nomParking, numPlazasLibre, precio);
 				listaReservas.add(reservaFinal);
-				
-//				for (Reserva reserva : listaReservas) {
-//					System.out.println(reserva);
-//				}
-//				
+		
 				vActual.dispose();
 				new VentanaReservarPlaza(vActual, reservaFinal);
 			}else {
 				JOptionPane.showMessageDialog(vActual, "Por favor, seleccione un parking","MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 			}
 			
-			
 		});
-		
-		
-		//Añadimos paneles al panel central
-		
-		//Creamos Tabla
+
 		modeloTabla = new ModeloTablaReservaParking(null);
 		tabla = new JTable(modeloTabla);
 		scrollTabla = new JScrollPane(tabla);
@@ -129,7 +110,6 @@ public class VentanaReservaParking extends JFrame{
 		cargarTablaDatos();
 		getContentPane().add(scrollTabla, BorderLayout.CENTER);
 		
-		//Renderer Tabla
 		modeloTabla = (ModeloTablaReservaParking) tabla.getModel();
 		tabla.setModel(modeloTabla);
 		pCentroN.add(scrollTabla);
@@ -146,13 +126,6 @@ public class VentanaReservaParking extends JFrame{
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pCentro, BorderLayout.CENTER);
 		getContentPane().add(pSur, BorderLayout.SOUTH);
-		
-		//Leyenda de Colores del Parking
-		//Para hacer reborde, siguente método:
-//		pDatosPago.setBorder(BorderFactory.createTitledBorder(
-//                BorderFactory.createLineBorder(Color.GRAY),"Leyenda de Colores",
-//                TitledBorder.LEFT,TitledBorder.CENTER,new Font("Arial", Font.BOLD, 14),Color.BLACK
-//        ));
 		
 		tabla.addMouseListener(new MouseAdapter() {
 			
@@ -171,7 +144,6 @@ public class VentanaReservaParking extends JFrame{
 			}
 		});
 		
-		//
 		 JPanel pMenor20 = new JPanel();
 		 pMenor20.setPreferredSize(new Dimension(5,5));
 		 pMenor20.setBackground(new Color(251, 53, 29));
@@ -201,7 +173,6 @@ public class VentanaReservaParking extends JFrame{
 		JPanel p2 = new JPanel(new GridLayout(5, 1));
 		p.add(p1, BorderLayout.WEST);
 		p.add(p2, BorderLayout.CENTER);
-		//getContentPane().add(pEste, BorderLayout.EAST);
 		pEste.add(p);	
 
 			p1.add(pMenor20);
@@ -264,8 +235,7 @@ public class VentanaReservaParking extends JFrame{
 		pEste.add(new JPanel());
 		pEste.add(new JPanel());
 		pEste.add(new JPanel());
-		
-		//Tamaño de la ventana
+
 		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
         int altoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
         setSize(anchoP, altoP);
@@ -279,15 +249,9 @@ public class VentanaReservaParking extends JFrame{
 		setVisible(true);
 	}
 	
-
 	private void cargarTablaDatos() {
-//		List<Parking> lp = new ArrayList<>();
-//		lp.add(new Parking("ParkingVIP", 30f, 17));
-//		lp.add(new Parking("ParkingCentral", 25.5f, 105));
-//		lp.add(new Parking("ParkingTechado", 17.90f, 237));
 		modeloTabla = (ModeloTablaReservaParking) tabla.getModel();
 		modeloTabla.setlParkings(BD.obtenerListaParking(Principal.con));
 		tabla.setModel(modeloTabla);
 	}
-
 }

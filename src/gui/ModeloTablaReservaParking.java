@@ -18,18 +18,14 @@ public class ModeloTablaReservaParking extends DefaultTableModel {
 		this.lParkings = lParkings;
 		
 	}
-	
 
 	public List<Parking> getlParkings() {
 		return lParkings;
 	}
 
-
-
 	public void setlParkings(List<Parking> lParkings) {
 		this.lParkings = lParkings;
 	}
-
 
 	@Override
 	public int getRowCount() {

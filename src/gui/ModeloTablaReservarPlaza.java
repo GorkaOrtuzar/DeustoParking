@@ -22,16 +22,15 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 		this.parking = p;
 	}
 
-	
 	@Override
 	public int getRowCount() {
 			return 9;
 	}
 	
-  @Override
-  public int getColumnCount() {
-      return 9;
-  }
+	@Override
+	public int getColumnCount() {
+		return 9;
+	}
 	
 	@Override
 	public String getColumnName(int column) {
@@ -43,31 +42,31 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 		return false;
 	}
 	
-	 @Override
-	    public Object getValueAt(int row, int column) {
-		 if (column == 0) {
-			 if (parking.getParking().equals("ParkingVIP")) {
+	@Override
+	   public Object getValueAt(int row, int column) {
+		if (column == 0) {
+			if (parking.getParking().equals("ParkingVIP")) {
 				 
-				 switch (row) {
-		                case 0: return 1;
-		                case 2: return 2;
-		                case 4: return 3;
-		                case 6: return 4;
-		                case 8: return 5;
-		                default: return "";
-		            }
-			 } else if (parking.getParking().equals("ParkingCentral") || parking.getParking().equals("ParkingTechado")) {
-		            switch (row) {
-		                case 0: return 1;
-		                case 2: return 2;
-		                case 3: return 3;
-		                case 5: return 4;
-		                case 6: return 5;
-		                case 8: return 6;
-		                default: return "";
-		            }
-		        }
-		    }
+				switch (row) {
+		               case 0: return 1;
+		               case 2: return 2;
+		               case 4: return 3;
+		               case 6: return 4;
+		               case 8: return 5;
+		               default: return "";
+		           }
+			} else if (parking.getParking().equals("ParkingCentral") || parking.getParking().equals("ParkingTechado")) {
+		           switch (row) {
+		               case 0: return 1;
+		               case 2: return 2;
+		               case 3: return 3;
+		               case 5: return 4;
+		               case 6: return 5;
+		               case 8: return 6;
+		               default: return "";
+		           }
+		       }
+		   }
 
 		    if (column > 0) {
 		        String seccion = lTitulos.get(column);

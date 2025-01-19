@@ -43,7 +43,6 @@ public class VentanaReservarPlaza extends JFrame{
 	private JComboBox<String> comboParking;
 	private DefaultComboBoxModel<String> modeloCombo;
 	
-	
 	public VentanaReservarPlaza(JFrame va, Reserva r) {
 		super();
 		
@@ -52,7 +51,6 @@ public class VentanaReservarPlaza extends JFrame{
 		setBounds(300,200,600,400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		//Paneles
 		pCont = new JPanel();
 		pCont.setLayout(new BorderLayout());
 		
@@ -65,12 +63,10 @@ public class VentanaReservarPlaza extends JFrame{
 		pSur = new JPanel();
 		pIzq = new JPanel();
 		
-		//Label 
 		lblReservarPlaza = new JLabel("Reservar Plaza");
 		lblReservarPlaza.setFont(new Font(Font.DIALOG, Font.ITALIC, 30));
 		pNorte.add(lblReservarPlaza);
 		
-		//ComboBox
 		pComboBox = new JPanel();
 		lblParkings = new JLabel("Planta: ");
 		comboParking = new JComboBox<>();
@@ -99,7 +95,6 @@ public class VentanaReservarPlaza extends JFrame{
 			filtrarPlazasPorPlanta(plantaSeleccionada);
 		});
 		
-		//Creación botón
 		btnSiguiente = new JButton("Siguiente");
 		btnVolver = new JButton("Volver");
 		btnRecursivo = new JButton("Simular Combinaciones");
@@ -113,7 +108,6 @@ public class VentanaReservarPlaza extends JFrame{
 			
 		});
 		
-		//Creación tabla
 		Parking pa = new Parking(r.getNomParking());
 		modeloTabla = new ModeloTablaReservarPlaza(pa);
 		tabla = new JTable(modeloTabla);
@@ -135,12 +129,9 @@ public class VentanaReservarPlaza extends JFrame{
 							return;
 		            }
 		        	
-		        	
 		            Plaza p = (Plaza) modeloTabla.getValueAt(fila, columna);
 
 		            if (p != null) { 
-		                System.out.println(p.getNumPlaza() + p.getSeccion());
-
 		                int opcion = JOptionPane.showOptionDialog(vActual,"¿Desea reservar esta plaza?",
 		                    "Reservar Plaza",
 		                    JOptionPane.YES_NO_OPTION,
@@ -174,29 +165,21 @@ public class VentanaReservarPlaza extends JFrame{
 		btnRecursivo.addActionListener((e)->{
 			String s = JOptionPane.showInputDialog("Introduce el número de plazas que quieres combinar: ");
 			if(s!=null) {
-			    //int plazasLibres = 3; // Número de plazas libres en el parking
 			    int plazasLibres = Integer.parseInt(s);
 				List<String> combinaciones = Contenedora.obtenerCombinacionesAparcamiento(plazasLibres);
-				//
 				StringBuilder sb = new StringBuilder();
 				for (String combinacion : combinaciones) {
-				    sb.append(combinacion).append("\n"); // Añade la combinación seguida de un salto de línea
+				    sb.append(combinacion).append("\n"); 
 				}
 
-				// Mostrar las combinaciones en una ventana de diálogo
 				JOptionPane.showMessageDialog(null, sb.toString(),"COMBINACIONES",JOptionPane.INFORMATION_MESSAGE);
-				
 			}
 		});
 
-
-		
-		//Quitar bordes a las celdas
 		tabla.setIntercellSpacing(new Dimension(0, 0));  
 		tabla.setBorder(null);
 		tabla.setRowHeight(80);
-	     
-		//Quitar bordes a las celdas
+	    
 		tabla.setIntercellSpacing(new Dimension(0, 0));  
 		tabla.setBorder(null);
 		tabla.setRowHeight(80);
@@ -223,11 +206,9 @@ public class VentanaReservarPlaza extends JFrame{
 		
 		}
 	
-	//método filtrar plazas por planta
 	private void filtrarPlazasPorPlanta(String planta) {
 	    List<Plaza> plazasFiltradas = new ArrayList<>();
 	    
-	    //Recorremos la lista de plazas
 	    for (Plaza plaza : BD.obtenerListaPlaza(Principal.con)) {
 	    	
 	    	if(planta.equals("-1")&&plaza.getPiso().equals("-1")) {

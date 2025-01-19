@@ -56,39 +56,31 @@ public class VentanaCargando extends JFrame{
 		
 		Thread hilo = new Thread(new Runnable() {
 			
-			@Override
-			public void run() {
-				for (int i=0; i<101; i++) {
-					final int progrressValue = i;
-					try {
-						Thread.sleep(35);
-						
-						SwingUtilities.invokeLater(new Runnable() {
-							
-							@Override
-							public void run() {
-								bProgreso.setValue(progrressValue);					
-								
-							}
-						});
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					
-				}
-				dispose();
-				new VentanaInicio(vActual);
-				vActual.setVisible(false);
-				
+		@Override
+		public void run() {
+			for (int i=0; i<101; i++) {
+				final int progrressValue = i;
+				try {
+					Thread.sleep(35);
+					SwingUtilities.invokeLater(new Runnable() {
+						@Override
+						public void run() {
+							bProgreso.setValue(progrressValue);		
+						}
+					});
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}	
 			}
-		});hilo.start();
-		
-		
-		
-	}
+			dispose();
+			new VentanaInicio(vActual);
+			vActual.setVisible(false);
+		}
+	});hilo.start();
+			
+}
 	public static void main(String[] args) {
 		@SuppressWarnings("unused")
 		VentanaCargando vc = new VentanaCargando();
 	}
-
 }

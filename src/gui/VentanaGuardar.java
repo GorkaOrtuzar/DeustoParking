@@ -17,7 +17,6 @@ import domain.Reserva;
 
 public class VentanaGuardar extends JFrame{
 
-	
 	private static final long serialVersionUID = 1L;
 	private JPanel pSur,pCentro;
 	private JButton btnSi, btnNo;
@@ -33,27 +32,23 @@ public class VentanaGuardar extends JFrame{
 		getContentPane().add(pSur, BorderLayout.SOUTH);
 		getContentPane().add(pCentro, BorderLayout.CENTER);
 		
-		//botones
 		btnSi = new JButton("SI");
 		btnNo = new  JButton("NO");
 		
 		pSur.add(btnSi);
 		pSur.add(btnNo);
 		
-		//label
 		lblPregunta = new JLabel("¿Quieres guardar tu reserva?");
 		pCentro.add(lblPregunta);
 		
-		//ActionListeners
 		btnSi.addActionListener(e->{
-			//JFileChooser
 			JFileChooser fileChooser = new JFileChooser();
 			int var = fileChooser.showSaveDialog(null);
 			if(var == JFileChooser.APPROVE_OPTION) {
 				File FileSeleccionado = fileChooser.getSelectedFile();
 				try {
 					PrintWriter pw = new PrintWriter(FileSeleccionado);
-					pw.println("DeustoParking\n"+ "Dni: "+ r.getDni()+ "\n"+ "Matricula del Coche: "+ r.getMatricula()+ "\n"+ "Ciudad: "+ r.getCiudad()+ "\n"+ "Fecha de Entrada: " + r.gethLlegada()+ "\n"+ "Fecha de Salida: " + r.gethSalida() + "\n"+ "Nombre del parking: " + r.getNomParking()+ "\n"+ "Numero de plaza: " + r.getNumPlaza()+ "\n"+ "Precio Total: "+ r.getPrecioTotal());
+					pw.println("DeustoParking\n"+ "Dni: "+ r.getDni()+ "\n"+ "Matricula de Coche: "+ r.getMatricula()+ "\n"+ "Ciudad: "+ r.getCiudad()+ "\n"+ "Fecha de Entrada: " + r.gethLlegada()+ "\n"+ "Fecha de Salida: " + r.gethSalida() + "\n"+ "Nombre del Parking: " + r.getNomParking()+ "\n"+ "Numero de Plaza: " + r.getNumPlaza()+ "\n"+ "Precio Total: "+ r.getPrecioTotal());
 					pw.flush();
 					pw.close();
 				} catch (FileNotFoundException e1) {
@@ -61,7 +56,7 @@ public class VentanaGuardar extends JFrame{
 				}
 				
 				JOptionPane.showMessageDialog(null, "Archivo guardado en: " + FileSeleccionado.getAbsolutePath());
-				JOptionPane.showMessageDialog(null, "Reserva hecha corrctamente");
+				JOptionPane.showMessageDialog(null, "Reserva hecha correctamente");
 			
 			}else {
 				JOptionPane.showMessageDialog(null, "No se ha seleccionado ningun archivo para guardar ");
@@ -72,7 +67,7 @@ public class VentanaGuardar extends JFrame{
 		});
 		
 		btnNo.addActionListener(e->{
-			JOptionPane.showConfirmDialog(null, "Reserva hecha corrctamente");
+			JOptionPane.showConfirmDialog(null, "Reserva hecha correctamente");
 			vActual.dispose();
 		});
 		
@@ -84,6 +79,4 @@ public class VentanaGuardar extends JFrame{
 		setIconImage(icono.getImage());
 		setVisible(true);
 	}
-	
-	
 }

@@ -62,8 +62,6 @@ public class Plaza {
 		this.minusvalido = minusvalido;
 	}
 
-	
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(minusvalido, numPlaza, ocupada, piso, seccion);

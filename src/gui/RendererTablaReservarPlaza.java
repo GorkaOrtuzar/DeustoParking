@@ -49,7 +49,7 @@ public class RendererTablaReservarPlaza extends DefaultTableCellRenderer {
 	        
 	        if(parking.getParking().equals("ParkingCentral") || parking.getParking().equals("ParkingTechado")) {
 	        	if (plaza.isOcupada()) {
-	        	if(row % 3 == 0) { // linea creada por IA Generativa 
+	        	if(row % 3 == 0) { // linea creada por IA Generativa - ChatGPT 
 	        		imagen("resources/imagenes/rojoAbajo.png", l, 180, 180);
 	        	} else if((row + 1) % 3 == 0) {
 	        		imagen("resources/imagenes/rojoArriba.png", l, 180, 180);

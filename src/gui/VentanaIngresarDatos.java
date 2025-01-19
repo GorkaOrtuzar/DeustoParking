@@ -24,29 +24,21 @@ import domain.Utilidades;
 
 public class VentanaIngresarDatos extends JFrame {
 	
-	
 	private static final long serialVersionUID = 1L;
 	private JPanel pNorte,pCentro,pSur,pDatosPersonales,pInfoParking;
-	//info pNorte
 	private JLabel lblIntroDatos,lblConfirma,lblPago;
-	//info pDatosPersonales
 	private JLabel lblNombre,lblApellido,lblTlf,lblDni,lblMatricula,lblContrasenia;
 	private JTextField txtNombre,txtApellido,txtTlf, txtDni,txtMatricula,txtContrasenia;
 
-	//info pInfoParking
 	private JLabel lblLLegada,lblSalida,lblNombreDelParking,lblPlaza;
 	private JButton btnSiguiente;
 	
 	private JFrame vActual;
-	
-	
+
 	public VentanaIngresarDatos(JFrame va, Reserva r){
-		
 		super();
+		
 		vActual = this;
-		
-		
-		
 		pCentro = new JPanel(new BorderLayout());
 		pCentro.setLayout(new GridLayout(1, 2));
 		pNorte = new JPanel();
@@ -56,18 +48,15 @@ public class VentanaIngresarDatos extends JFrame {
 		pDatosPersonales.setLayout(new BoxLayout(pDatosPersonales,BoxLayout.Y_AXIS));
 		pDatosPersonales.setBorder(new EmptyBorder(150, 150, 150, 150 ));
 		
-		
 		pInfoParking =  new JPanel();
 		pInfoParking.setLayout(new BoxLayout(pInfoParking,BoxLayout.Y_AXIS));
 		pInfoParking.setLayout(new GridLayout(5,0));
 		pInfoParking.setBorder(new EmptyBorder(150, 150, 150, 150 ));
-       
 
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pCentro, BorderLayout.CENTER);
 		getContentPane().add(pSur,BorderLayout.SOUTH);
 		
-		//PANEL NORTE
 		lblIntroDatos = new JLabel("1. Introduce Datos");
 		lblIntroDatos.setForeground(Color.BLUE);
 		lblConfirma = new JLabel("2. Confirma Reserva");
@@ -76,8 +65,7 @@ public class VentanaIngresarDatos extends JFrame {
 		pNorte.add(lblIntroDatos);
 		pNorte.add(lblConfirma);
 		pNorte.add(lblPago);
-		
-		//PANEL SUR
+
 		btnSiguiente = new JButton("Siguiente");
 		pSur.add(btnSiguiente);
 		
@@ -94,15 +82,15 @@ public class VentanaIngresarDatos extends JFrame {
 				JOptionPane.showMessageDialog(null, "Apellido no valido", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 				
 			}else if(tlf == null){
-				JOptionPane.showMessageDialog(null, "Telefono no valido", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Teléfono no valido", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 
 			}else if(tlf.length()!= 9) {
-				JOptionPane.showMessageDialog(null, "Telefono no valido", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Teléfono no valido", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 
 			}else if(matricula== null) {
-				JOptionPane.showMessageDialog(null, "Matricula no valida ", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
-			}else if(!matricula.matches("^\\d{4}[A-Za-z]{3}$")) { // linea creada por el chatGPT
-				JOptionPane.showMessageDialog(null, "Matricula no valida ", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Matrícula no valida ", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
+			}else if(!matricula.matches("^\\d{4}[A-Za-z]{3}$")) { // linea creada por ChatGPT
+				JOptionPane.showMessageDialog(null, "Matrícula no valida ", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 
 			}else if(dni == null) {
 				JOptionPane.showMessageDialog(null, "DNI no valido", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
@@ -112,9 +100,8 @@ public class VentanaIngresarDatos extends JFrame {
 				JOptionPane.showMessageDialog(null, "DNI no valido", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 
 			}else if(contrasenia == null) {
-				JOptionPane.showMessageDialog(null, "Contraseña no valido", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Contraseña no valida", "MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 
-				
 			}else {
 			Usuario u = new Usuario(Nombre, Apellido,tlf, dni, contrasenia);
 			Reserva re = new Reserva(r.getCiudad(),dni,matricula,r.getNomParking(),Utilidades.dateToString(r.gethLlegada()),Utilidades.dateToString(r.gethSalida()),r.getNumPlaza(), r.getSeccion(), r.getPrecioTotal());
@@ -126,8 +113,6 @@ public class VentanaIngresarDatos extends JFrame {
 			
 		});
 		
-		//PANEL CENTRO
-		//Zona del panel de ingresar datos
 		lblNombre = new JLabel("Nombre: ");
 		txtNombre = new JTextField();
 		lblApellido = new JLabel("Apellido: ");
@@ -140,8 +125,6 @@ public class VentanaIngresarDatos extends JFrame {
 		txtMatricula = new JTextField();
 		lblContrasenia = new JLabel("Contraseña: ");
 		txtContrasenia = new JTextField();
-		
-		
 		
 		pDatosPersonales.add(lblNombre);
 		pDatosPersonales.add(txtNombre);
@@ -156,8 +139,6 @@ public class VentanaIngresarDatos extends JFrame {
 		pDatosPersonales.add(lblContrasenia);
 		pDatosPersonales.add(txtContrasenia);
 	
-		
-		//dimensiones de los txt
 		txtNombre.setMaximumSize(new Dimension (500, 20));
 		txtApellido.setMaximumSize(new Dimension (500, 20));
 		txtDni.setMaximumSize(new Dimension (500, 20));
@@ -165,7 +146,6 @@ public class VentanaIngresarDatos extends JFrame {
 		txtTlf.setMaximumSize(new Dimension (500, 20));
 		txtContrasenia.setMaximumSize(new Dimension (500, 20));
 
-		//zona del panel de info de la reserva
 		lblLLegada = new JLabel("Fecha de Ingreso: "+Utilidades.dateToString(r.gethLlegada()));
 		lblSalida = new JLabel("Fecha de Salida: "+ Utilidades.dateToString(r.gethSalida()));
 		lblNombreDelParking = new JLabel("Nombre del Parking: "+ r.getNomParking());
@@ -175,13 +155,10 @@ public class VentanaIngresarDatos extends JFrame {
 		pInfoParking.add(lblSalida);
 		pInfoParking.add(lblNombreDelParking);
 		pInfoParking.add(lblPlaza);
-		
-		
+
 		pCentro.add(pDatosPersonales, BorderLayout.CENTER);
 		pCentro.add(pInfoParking, BorderLayout.CENTER);
 		
-
-		//Tamaño de la ventana
 		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
         int altoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
         setSize(anchoP, altoP);
@@ -194,5 +171,4 @@ public class VentanaIngresarDatos extends JFrame {
 		setIconImage(icono.getImage());
 		setVisible(true);
 	}
-	
 }

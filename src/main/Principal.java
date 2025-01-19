@@ -43,24 +43,14 @@ public class Principal {
 			BD.insertarReserva(con, r3);
 			BD.insertarReserva(con, r4);
 			
-			//Habria que cambiar datos todavia
-			BD.insertarParking(con, new Parking("ParkingVIP", 30f, 17));
-			BD.insertarParking(con, new Parking("ParkingCentral", 25.5f, 78));
-			BD.insertarParking(con, new Parking("ParkingTechado", 17.90f, 122));
-			
-			
-			//Prueba para true o false
-//			for (Plaza p : BD.obtenerListaPlaza(con)) {
-//				System.out.println(p);
-//				
-//			}
-
+			BD.insertarParking(con, new Parking("ParkingVIP", 30f, 43));
+			BD.insertarParking(con, new Parking("ParkingCentral", 25.5f, 64));
+			BD.insertarParking(con, new Parking("ParkingTechado", 17.90f, 93));
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
+	
 	}
 	
 	@SuppressWarnings("unused")
@@ -78,17 +68,14 @@ public class Principal {
 										BD.sumarPlazasLibresParking(con, r.getNomParking());
 									}
 								}
-								
 						}
 					}
 				}
 			
 			});
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		t.start();
 	}
-
 }

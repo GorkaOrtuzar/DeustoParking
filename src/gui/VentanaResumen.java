@@ -71,8 +71,6 @@ public class VentanaResumen extends JFrame{
 		getContentPane().add(pCentro, BorderLayout.CENTER);
 		getContentPane().add(pSur,BorderLayout.SOUTH);
 		
-		
-		//Panel Norte
 		lblIntroDatos = new JLabel("1. Introduce Datos");
 		lblConfirma = new JLabel("2. Confirma Reserva");
 		lblPago = new JLabel("3. Pago Final");
@@ -82,8 +80,6 @@ public class VentanaResumen extends JFrame{
 		pNorte.add(lblConfirma);
 		pNorte.add(lblPago);
 		
-		
-		//Panel Centro
 		pCentro.add(pCentroN);
 		
 		lblTitulo = new JLabel("DETALLES DE LA RESERVA");
@@ -114,7 +110,6 @@ public class VentanaResumen extends JFrame{
 			modeloSalida.setSelected(true);
 		});
 		
-		//Contenedores para Selectores Fecha
 		pFechaEntrada = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		pFechaSalida = new JPanel(new FlowLayout(FlowLayout.LEFT));
 				
@@ -240,7 +235,6 @@ public class VentanaResumen extends JFrame{
         pContDatos.add(pCont);
         pCentroS.add(pContDatos);
 		
-		//Panel Sur
 		btnAtras = new JButton("Atrás");
 		btnAtras.addActionListener((e)->{
 			vActual.dispose();
@@ -248,7 +242,6 @@ public class VentanaResumen extends JFrame{
 			
 		});
 		
-
 		btnConfirReserva = new JButton("Confirmar Reserva");
 		btnConfirReserva.addActionListener((e)->{
 			vActual.dispose(); 
@@ -258,8 +251,6 @@ public class VentanaResumen extends JFrame{
 		pSur.add(btnAtras);
 		pSur.add(btnConfirReserva);
 		
-		
-		//Tamaño de la ventana
 		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
         int altoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
         setSize(anchoP, altoP);
@@ -275,10 +266,8 @@ public class VentanaResumen extends JFrame{
 	
 	private void configurarModeloFecha(UtilDateModel modelo, Date fecha) {
 		if (fecha != null) {
-			// Convierte un objeto Date en un LocalDate con la zona horaria predeterminada
-			// del sistema, extrayendo solo el año, mes y día.
 			LocalDate localFecha = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); //
-			modelo.setDate(localFecha.getYear(), localFecha.getMonthValue() - 1, // Enero pasa de la pos=1 a pos=0
+			modelo.setDate(localFecha.getYear(), localFecha.getMonthValue() - 1, 
 					localFecha.getDayOfMonth());
 			modelo.setSelected(true);
 		}
@@ -292,5 +281,4 @@ public class VentanaResumen extends JFrame{
 		lb.setFont(new Font("Arial", Font.BOLD, 16));
 		lb.setForeground(new Color(141, 140, 144));
 	}
-
 }

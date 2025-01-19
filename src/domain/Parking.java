@@ -70,6 +70,4 @@ public class Parking {
 		return "Parking [Parking=" + parking + ", PrecioHora=" + precioHora + ", PlazasLibres=" + plazasLibres + "]";
 	}
 	
-	
-	
 }

@@ -22,7 +22,6 @@ import main.Principal;
 
 public class VentanaInicioSesion extends JFrame {
 	
-	
 	private static final long serialVersionUID = 1L;
 	private JPanel pCentro, pNorte,pSur;
 	private JLabel lblDni,lblContrasenia;
@@ -33,16 +32,11 @@ public class VentanaInicioSesion extends JFrame {
 	private JFrame vActual;
 	private JFrame vAnterior;
 	
-
-	
-	
 	 public VentanaInicioSesion(JFrame va) {
 		 super();
 		vActual = this;
 		vAnterior = va;
 	
-
-		
 		pCentro = new JPanel();
 		pCentro.setLayout(new BoxLayout(pCentro,BoxLayout.Y_AXIS));
 
@@ -55,11 +49,10 @@ public class VentanaInicioSesion extends JFrame {
 		
 		lblDni = new JLabel("Insertar Dni");
 		txtDNI = new JTextField();
-		lblContrasenia = new JLabel("Insertar contraseña");
+		lblContrasenia = new JLabel("Insertar Contraseña");
 		txtContrasenia = new JPasswordField();
 		txtDNI.setMaximumSize(new Dimension (500, 20));
 		txtContrasenia.setMaximumSize(new Dimension(500, 20));
-		
 		
 		pCentro.add(lblDni);
 		pCentro.add(txtDNI);
@@ -73,19 +66,14 @@ public class VentanaInicioSesion extends JFrame {
 			
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("T");
 			}
 			
 			@Override
 			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("R");
 			}
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				System.out.println("P");
 				if(e.getKeyCode()== KeyEvent.VK_ENTER) {
 					evento();
 				}
@@ -95,19 +83,14 @@ public class VentanaInicioSesion extends JFrame {
 			
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("T");
 			}
 			
 			@Override
 			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("R");
 			}
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				System.out.println("P");
 				if(e.getKeyCode()== KeyEvent.VK_ENTER) {
 					evento();
 				}
@@ -117,19 +100,14 @@ public class VentanaInicioSesion extends JFrame {
 			
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("T");
 			}
 			
 			@Override
 			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("R");
 			}
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				System.out.println("P");
 				if(e.getKeyCode()== KeyEvent.VK_ENTER) {
 					evento();
 				}
@@ -139,19 +117,14 @@ public class VentanaInicioSesion extends JFrame {
 			
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("T");
 			}
 			
 			@Override
 			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("R");
 			}
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				System.out.println("P");
 				if(e.getKeyCode()== KeyEvent.VK_ENTER) {
 					evento();
 				}
@@ -161,19 +134,13 @@ public class VentanaInicioSesion extends JFrame {
 			
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("T");
 			}
 			
 			@Override
 			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("R");
 			}
-			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				System.out.println("P");
 				if(e.getKeyCode()== KeyEvent.VK_ENTER) {
 					evento();
 				}
@@ -183,19 +150,14 @@ public class VentanaInicioSesion extends JFrame {
 			
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("T");
 			}
 			
 			@Override
 			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("R");
 			}
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				System.out.println("P");
 				if(e.getKeyCode()== KeyEvent.VK_ENTER) {
 					evento();
 				}
@@ -205,19 +167,14 @@ public class VentanaInicioSesion extends JFrame {
 			
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("T");
 			}
 			
 			@Override
 			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("R");
 			}
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				System.out.println("P");
 				if(e.getKeyCode()== KeyEvent.VK_ENTER) {
 					evento();
 				}
@@ -227,19 +184,14 @@ public class VentanaInicioSesion extends JFrame {
 			
 			@Override
 			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("T");
 			}
 			
 			@Override
 			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("R");
 			}
 			
 			@Override
 			public void keyPressed(KeyEvent e) {
-				System.out.println("P");
 				if(e.getKeyCode()== KeyEvent.VK_ENTER) {
 					evento();
 				}
@@ -264,27 +216,17 @@ public class VentanaInicioSesion extends JFrame {
 			}
 		 else if(dni.length()!= 9){
 				JOptionPane.showMessageDialog(null, "DNI no valido","ERROR",JOptionPane.ERROR_MESSAGE);
-
 		 }
-		 //Mira si la contraseña esta vacia
 		 else if (contr.isEmpty()) {
 				 JOptionPane.showMessageDialog(null, "Inserte Contraseña","ERROR",JOptionPane.ERROR_MESSAGE);
-			 }
-		
+		 }
 		 else {
-				
-		 		 BD.buscarUsario(Principal.con, dni);
-				 vActual.dispose();
-				 vAnterior.dispose();
-				 new VentanaMisReservas(vActual ,dni);
-				 txtDNI.setText("");
-				 txtContrasenia.setText("");
-		
-				}
+			 BD.buscarUsario(Principal.con, dni);
+			 vActual.dispose();
+			 vAnterior.dispose();
+			 new VentanaMisReservas(vActual ,dni);
+			 txtDNI.setText("");
+			 txtContrasenia.setText("");
+		}
 	}
-
 }
-		
-	 		
-		
-

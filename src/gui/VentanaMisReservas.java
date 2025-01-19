@@ -30,7 +30,6 @@ import main.Principal;
 
 public class VentanaMisReservas extends JFrame {
 
-
 	private static final long serialVersionUID = 1L;
 	private JPanel pCentro, pSur, pNorte, pDatos;
 	private JButton btnCerrar,btnEditable;
@@ -48,7 +47,6 @@ public class VentanaMisReservas extends JFrame {
 		vAnterior = va;
 		editable = true;
 		
-		//Instanciar los paneles
 		pNorte = new JPanel();
 		pSur = new JPanel();
 		pCentro = new JPanel();
@@ -71,13 +69,10 @@ public class VentanaMisReservas extends JFrame {
 		getContentPane().add(pSur, BorderLayout.SOUTH);
 		getContentPane().add(pCentro, BorderLayout.CENTER);
 		
-
-		//Titulo
 		lblReserva = new JLabel("MIS RESERVAS");
 		lblReserva.setFont(new Font(Font.DIALOG, Font.ITALIC, 18));
 		pNorte.add(lblReserva);
 		
-		//datos del usuario
 		lblNombre = new JLabel(" - NOMBRE: " );
 		txtNombre = new JTextField(BD.buscarUsario(Principal.con,dni).getNombre());
 		lblApellido = new JLabel(" - APELLIDO: " );
@@ -100,8 +95,6 @@ public class VentanaMisReservas extends JFrame {
 		pDatos.add(txtContrasenia);
 		pCentro.add(pDatos);
 		
-		//Caracteristicas de los txtFields
-		
 		txtNombre.setMaximumSize(new Dimension(100, 20));
 		txtApellido.setMaximumSize(new Dimension (100, 20));
 		txtdni.setMaximumSize(new Dimension (100, 20));
@@ -120,8 +113,6 @@ public class VentanaMisReservas extends JFrame {
 		txttlf.setBorder(null);
 		txtContrasenia.setBorder(null);
 		
-
-		//cambiar el txt de estado
 		btnEditable = new JButton("Editar los datos");
 		pSur.add(btnEditable);
 		btnEditable.addActionListener((e)-> {
@@ -148,7 +139,6 @@ public class VentanaMisReservas extends JFrame {
 			}
 		});
 		
-		//Tabla
 		modeloTabla = new ModeloTablaMisReservas(null);
 		tabla = new JTable(modeloTabla);
 		scrollTabla = new JScrollPane(tabla);
@@ -158,9 +148,7 @@ public class VentanaMisReservas extends JFrame {
 		List<Reserva> reservas = BD.obtenerListaReservasPorDNI(Principal.con, dni);
 		modeloTabla.setlReservas(reservas);
 		pCentro.add(scrollTabla);
-		
-				
-		//renderer de las celdas	
+			
 		tabla.setDefaultRenderer(Object.class, (table,value,isSelected,hasFocus,row,column)->{
 			JLabel l = new JLabel();
 			l.setHorizontalAlignment(JLabel.CENTER);
@@ -168,18 +156,14 @@ public class VentanaMisReservas extends JFrame {
 			if(row % 2 == 0) {
 				l.setText(value.toString());
 				l.setBackground( Color.LIGHT_GRAY); 
-				
 			}
 			else {
 				l.setText(value.toString());
 				l.setBackground(table.getBackground());
 			}
-			
 			return l;
 		});
 		
-		
-		//renderer de la cabecera
 		tabla.getTableHeader().setDefaultRenderer((table,value,isSelectd,hasFocus,row,column)->{
 			JLabel l = new JLabel();
 			l.setText(value.toString());
@@ -187,12 +171,9 @@ public class VentanaMisReservas extends JFrame {
 			l.setHorizontalAlignment(JLabel.CENTER);
 			l.setBackground(Color.ORANGE);
 			
-			
 			return l;
 		});
 		
-		
-		//Boton cerrar
 		btnCerrar = new JButton("Cerrar");
 		pSur.add(btnCerrar);
 		btnCerrar.addActionListener((e)->{
@@ -200,8 +181,6 @@ public class VentanaMisReservas extends JFrame {
 			new VentanaInicio(null);
 		});
 		
-
-		//Tamaño de la ventana
 		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
         int altoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
         setSize(anchoP, altoP);
@@ -214,7 +193,4 @@ public class VentanaMisReservas extends JFrame {
 		setIconImage(icono.getImage());
 		setVisible(true);
 	}
-		
-	
-}
-			
+}	

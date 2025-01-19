@@ -30,9 +30,7 @@ import domain.Utilidades;
 
 public class VentanaInicio extends JFrame{
 	
-	
 	private static final long serialVersionUID = 1L;
-	// Declarar los valores
 	private JPanel pCentro, pNorte,pTabla,pImagen, pMisReservas,pBloque1;
 	private JLabel lblDesutoCar;
 	
@@ -42,7 +40,6 @@ public class VentanaInicio extends JFrame{
 		super();
 		vActual = this;
 		
-		//Instanciar los paneles
 		pCentro = new JPanel();
 		pCentro.setLayout(new BoxLayout(pCentro,BoxLayout.Y_AXIS));
 		pNorte = new JPanel();
@@ -51,25 +48,19 @@ public class VentanaInicio extends JFrame{
 		pImagen = new JPanel();
 		pTabla =  new JPanel();
 		pMisReservas = new JPanel(new BorderLayout());
-				
-		
-		
+			
 		getContentPane().add(pNorte, BorderLayout.NORTH);
 		getContentPane().add(pCentro, BorderLayout.CENTER);
 		
-		//titulo
 		lblDesutoCar = new JLabel("DeustoParking");
 		lblDesutoCar.setFont(new Font(Font.DIALOG, Font.ITALIC, 30));
 		
-		
-		//Añadir los paneles al panel central
 		pNorte.add(lblDesutoCar);
 		pCentro.add(pMisReservas);
 		pBloque1.add(pTabla);
 		pBloque1.add(pImagen);
 		pCentro.add(pBloque1);
 		
-		//Boton mis reservas
 		JPanel pMisRes = new JPanel();
 		JButton btnMisReservas = new JButton("Mis reservas");
 		Dimension dimensionBtnMisRes = new Dimension(200, 25);
@@ -78,14 +69,11 @@ public class VentanaInicio extends JFrame{
 		btnMisReservas.setBackground(Color.ORANGE);
 		pMisReservas.add(pMisRes, BorderLayout.EAST);
 		
-		//Action listener del boton misReservas
 		btnMisReservas.addActionListener((e)->{
-			JOptionPane.showMessageDialog(null, "Has tenido que reservar con notros anteriormente \n para acceder a esta seccion","MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Has tenido que reservar con notros anteriormente \n para acceder a esta sección","MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 			new VentanaInicioSesion(vActual);
 		});
 		
-		
-		//ComboBox
 		JPanel pComboBox = new JPanel();
 		pComboBox.setBounds(20,20,50,20);
 		pComboBox.setLayout(new GridLayout(2, 1));
@@ -96,8 +84,6 @@ public class VentanaInicio extends JFrame{
 	    pComboBox.add(ComboCiudades);
 	    pTabla.add(pComboBox);
 	    
-	    
-	    //calendarios
 	    JLabel lblEntrada = new JLabel("Fecha de entrada: ");
 	    lblEntrada.setBounds(20, 20, 120, 25);
 	    
@@ -106,8 +92,6 @@ public class VentanaInicio extends JFrame{
         properties.put("text.month", "Mes");
         properties.put("text.year", "Año");
         
-
-        //CalendarioEntrada
         UtilDateModel modeloEntrada = new UtilDateModel();
         JDatePanelImpl panelFechaEntrada = new JDatePanelImpl(modeloEntrada, properties);
         JDatePickerImpl DPentrada = new JDatePickerImpl(panelFechaEntrada, null);
@@ -120,13 +104,12 @@ public class VentanaInicio extends JFrame{
                     DPentrada.getModel().setSelected(false);
         		}else {
 	        		String fechaEntradaSelectString = Utilidades.dateToString(fechaEntradaSelect);
-	        		lblEntrada.setText("Fecha de entrada: " + fechaEntradaSelectString);
+	        		lblEntrada.setText("Fecha de Entrada: " + fechaEntradaSelectString);
         		}
         	}else {
         		JOptionPane.showMessageDialog(null, "No has seleccionado ninguna fecha","MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
         	}
         });
-        
         
         JPanel pPickerEntrada = new JPanel();
         pPickerEntrada.setLayout(new GridLayout(2, 1));
@@ -134,8 +117,7 @@ public class VentanaInicio extends JFrame{
         pPickerEntrada.add(DPentrada);
         pTabla.add(pPickerEntrada);
         
-        //Calendario Salida
-        JLabel lblSalida = new JLabel("Fecha de salida: ");
+        JLabel lblSalida = new JLabel("Fecha de Salida: ");
 	    lblSalida.setBounds(20, 20, 120, 25);
         UtilDateModel modeloSalida = new UtilDateModel();
         JDatePanelImpl panelFechaSalida = new JDatePanelImpl(modeloSalida, properties);
@@ -158,16 +140,12 @@ public class VentanaInicio extends JFrame{
         	}
         });
         
-        
         JPanel pPickerSalida = new JPanel();
         pPickerSalida.add(lblSalida);
         pPickerSalida.setLayout(new GridLayout(2, 1));
         pPickerSalida.add(DPSalida);
         pTabla.add(pPickerSalida);
         
-	    
-
-	    //JButton
 	    JPanel pJButtonBuscar = new JPanel();
 		pJButtonBuscar.setBounds(20,20,50,20);
 		JLabel lblVacia = new JLabel("");
@@ -179,22 +157,20 @@ public class VentanaInicio extends JFrame{
 	    pJButtonBuscar.add(btnBuscar);
 	    pTabla.add(pJButtonBuscar);
 	    
-		//Action listener del boton buscar
 		btnBuscar.addActionListener((e)->{
 			String ciudad = (String) ComboCiudades.getSelectedItem();
 			Date fechaEntrada = (Date) DPentrada.getModel().getValue();
 			Date fechaSalida = (Date) DPSalida.getModel().getValue();
 			Reserva r = new Reserva(ciudad, fechaEntrada, fechaSalida);
-			//System.out.println(r);
+			
 			if(!ciudad.equals(null)|| !(fechaEntrada == null)||!(fechaSalida == null)) {
 			new VentanaReservaParking(vActual, r);
 			vActual.dispose();
 			}else {
-				JOptionPane.showMessageDialog(null, "Ls campos no han sido rellenados correctamente","MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Los campos no han sido rellenados correctamente","MENSAJE IMPORTANTE", JOptionPane.WARNING_MESSAGE);
 			}
 		});
 		
-		//imagen
 		ImageIcon imagen = new ImageIcon("resources/imagenes/logoDeustoParking.png");
 		JLabel lblImagen = new JLabel(imagen);
 		lblImagen.setBounds(0, 0, 100, 100);
@@ -202,8 +178,6 @@ public class VentanaInicio extends JFrame{
 		setIconImage(icono.getImage());
 		pImagen.add(lblImagen);
 		
-		
-		//Tamaño de la ventana
 		int anchoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
         int altoP = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
         setSize(anchoP, altoP);
@@ -213,7 +187,5 @@ public class VentanaInicio extends JFrame{
 		setBounds(50, 50, 1600, 800);
 		setTitle("Inicio");
 		setVisible(true);
-	
 	}
-
 }
