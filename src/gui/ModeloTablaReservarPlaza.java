@@ -45,49 +45,51 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 	
 	 @Override
 	    public Object getValueAt(int row, int column) {
-		 if (parking.getParking().equals("ParkingVIP")) {
-		        	if (column == 0) {
-			        	switch (row) {
-		            	case 0: return 1;
-		            	case 2: return 2;
-		            	case 4: return 3;
-		            	case 6: return 4;
-		            	case 8: return 5;
-		            	default: return "";
-		            }
-		        }
-		            
-		 } else if (parking.getParking().equals("ParkingCentral") || parking.getParking().equals("ParkingTechado")) {
-		        	if (column == 0) {
-			        	switch (row) {
-			            	case 0: return 1;
-			            	case 2: return 2;
-			            	case 3: return 3;
-			            	case 5: return 4;
-			            	case 6: return 5;
-			            	case 8: return 6;
-			            	default: return "";
-			            }
-		        	}
-	        }
-
-	        if (column > 0) {
-	        	if ((parking.getParking().equals("ParkingVIP") && (row == 1 || row == 3 || row == 5 || row == 7)) ||
-	        		    ((parking.getParking().equals("ParkingCentral") || parking.getParking().equals("ParkingTechado")) &&
-	        		    (row == 1 || row == 4 || row == 7))) {
-	        		    return null; 
-	        		}
+		 if (column == 0) {
+	        	switch (row) {
 	        	
-	        	if(column>0) {
-	        		String seccion = lTitulos.get(column);
-		            for (Plaza p : listaPlazas) {
-		                if (p.getSeccion().equals(seccion) && p.getNumPlaza() == (row + 1)) {
-		                    return p;
-		                }
-		            }
-	        	}
-
+	            	case 0: return 1;
+	            	case 2: return 2;
+	            	case 3: return 3;
+	            	case 5: return 4;
+	            	case 6: return 5;
+	            	case 8: return 6;
+	            	default: return "";
+	            }
+	        }
+//		 if (parking.getParking().equals("ParkingVIP")) {
+//		        	if (column == 0) {
+//			        	switch (row) {
+//		            	case 0: return 1;
+//		            	case 2: return 2;
+//		            	case 4: return 3;
+//		            	case 6: return 4;
+//		            	case 8: return 5;
+//		            	default: return "";
+//		            }
+//		        }
+//		            
+//		 } else if (parking.getParking().equals("ParkingCentral") || parking.getParking().equals("ParkingTechado")) {
+//		        	if (column == 0) {
+//			        	switch (row) {
+//			            	case 0: return 1;
+//			            	case 2: return 2;
+//			            	case 3: return 3;
+//			            	case 5: return 4;
+//			            	case 6: return 5;
+//			            	case 8: return 6;
+//			            	default: return "";
+//			            }
+//		        	}
+	        if (column > 0) {
+	        	String seccion = lTitulos.get(column);
 	            
+	            for(Plaza p: listaPlazas) {
+	            	if(p.getSeccion().equals(seccion) && p.getNumPlaza()== (row+1)) {
+	            		return p;
+	            	}
+	            }
+ 
 	        }
 
 	        return null;  
@@ -107,20 +109,30 @@ public class ModeloTablaReservarPlaza extends DefaultTableModel{
 	 }
 	 
 	 public int getPlaza(int row) {
-		    int i = 0;
+		 List<Integer> filasCarretera = Arrays.asList(1, 4, 7); 
+		 List<Integer> filasCarreteraVIP = Arrays.asList(1, 3, 5, 7); 
 
-		    if (parking.getParking().equals("ParkingVIP")) {
-		        if (row > 1) i++;
-		        if (row > 3) i++;
-		        if (row > 5) i++;
-		        if (row > 7) i++;
-		    } else if (parking.getParking().equals("ParkingCentral") || parking.getParking().equals("ParkingTechado")) {
-		        if (row > 1) i++;
-		        if (row > 4) i++;
-		        if (row > 7) i++;
-		    }
+		 List<Integer> filasCarreteraActual;
+		   
+		 if (parking.getParking().equals("ParkingVIP")) {
+		     filasCarreteraActual = filasCarreteraVIP;
+		     
+		 } else {
+		     filasCarreteraActual = filasCarretera;
+		 }
 
-		    return row - i; 
+		 int i = 0; 
+		 for (int filaCarretera : filasCarreteraActual) {
+		     if (filaCarretera < row) {
+		         i++;
+		     }
+		 }
+
+		 if (filasCarreteraActual.contains(row)) {
+		     return -1; 
+		 }
+
+		 return row - i + 1; 
 	}
 		
-	}
+}

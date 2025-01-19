@@ -129,7 +129,14 @@ public class VentanaReservarPlaza extends JFrame{
 
 		        if (fila != -1 && columna !=-1) {
 		        	int i = modeloTabla.getPlaza(fila);
-		            Plaza p = (Plaza) modeloTabla.getValueAt(i, columna);
+		        	if (i ==-1) { 
+		            	JOptionPane.showMessageDialog(vActual, "La fila seleccionada no corresponde a una plaza válida.",
+								"Error", JOptionPane.ERROR_MESSAGE);
+							return;
+		            }
+		        	
+		        	
+		            Plaza p = (Plaza) modeloTabla.getValueAt(fila, columna);
 
 		            if (p != null) { 
 		                System.out.println(p.getNumPlaza() + p.getSeccion());
@@ -144,41 +151,21 @@ public class VentanaReservarPlaza extends JFrame{
 		                );
 
 		                if (opcion == JOptionPane.YES_OPTION) {
-		                    int conf = JOptionPane.showConfirmDialog(
-		                        vActual,
-		                        "¿Está seguro que quiere reservar esta plaza?",
-		                        "Confirmar Reserva",
-		                        JOptionPane.YES_NO_OPTION
-		                    );
-
-		                    if (conf == JOptionPane.YES_OPTION) {
-		                        p.setOcupada(true);
-		                        if (Principal.con != null) {
-		                            BD.actualizarEstadoPlaza(Principal.con,p.getPiso() ,p.getSeccion(), i, true, p.isMinusvalido());
-		                            r.setNumPlaza(i);
-		                            r.setSeccion(p.getSeccion());
-		                            BD.restarPlazasLibresParking(Principal.con, pa.getParking());
-		                            vActual.dispose();
-		                            new VentanaIngresarDatos(vActual, r);
-		                        } else {
-		                            JOptionPane.showMessageDialog(vActual, "Conexión a la base de datos no establecida.", "Error", JOptionPane.ERROR_MESSAGE);
-		                        }
-		                        modeloTabla.actualizarTablaPlaza();
-		                        tabla.repaint();
-		                        tabla.revalidate();
-		                        JOptionPane.showMessageDialog(
-		                            vActual,
-		                            "Plaza reservada correctamente.",
-		                            "Reserva Exitosa",
-		                            JOptionPane.INFORMATION_MESSAGE
-		                        );
-		                        
-				                System.out.println("Nueva" + p);
-
-		                    }
+		                	p.setOcupada(true);
+		                	BD.actualizarEstadoPlaza(Principal.con, p.getPiso(),
+									p.getSeccion(), i, true, p.isMinusvalido());
+								r.setNumPlaza(i);
+								r.setSeccion(p.getSeccion());
+		                    JOptionPane.showConfirmDialog(vActual,"Plaza reservada correctamente.",
+		                        "Éxito",JOptionPane.YES_NO_OPTION);
+		                    
+		                    modeloTabla.actualizarTablaPlaza();
+							vActual.dispose();
+							new VentanaIngresarDatos(vActual, r);
 		                }
 		            } else {
-		                System.out.println("No se seleccionó una plaza válida.");
+		            	JOptionPane.showMessageDialog(vActual, "No se seleccionó una plaza válida.",
+								"Error", JOptionPane.ERROR_MESSAGE);
 		            }
 		        }
 		    }

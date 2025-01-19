@@ -211,7 +211,7 @@ public class VentanaInicio extends JFrame{
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(50, 50, 1600, 800);
-		setTitle("Reservar plaza de parking");
+		setTitle("Inicio");
 		setVisible(true);
 	
 	}
