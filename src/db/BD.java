@@ -23,8 +23,6 @@ public class BD {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			con = DriverManager.getConnection("jdbc:sqlite:"+nombreBD);
-			System.out.println("Nombre: "+nombreBD);
-			System.out.println(con);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
